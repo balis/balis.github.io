@@ -2,44 +2,75 @@
 <HEAD>
 <META http-equiv="content-type" content="text/html; charset=utf-8">
 <TITLE>Scala</TITLE>
-<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="../style.css">
 </HEAD>
 <BODY>
 <TABLE WIDTH="80%" HEIGHT="90%" BORDER="0" ALIGN=CENTER>
 <TR>
 <TD ALIGN=CENTER>
 <DIV ALIGN=left>
-<H3>Testowanie aktorów</H3>
+<H3>Projektowanie systemu aktorów</H3>
 
-<H3>Zadanie</H3>
+<H3>Przyklady</H3>
 <ul>
 <li> Pobrać
-<A HREF=reactive-tests2.tgz>projekt</A> eclipse potrzebny do wykonania
-ćwiczenia.
-Rozpakować i otworzyć go w Scala IDE
+<A HREF=reactive-reactive2.zip>projekt</A> eclipse, rozpakować go i otworzyć 
+w Scala IDE
 (File-&gt;Import-general-&gt;Existing Project into
 Workspace)
-<li> Uruchomić przykład aktorów znajdujących się w
-src/main/scala. Przypomnienie: <a href=config/aktorzy_konfig.html> Wymagana konfiguracja.</a>
-<li> Uruchomic test aktora Toggle znajdujacy się w src/test/scala <i>Run as -&gt; ScalaTest (File)</i> </li>
-Aby wykonać ten krok na własnym Scala IDE
-wymagana jest instalacja 
-<a href=http://www.scalatest.org/user_guide/using_scalatest_with_eclipse> pluginu ScalaTest pod Eclipse </a>. 
-<p></p>
-Wskazówki instalacji pluginu ScalaTest dla Scala IDE (eclipse):
-<ul>
   
+  <LI>Przyklad <A HREF=http://sdanzig.blogspot.com/2013/06/buddychat-simple-example-of-akka-actors.html>BuddyChat</A>
+  <P>
+  Uruchomienie przykladu:
 
-<li>wybrać z menu Scala IDE Help -&gt; Install New Software
-<li> wpisac w Work with <i>http://download.scala-ide.org/sdk/e38/scala210/stable/site</i></li>
-<li> po pojawieniu sie pakietow zaznaczyc ScalaTest i  kliknać Next</li>
-  
+  <PRE>
+  $ git clone https://github.com/sdanzig/buddychat
+  $ cd buddychat
+  ==> Prosze podmienic plik <A HREF=build.sbt>build.sbt</A>
+  $ sbt run
+  </PRE>
+
+
+  <LI><A HREF=http://doc.akka.io/docs/akka/snapshot/scala/fsm.html>Akkka FSM</A>
 </ul>
 <p>
+
+<H3>Zadanie - system aukcyjny</H3>
+Zadanie polega na zaimplementowaniu fragmentu systemu aukcyjnego 
+z nastepujacymi aktorami:
+<OL>
+<LI><B>Auction</B>: aktor reprezentujacy aukcje, ktory ma dzialac wedlug nastepujacej maszyny stanow:
+<IMG SRC=auction-fsm.png>
+<LI><B>Buyer</B>: aktor, ktory licytuje w istniejacych aukcjach.
+</OL>
+
+
+Zadania do wykonania:
+<OL>
+<LI>(20 pkt) Prosze zaimplementowac i uruchomic uproszczony system, w ktorym na poczatku tworzona jest pewna liczbe aukcji (aktorow <B>Auction</B>) oraz kilku aktorow <B>Buyer</B>, ktorzy licytuja w istniejacych aukcjach. 
+<UL>
+<LI>Prosze zaprojektowac wiadomosci jako Case Class'y oraz niezbedny wewnetrzny stan aktorow. 
+<LI>Prosze sprawdzac czy licytacja jest poprawna, tj. czy oferta w licytacji przebija aktualna cene. 
+<LI>Aktorzy <B>Buyer</B> moga dostac liste referencji (ActorRef) do aktorow aukcji przez konstruktor. 
+</UL>
+
+<P>
+<LI>(10 pkt) Prosze zaimplementowac i uruchomic pelna maszyne stanow. 
+<UL>
+<LI>Timery prosze zrealizowac przy pomocy <A HREF=http://doc.akka.io/docs/akka/snapshot/java/scheduler.html>Schedulera</A>: aktor powinien zaplanowac wyslanie wiadomosci do samego siebie oznaczajacej uplyniecie okreslonego terminu (BidTimer: konca licytacji, DeleteTimer: usuniecia licytacji z systemu).
+
+</UL>
+
+<P>
+<LI>(10 pkt) 
+<UL>
+<LI>Prosze wykorzystac <A HREF=http://doc.akka.io/docs/akka/snapshot/scala/fsm.html>Akkka FSM</A> do implementacji maszyny stanow w Aktorze <B>Auction</B>.
+</UL>
+
+</OL>
+
+
   
-</p>
-Wiecej o <a href="http://www.scalatest.org/">ScalaTest</a>. 
-</p>
 </a>
 </ul>
 <!--
