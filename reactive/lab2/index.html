@@ -11,7 +11,7 @@
 <DIV ALIGN=left>
 <H3>Projektowanie systemu aktorów</H3>
 
-<H3>Przyklady</H3>
+<H3>Przykłady</H3>
 <ul>
 <li> Pobrać
 <A HREF=reactive-scala2.tgz>projekt</A> eclipse, rozpakować go i otworzyć 
@@ -21,17 +21,18 @@ Workspace)
   
   <LI>Przyklad <A HREF=http://sdanzig.blogspot.com/2013/06/buddychat-simple-example-of-akka-actors.html>BuddyChat</A>
   <P>
-  Uruchomienie przykladu:
+  Uruchomienie przykładu:
 
   <PRE>
   $ git clone https://github.com/sdanzig/buddychat
   $ cd buddychat
-  ==> Prosze podmienic plik <A HREF=build.sbt>build.sbt</A>
+  ==> Prosze podmienić plik <A HREF=build.sbt>build.sbt</A>
   $ sbt run
   </PRE>
 
+<li> Dla zainteresowanych: konwertowanie <a href=https://github.com/typesafehub/sbteclipse>projektów sbt do eclipse</a></li>
 
-  <LI><A HREF=http://doc.akka.io/docs/akka/snapshot/scala/fsm.html>Akka FSM</A>
+<LI><A HREF=http://doc.akka.io/docs/akka/snapshot/scala/fsm.html>Akka FSM</A>
 </ul>
 <p>
 
@@ -39,7 +40,7 @@ Workspace)
 Zadanie polega na zaimplementowaniu fragmentu systemu aukcyjnego 
 z nastepujacymi aktorami:
 <OL>
-<LI><B>Auction</B>: aktor reprezentujacy aukcje, ktory ma dzialac wedlug nastepujacej maszyny stanow:
+<LI><B>Auction</B>: aktor reprezentujący aukcje, ktory ma dzialac wedlug nastepującej maszyny stanow:
 <IMG SRC=auction-fsm.png>
 <LI><B>Buyer</B>: aktor, ktory licytuje w istniejacych aukcjach.
 </OL>
@@ -47,15 +48,16 @@ z nastepujacymi aktorami:
 
 Zadania do wykonania:
 <OL>
-<LI>(20 pkt) Prosze zaimplementowac i uruchomic uproszczony system, w ktorym na poczatku tworzona jest pewna liczbe aukcji (aktorow <B>Auction</B>) oraz kilku aktorow <B>Buyer</B>, ktorzy licytuja w istniejacych aukcjach. 
+<LI>(20 pkt) Prosze zaimplementować i uruchomic uproszczony system, w ktorym na poczatku tworzona jest pewna liczbe aukcji (aktorow <B>Auction</B>) oraz kilku aktorow <B>Buyer</B>, ktorzy licytuja w istniejacych aukcjach. 
 <UL>
-<LI>Prosze zaprojektowac wiadomosci jako Case Class'y oraz niezbedny wewnetrzny stan aktorow. 
+<LI>Prosze zaprojektować wiadomości jako Case Class'y 
+<li> Proszę zaprojektować  niezbędny wewnetrzny stan aktorow. 
 <LI>Prosze sprawdzac czy licytacja jest poprawna, tj. czy oferta w licytacji przebija aktualna cene. 
 <LI>Aktorzy <B>Buyer</B> moga dostac liste referencji (ActorRef) do aktorow aukcji przez konstruktor. 
 </UL>
 
 <P>
-<LI>(10 pkt) Prosze zaimplementowac i uruchomic pelna maszyne stanow. 
+<LI>(10 pkt) Prosze zaimplementować i uruchomic pelna maszyne stanow. 
 <UL>
 <LI>Timery prosze zrealizowac przy pomocy <A HREF=http://doc.akka.io/docs/akka/snapshot/java/scheduler.html>Schedulera</A>: aktor powinien zaplanowac wyslanie wiadomosci do samego siebie oznaczajacej uplyniecie okreslonego terminu (BidTimer: konca licytacji, DeleteTimer: usuniecia licytacji z systemu).
 
