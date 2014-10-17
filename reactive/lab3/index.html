@@ -10,7 +10,20 @@
 <TD ALIGN=CENTER>
 <DIV ALIGN=left>
 
-
+<h3> Akka TestKit</h3>
+<ul>
+<li>Do testowania aktorów wykorzystujemy moduł <a href=http://doc.akka.io/api/akka/2.0/akka/testkit/TestKit.html>
+akka-testkit </a>. W przykładzie użyta jest klasa TestKit inicjalizowana systemem aktorów do testowania. 
+<li>Odpowiedzi od testowanych aktorów są kolejkowane przez wewnętrznego specjalnego testującego aktora  
+i mogą być badane przy użyciu metod takich jak <i> expectMsg </i>. 
+<li> Uzycie traitu <i>ImplicitSender</i>
+powoduje, że aktor testujący jest domyślnie używany do wysyłania wiadomości do aktora, którego testujemy. 
+<li> <a href=http://roestenburg.agilesquad.com/2011/02/unit-testing-akka-actors-with-testkit_12.html> Typowe przypadki testowania
+  aktorów za pomocą akka-testkit </a>
+</ul>
+  
+</ul>
+<p>
 <H3>Testowanie za pomocą ScalaTest </H3>
 <ul>
 <li>Strona domowa projektu <a href=http://www.scalatest.org/> ScalaTest</a>
@@ -19,20 +32,6 @@ czyli sposoby deklarowania testów. W przykładzie
 wykorzystano naturalny styl <a href=http://doc.scalatest.org/2.2.1/#org.scalatest.WordSpec> WordSpec </a> (trait WordSpecLike)
 <li> 
 </ul>
-<h3> Akka TestKit</h3>
-<ul>
-<li></li>Do testowania aktorów wykorzystujemy moduł <a href=http://doc.akka.io/api/akka/2.0/akka/testkit/TestKit.html>
-akka-testkit </a>.
-<li>Odpowiedzi od aktorów są kolejkowane przez wewnętrznego testowego aktora  
-i mogą być badane przy użyciu metod takich jak <i> expectMsg </i>. 
-<li> Uzycie traitu <i>ImplicitSender</i>
-powoduje, że aktor testowy jest domyślnie używany do wysyłania wiadomości do aktora, którego testujemy. 
-<li> <a href=http://roestenburg.agilesquad.com/2011/02/unit-testing-akka-actors-with-testkit_12.html> Typowe przypadki testowania
-  aktorów za pomocą akka-testkit </a>
-</ul>
-  
-</ul>
-<p>
 Przykład prostego testu:
 <ul>
 <li> Pobrać
