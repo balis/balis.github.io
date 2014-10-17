@@ -9,22 +9,33 @@
 <TR>
 <TD ALIGN=CENTER>
 <DIV ALIGN=left>
-<H3>Testowanie aktorów</H3>
 
-<H3>Zadanie</H3>
+
+<H3>Testowanie za pomocą ScalaTest</H3>
+ScalaTest
+<p>
+Przykład prostego testu:
 <ul>
 <li> Pobrać
-<A HREF=reactive-tests2.tgz>projekt</A> eclipse potrzebny do wykonania
+<A HREF=reactive-tests.zip>projekt</A>  potrzebny do wykonania
 ćwiczenia.
-Rozpakować i otworzyć go w Scala IDE
-(File-&gt;Import-general-&gt;Existing Project into
+<li> Projekt można wykonać pod sbt 
+<ul>
+  <li> komenda run powoduje  uruchomienie programu
+  <li> komenda test uruchamia testowanie za pomocą ScalaTest  </li>
+    <li> <a href="http://www.scalatest.org/user_guide/using_scalatest_with_sbt"> Pełna instrukcja jak używać ScalaTest w SBT</a></li>
+    <li> konfiguracja sbt zapisana jest w pliku build.sbt projektu (wszystkie potrzebne zależności)</li>
+  </ul>  
+<li> Projekt można też otworzyć  w Scala IDE (File-&gt;Import-general-&gt;Existing Project into
 Workspace)
-<li> Uruchomić przykład aktorów znajdujących się w
-src/main/scala. Przypomnienie: <a href=config/aktorzy_konfig.html> Wymagana konfiguracja.</a>
-<li> Uruchomic test aktora Toggle znajdujacy się w src/test/scala <i>Run as -&gt; ScalaTest (File)</i> </li>
-Aby wykonać ten krok na własnym Scala IDE
+<ul><
+<li> Aby uruchomić przykład aktorów znajdujących się w
+src/main/scala należy wybrać  <i>Run as Scala Application</i>
+<li> Aby uruchomic test aktora Toggle znajdujacy się w src/test/scala należy wybrać <i>Run as -&gt; ScalaTest (File)</i> </li>
+<li> </li>Aby wykonać ten krok na własnym Scala IDE
 wymagana jest instalacja 
 <a href=http://www.scalatest.org/user_guide/using_scalatest_with_eclipse> pluginu ScalaTest pod Eclipse </a>. 
+Plugin ten jest już zainstalowany na obrazie ICSR na PCoIP.
 <p></p>
 Wskazówki instalacji pluginu ScalaTest dla Scala IDE (eclipse):
 <ul>
