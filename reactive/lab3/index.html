@@ -46,7 +46,6 @@ systemu aktorów po zakonczeniu testów.
   class ToggleSpec extends TestKit(ActorSystem("ToggleSpec"))
   with WordSpecLike with BeforeAndAfterAll with ImplicitSender {
   
-  
   override def afterAll(): Unit = {
     system.shutdown()
   }
@@ -81,6 +80,7 @@ systemu aktorów po zakonczeniu testów.
 }
 
 </pre>
+<h3> Jak uruchmić testy ?</h3>
 <ul>
 <li> Pobrać
 <A HREF=reactive-tests.zip>projekt</A>  potrzebny do wykonania
@@ -110,7 +110,8 @@ Wskazówki:
 <li> po pojawieniu sie pakietow zaznaczyc ScalaTest i  kliknać Next</li>
   
 </ul>
-
+</ul>
+<h3> Inne przykłady </h3>
 <li> Blog opisujacy
 <a href=http://roestenburg.agilesquad.com/2011/02/unit-testing-akka-actors-with-testkit_12.html> typowe przypadki testowania
   aktorów za pomocą akka-testkit </a></li>
