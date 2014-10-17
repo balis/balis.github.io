@@ -20,8 +20,13 @@ wykorzystano naturalny styl <a href=http://doc.scalatest.org/2.2.1/#org.scalates
 <li> 
 </ul>
 <h3> Akka TestKit</h3>
-<ul>Do testowania aktorów wykorzystujemy moduł <a href=http://doc.akka.io/docs/akka/snapshot/scala/testing.html>
-akka-testkit </a>
+<ul>Do testowania aktorów wykorzystujemy moduł <a href=http://doc.akka.io/api/akka/2.0/akka/testkit/TestKit.html>
+akka-testkit </a>. Odpowiedzi od aktorów są kolejkowane przez wewnętrznego testowego aktora  
+i mogą być badane przy użyciu metod takich jak <i> expectMsg </i>. Uzycie traitu <i>ImplicitSender</i>
+powoduje 
+<ul> <a href=http://roestenburg.agilesquad.com/2011/02/unit-testing-akka-actors-with-testkit_12.html> Typowe przypadki testowania
+  aktorów za pomocą akka-testkit </a>
+</ul>
   
 </ul>
 <p>
