@@ -13,11 +13,11 @@
 <h3> Akka TestKit</h3>
 <ul>
 <li>Do testowania aktorów wykorzystujemy moduł <a href=http://doc.akka.io/api/akka/2.0/akka/testkit/TestKit.html>
-akka-testkit </a>. W przykładzie użyta jest klasa TestKit inicjalizowana systemem aktorów do testowania. 
+akka-testkit </a>. W przykładzie rozszerzana jest klasa TestKit inicjalizowana systemem aktorów do testowania. 
 <li>Odpowiedzi od testowanych aktorów są kolejkowane przez wewnętrznego specjalnego testującego aktora  
 i mogą być badane przy użyciu metod takich jak <i> expectMsg </i>. 
 <li> Uzycie traitu <i>ImplicitSender</i>
-powoduje, że aktor testujący jest domyślnie używany do wysyłania wiadomości do aktora, którego testujemy. 
+powoduje, że aktor testujący jest domyślnie używany jako ten, który wysyła wiadomości do aktora, którego testujemy. 
 <li> <a href=http://roestenburg.agilesquad.com/2011/02/unit-testing-akka-actors-with-testkit_12.html> Typowe przypadki testowania
   aktorów za pomocą akka-testkit </a>
 </ul>
