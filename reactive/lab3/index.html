@@ -166,9 +166,9 @@ Wskazówki:
 <OL>
     <LI>(20 pkt) Prosze dodac do systemu aukcyjnego aktorow <B>Seller</B> i <B>AuctionSearch</B>
     <UL>
-        <LI><B>Seller</B> wystawia kilka aukcji o roznych tytulach (np "Audi A6 diesel manual"). Kazdemu aktorowi Seller mozna np. przekazywac przez konstruktor liste tytulow aukcji. 
+        <LI><B>Seller</B> wystawia kilka aukcji o roznych tytulach (przykladowo "Audi A6 diesel manual"). Kazdemu aktorowi Seller mozna np. przekazywac przez konstruktor liste tytulow aukcji, ktore ma wystawic. 
         <LI><B>AuctionSearch</B> to aktor, w ktorym mozna wyszukiwac aukcje. Zapytanie wyszukiwania moze skladac sie z jednego slowa i jesli slowo to wystepuje w tytule aukcji, to aukcja pasuje do zapytania. 
-        <LI>Kazda aukcja musi rejestrowac sie w <B>AuctioSearch</B>. Prosze wykorzystac mechanizm <A HREF=http://doc.akka.io/docs/akka/snapshot/general/addressing.html>Actor Selection</A> do wyszukiwania aktora <B>AuctionSearch</B>.
+        <LI>Kazda aukcja musi rejestrowac sie w <B>AuctionSearch</B>. Prosze wykorzystac mechanizm <A HREF=http://doc.akka.io/docs/akka/snapshot/general/addressing.html>Actor Selection</A> do wyszukiwania aktora <B>AuctionSearch</B>.
         <LI>Aktorzy <B>Buyer</B> powinni korzystac z wyszukiwania przez <B>AuctioSearch</B> aby uzyskac referencje do iteresujacych ich aukcji. 
     </UL>
     <P>
