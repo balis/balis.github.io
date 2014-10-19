@@ -118,11 +118,11 @@ th
 pre
 {
     font-size: 12px;
-	font-family: courier;
+    font-family: "courier new";
     font-size: 12px;
     background-color: #CAE4FF;
-    border: thin solid #02007F;
-    padding: 3pt;
+    .border: thin solid #02007F;
+    .padding: 3pt;
     width: auto;
 }
 

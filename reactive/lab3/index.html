@@ -10,7 +10,8 @@
 <TD ALIGN=CENTER>
 <DIV ALIGN=left>
 
-<h3> Akka TestKit</h3>
+    <H2>Programowanie reaktywne w jezyku Scala</H2>
+<h3>Testowanie aktorów</h3>
 <ul>
 <li>Do testowania aktorów wykorzystujemy moduł <a href=http://doc.akka.io/api/akka/2.0/akka/testkit/TestKit.html>
 akka-testkit </a>. W przykładzie rozszerzana jest klasa TestKit inicjalizowana systemem aktorów do testowania. 
@@ -41,6 +42,47 @@ systemu aktorów po zakonczeniu testów.
   <li> Przykład testuje aktora Toggle z poprzedniego przykladu z laboratorium 2</li>
   <li> W zestawie zawarte są trzy testy w stylu <i>WordSpec</i></li>
 </ul>
+
+
+
+<!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"> <span style="color: #AA22FF; font-weight: bold">class</span> <span style="color: #0000FF">ToggleSpec</span> <span style="color: #AA22FF; font-weight: bold">extends</span> <span style="color: #0000FF">TestKit</span><span style="color: #666666">(</span><span style="color: #0000FF">ActorSystem</span><span style="color: #666666">(</span><span style="color: #BB4444">&quot;ToggleSpec&quot;</span><span style="color: #666666">))</span>
+  <span style="color: #AA22FF; font-weight: bold">with</span> <span style="color: #0000FF">WordSpecLike</span> <span style="color: #AA22FF; font-weight: bold">with</span> <span style="color: #0000FF">BeforeAndAfterAll</span> <span style="color: #AA22FF; font-weight: bold">with</span> <span style="color: #0000FF">ImplicitSender</span> <span style="color: #666666">{</span>
+  
+  <span style="color: #AA22FF; font-weight: bold">override</span> <span style="color: #AA22FF; font-weight: bold">def</span> afterAll<span style="color: #666666">()</span><span style="color: #AA22FF; font-weight: bold">:</span> <span style="color: #00BB00; font-weight: bold">Unit</span> <span style="color: #666666">=</span> <span style="color: #666666">{</span>
+    system<span style="color: #666666">.</span>shutdown<span style="color: #666666">()</span>
+  <span style="color: #666666">}</span>
+
+  <span style="color: #BB4444">&quot;A Toggle&quot;</span> must <span style="color: #666666">{</span>
+
+    <span style="color: #BB4444">&quot;start in a happy mood&quot;</span> in <span style="color: #666666">{</span>
+      <span style="color: #AA22FF; font-weight: bold">val</span> toggle <span style="color: #AA22FF; font-weight: bold">=</span> system<span style="color: #666666">.</span>actorOf<span style="color: #666666">(</span><span style="color: #0000FF">Props</span><span style="color: #666666">[</span><span style="color: #00BB00; font-weight: bold">Toggle</span><span style="color: #666666">])</span>
+    
+      toggle <span style="color: #666666">!</span> <span style="color: #BB4444">&quot;How are you?&quot;</span>
+      expectMsg<span style="color: #666666">(</span><span style="color: #BB4444">&quot;happy&quot;</span><span style="color: #666666">)</span>
+    <span style="color: #666666">}</span>
+    
+    <span style="color: #BB4444">&quot;change its mood&quot;</span> in <span style="color: #666666">{</span>
+      <span style="color: #AA22FF; font-weight: bold">val</span> toggle <span style="color: #AA22FF; font-weight: bold">=</span> system<span style="color: #666666">.</span>actorOf<span style="color: #666666">(</span><span style="color: #0000FF">Props</span><span style="color: #666666">[</span><span style="color: #00BB00; font-weight: bold">Toggle</span><span style="color: #666666">])</span>
+      <span style="color: #AA22FF; font-weight: bold">for</span> <span style="color: #666666">(</span>i <span style="color: #AA22FF; font-weight: bold">&lt;-</span> <span style="color: #666666">1</span> to <span style="color: #666666">5){</span>
+        toggle <span style="color: #666666">!</span> <span style="color: #BB4444">&quot;How are you?&quot;</span>
+        expectMsg<span style="color: #666666">(</span><span style="color: #BB4444">&quot;happy&quot;</span><span style="color: #666666">)</span>
+        toggle <span style="color: #666666">!</span> <span style="color: #BB4444">&quot;How are you?&quot;</span>
+        expectMsg<span style="color: #666666">(</span><span style="color: #BB4444">&quot;sad&quot;</span><span style="color: #666666">)</span>
+      <span style="color: #666666">}</span>
+    <span style="color: #666666">}</span> 
+    
+    <span style="color: #BB4444">&quot;finish when done&quot;</span> in<span style="color: #666666">{</span>
+      <span style="color: #AA22FF; font-weight: bold">val</span> toggle <span style="color: #AA22FF; font-weight: bold">=</span> system<span style="color: #666666">.</span>actorOf<span style="color: #666666">(</span><span style="color: #0000FF">Props</span><span style="color: #666666">[</span><span style="color: #00BB00; font-weight: bold">Toggle</span><span style="color: #666666">])</span>
+      toggle <span style="color: #666666">!</span> <span style="color: #BB4444">&quot;Done&quot;</span>
+      expectMsg<span style="color: #666666">(</span><span style="color: #BB4444">&quot;Done&quot;</span><span style="color: #666666">)</span>
+    <span style="color: #666666">}</span>
+  <span style="color: #666666">}</span>
+<span style="color: #666666">}</span>
+</pre></div>
+
+
+<!--
+
 <pre>
 
   class ToggleSpec extends TestKit(ActorSystem("ToggleSpec"))
@@ -80,6 +122,9 @@ systemu aktorów po zakonczeniu testów.
 }
 
 </pre>
+
+-->
+
 <h3> Jak uruchomić testy ?</h3>
 <ul>
 <li> Pobrać
@@ -116,6 +161,26 @@ Wskazówki:
 
 
 </ul>
+
+<H3>Zadanie</H3>
+<OL>
+    <LI>(20 pkt) Prosze dodac do systemu aukcyjnego aktorow <B>Seller</B> i <B>AuctionSearch</B>
+    <UL>
+        <LI><B>Seller</B> wystawia kilka aukcji o roznych tytulach (np "Audi A6 diesel manual"). Kazdemu aktorowi Seller mozna np. przekazywac przez konstruktor liste tytulow aukcji. 
+        <LI><B>AuctionSearch</B> to aktor, w ktorym mozna wyszukiwac aukcje. Zapytanie wyszukiwania moze skladac sie z jednego slowa i jesli slowo to wystepuje w tytule aukcji, to aukcja pasuje do zapytania. 
+        <LI>Kazda aukcja musi rejestrowac sie w <B>AuctioSearch</B>. Prosze wykorzystac mechanizm <A HREF=http://doc.akka.io/docs/akka/snapshot/general/addressing.html>Actor Selection</A> do wyszukiwania aktora <B>AuctionSearch</B>.
+        <LI>Aktorzy <B>Buyer</B> powinni korzystac z wyszukiwania przez <B>AuctioSearch</B> aby uzyskac referencje do iteresujacych ich aukcji. 
+    </UL>
+    <P>
+    <LI>(10 pkt) Wykorzystujac Akka TestKit Prosze napisac testy dla aktora Auction.
+    <P>
+    <LI>(10 pkt) Prosze stworzyc test calego systemu aukcyjnego:
+    <UL>
+        <LI>Prosze stworzyc testowy zbior danych okreslajacy sposob tworzenia i zachowanie systemu aktorow: (i) ile aukcji ma byc utworzonych (z podzialem na sprzedajacych) oraz ich tytuly, (ii) ilu ma byc kupujacych, jakimi aukcjami maja sie interesowac (slowo kluczowe) i jaka maksymalna kwote licytowac.
+        <LI>Aktor Buyer ma dostawac notyfikacje gdy ktos przebije jego aktualna oferte i samemu ja przebijac jesli cena nie przekroczyla jego kwoty maksymalnej.
+        <LI>Prosze tworzyc system aktorow i wykonac testy przy pomocy Akka TestKit.
+    </UL>
+</OL>
 <!--
 <H3>Bibliografia</H3>
 <OL>
