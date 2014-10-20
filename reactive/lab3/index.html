@@ -174,10 +174,13 @@ Wskazówki:
     <P>
     <LI>(10 pkt) Wykorzystujac Akka TestKit Prosze napisac testy dla aktora Auction.
     <P>
-    <LI>(10 pkt) Prosze stworzyc test calego systemu aukcyjnego:
+    <LI>(10 pkt) Prosze rozszerzyć funkcjonalność oraz stworzyc test calego systemu aukcyjnego:
     <UL>
+    <LI>Proszę rozszerzyć Aktora Buyer o nowe zachowanie (stan), w którym zapisuje się na 
+         notyfikacje gdy ktos przebije jego aktualna oferte 
+         i samemu  przebija ofertę, jesli cena nie przekroczyla jego kwoty maksymalnej. Prosze rozszerzyć  
+         Aktora Auction o potrzebne wsparcie dla takiego zachowania.
         <LI>Prosze stworzyc testowy zbior danych okreslajacy sposob tworzenia i zachowanie systemu aktorow: (i) ile aukcji ma byc utworzonych (z podzialem na sprzedajacych) oraz ich tytuly, (ii) ilu ma byc kupujacych, jakimi aukcjami maja sie interesowac (slowo kluczowe) i jaka maksymalna kwote licytowac.
-        <LI>Aktor Buyer ma dostawac notyfikacje gdy ktos przebije jego aktualna oferte i samemu ja przebijac jesli cena nie przekroczyla jego kwoty maksymalnej.
         <LI>Prosze tworzyc system aktorow i wykonac testy przy pomocy Akka TestKit.
     </UL>
 </OL>
