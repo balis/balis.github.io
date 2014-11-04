@@ -13,46 +13,43 @@
     <H2>Programowanie reaktywne w jezyku Scala</H2>
   
 <h3>Skalowanie aktorów</h3>
+
 <ul>
 <li>Do skalowania aktorów wykorzystujemy koncepcję routingu dostepnego w <a href="http://doc.akka.io/docs/akka/snapshot/scala/routing.html">
 routerach Akka</a>.
 <li> Przykładowy <a href=reactive-routers-demo.tgz>projekt</a> używający routera akki </li>
-<li>Projekt można wykonać przy pomocy komendy <TT>sbt run</TT>. Paczka zawiera też wygenerowany projekt w eclipse (bez bibliotek). 
-Biblioteki można komendą <TT>sbt eclipse with-source=true</TT>. 
+<li>Projekt można wykonać przy pomocy komendy <TT>sbt run</TT>. 
+<li></li>Paczka zawiera też wygenerowany projekt w eclipse (bez bibliotek). 
+Biblioteki można ściągnąć komendą <TT>sbt eclipse with-source=true</TT>. 
  
-
 </ul>
 
 <H3>Zadanie</H3>
 <OL>
     <LI>(20 pkt) Proszę dodać do systemu aukcyjnego aktora <B>MasterSearch</B> 
     <UL>
-        <LI><B>MasterSearch</B> zarządza wieloma aktorami <B> AuctionSearch</B> poprzez mechanizm routingu
+        <LI><B>MasterSearch</B> zarządza wieloma aktorami <B>AuctionSearch</B> poprzez mechanizm routingu
         <li> Aktorzy <B> Seller </B> rejestrują aukcje poprzez <B>MasterSearch</B></li>
-        <li>Aktorzy <B>Buyer</B> dokonuja zapytan przeszukiwań poprzez <B>MasterSearch</B></li>
-        <li>Zaimplementowac przypadek, kiedy rejestracja aukcji odbywa sie u jednego aktora <B>AuctionSearch</B>
+        <li>Aktorzy <B>Buyer</B> dokonują zapytań wyszukiwania również poprzez <B>MasterSearch</B></li>
+        <li>(<B>Wariant z partycjonowaniem</B>) Zaimplementować wariant, w którym rejestracja aukcji odbywa sie u jednego aktora <B>AuctionSearch</B>
             poprzez logikę routera <I>RoundRobinRoutingLogic</I>, a wyszukiwanie odbywa się u wszystkich 
             aktorów <B>AuctionSearch</B> (logika <I>BroadcastRoutingLogic</I>)
         </li>
-        <li>Zaimplementowac przypadek, kiedy rejestracja aukcji odbywa sie u wszystkich aktorów <B>AuctionSearch</B>
-            poprzez logikę routera <I>BroadcastRoutingLogic</I> (redundacja danych), 
-            a wyszukiwanie u wybranego aktora 
+        <li>(Wariant z replikacją) Zaimplementować wariant, w którym rejestracja aukcji odbywa sie u wszystkich aktorów <B>AuctionSearch</B>
+            poprzez logikę routera <I>BroadcastRoutingLogic</I> (redundacja danych), a wyszukiwanie u jednego aktora 
              <B>AuctionSearch</B> (logika <I>RoundRobinRoutingLogic</I>)</li>
         </UL>
     <P>
-    <LI>(10 pkt) Wykonać testy wydajnościowe obydwu przypadków - jak długo trwa pojedyncze wyszukiwanie
-    w zależności od ilości zarejestrowanych aukcji oraz ilości wszystkich wyszukiwań ? 
-    Jak długo trwa pojedyncze wyszukiwanie
-    w zależności od różnej 
-    ilości aktorów <I>AuctionSearch</I> ? Jaki jest średni czas? W jakim czasie mieści się 75%, 90% wyników? 
-    Wyniki przedstawić na wykresach.
+    <LI>(10 pkt) Wykonać testy wydajnościowe obydwu przypadków. Jak długo trwa pojedyncze wyszukiwanie
+    w zależności od liczby zarejestrowanych aukcji oraz obciążenia systemu zapytaniami wyszukiwania?  
+    Jak długo trwa pojedyncze wyszukiwanie w zależności od różnej ilości aktorów <I>AuctionSearch</I>? 
+    Jaki jest średni czas? W jakim czasie mieści się 75%, 90% wyników? Wyniki przedstawić na wykresach.
     <P>
-    <LI>(10 pkt)  Do dynamicznego skalowania Akka udostępnia mechanizm <a href="http://doc.akka.io/docs/akka/snapshot/scala/routing.html#Dynamically_Resizable_Pool"> Dynamically Resizable Pool</a>,
+    <LI>(10 pkt) Do dynamicznego skalowania Akka udostępnia mechanizm <a href="http://doc.akka.io/docs/akka/snapshot/scala/routing.html#Dynamically_Resizable_Pool"> Dynamically Resizable Pool</a>,
     gdzie używa domyślnego
     <a href=http://alvinalexander.com/java/jwarehouse/akka-2.3/akka-actor/src/main/scala/akka/routing/Resizer.scala.shtml> resizera </a>.
-    W przypadku wersji z redundancją danych użyć mozliwości z dynamicznie zmieniającą się liczbą aktorów<i> AuctionSearch</i> 
-    poprzez ten mechanizm.  
-    Zbadać jego działanie. 
+    Dla wersji z replikacją danych użyć mozliwości z dynamicznie zmieniającą się liczbą aktorów<i> AuctionSearch</i> 
+    poprzez ten mechanizm. Zbadać jego działanie. 
     <UL>
 
     </UL>
