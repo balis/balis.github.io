@@ -14,18 +14,18 @@
   
 <h3>Skalowanie aktorów</h3>
 <ul>
-<li>Do skalowania aktorów wykorzystujemy koncepcje routingu dostepnego w <a href="http://doc.akka.io/docs/akka/snapshot/scala/routing.html">
+<li>Do skalowania aktorów wykorzystujemy koncepcję routingu dostepnego w <a href="http://doc.akka.io/docs/akka/snapshot/scala/routing.html">
 routerach Akka</a>.
-<li> Przykładowy <a href=reactive-routers-demo.tgz>projekt</a> uzywający routera akki </li>
-<li>Projekt można wykonać pod sbt (run). Paczka zawiera tez wygenerowany projekt w eclipse (bez bibliotek). 
-Biblioteki można sciągnąć w sbt poprzez komende <i>eclipse with-source=true</i>. 
+<li> Przykładowy <a href=reactive-routers-demo.tgz>projekt</a> używający routera akki </li>
+<li>Projekt można wykonać przy pomocy komendy <TT>sbt run</TT>. Paczka zawiera też wygenerowany projekt w eclipse (bez bibliotek). 
+Biblioteki można komendą <TT>sbt eclipse with-source=true</TT>. 
  
 
 </ul>
 
 <H3>Zadanie</H3>
 <OL>
-    <LI>(20 pkt) Prosze dodac do systemu aukcyjnego aktora <B>MasterSearch</B> 
+    <LI>(20 pkt) Proszę dodać do systemu aukcyjnego aktora <B>MasterSearch</B> 
     <UL>
         <LI><B>MasterSearch</B> zarządza wieloma aktorami <B> AuctionSearch</B> poprzez mechanizm routingu
         <li> Aktorzy <B> Seller </B> rejestrują aukcje poprzez <B>MasterSearch</B></li>
