@@ -19,7 +19,7 @@
 routerach Akka</a>.
 <li> Przykładowy <a href=reactive-routers-demo.tgz>projekt</a> używający routera akki </li>
 <li>Projekt można wykonać przy pomocy komendy <TT>sbt run</TT>. 
-<li></li>Paczka zawiera też wygenerowany projekt w eclipse (bez bibliotek). 
+<li>Paczka zawiera też wygenerowany projekt w eclipse (bez bibliotek). 
 Biblioteki można ściągnąć komendą <TT>sbt eclipse with-source=true</TT>. 
  
 </ul>
@@ -33,23 +33,22 @@ Biblioteki można ściągnąć komendą <TT>sbt eclipse with-source=true</TT>.
         <li>Aktorzy <B>Buyer</B> dokonują zapytań wyszukiwania również poprzez <B>MasterSearch</B></li>
         <li>(<B>Wariant z partycjonowaniem</B>) Zaimplementować wariant, w którym rejestracja aukcji odbywa sie u jednego aktora <B>AuctionSearch</B>
             poprzez logikę routera <I>RoundRobinRoutingLogic</I>, a wyszukiwanie odbywa się u wszystkich 
-            aktorów <B>AuctionSearch</B> (logika <I>BroadcastRoutingLogic</I>)
+            aktorów <B>AuctionSearch</B> (logika <I>BroadcastRoutingLogic</I>).
         </li>
-        <li>(Wariant z replikacją) Zaimplementować wariant, w którym rejestracja aukcji odbywa sie u wszystkich aktorów <B>AuctionSearch</B>
+        <li>(<B>Wariant z replikacją</B>) Zaimplementować wariant, w którym rejestracja aukcji odbywa sie u wszystkich aktorów <B>AuctionSearch</B>
             poprzez logikę routera <I>BroadcastRoutingLogic</I> (redundacja danych), a wyszukiwanie u jednego aktora 
-             <B>AuctionSearch</B> (logika <I>RoundRobinRoutingLogic</I>)</li>
+             <B>AuctionSearch</B> (logika <I>RoundRobinRoutingLogic</I>)</li>.
         </UL>
     <P>
     <LI>(10 pkt) Wykonać testy wydajnościowe obydwu przypadków. Jak długo trwa pojedyncze wyszukiwanie
     w zależności od liczby zarejestrowanych aukcji oraz obciążenia systemu zapytaniami wyszukiwania?  
     Jak długo trwa pojedyncze wyszukiwanie w zależności od różnej ilości aktorów <I>AuctionSearch</I>? 
-    Jaki jest średni czas? W jakim czasie mieści się 75%, 90% wyników? Wyniki przedstawić na wykresach.
+    Jaki jest średni czas odpowiedzi? W jakim czasie mieści się 75%, 90% zapytań? Wyniki przedstawić na wykresach.
     <P>
     <LI>(10 pkt) Do dynamicznego skalowania Akka udostępnia mechanizm <a href="http://doc.akka.io/docs/akka/snapshot/scala/routing.html#Dynamically_Resizable_Pool"> Dynamically Resizable Pool</a>,
     gdzie używa domyślnego
-    <a href=http://alvinalexander.com/java/jwarehouse/akka-2.3/akka-actor/src/main/scala/akka/routing/Resizer.scala.shtml> resizera </a>.
-    Dla wersji z replikacją danych użyć mozliwości z dynamicznie zmieniającą się liczbą aktorów<i> AuctionSearch</i> 
-    poprzez ten mechanizm. Zbadać jego działanie. 
+    <a href=http://alvinalexander.com/java/jwarehouse/akka-2.3/akka-actor/src/main/scala/akka/routing/Resizer.scala.shtml> resizera</a>.
+    Proszę dodać ten mechanizm do wersji z replikacją danych i zbadać jego wpływ na działanie systemu. 
     <UL>
 
     </UL>
