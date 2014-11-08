@@ -14,16 +14,18 @@
     <H2>Programowanie reaktywne w języku Scala</H2>
 <hr>
 
-<h3>Skalowanie systemu aktorów</h3>
+<h3>Persystencja aktorów</h3>
 
 <ul>
-<li>Do skalowania aktorów wykorzystujemy koncepcję routingu dostępnego w <a href="http://doc.akka.io/docs/akka/snapshot/scala/routing.html">
-routerach Akka</a>.
-<li> Przykładowy <a href=reactive-routers-demo.tgz>projekt</a> używający routera Akki </li>
-<li>Projekt można wykonać przy pomocy komendy <TT>sbt run</TT>. 
-<li>Paczka zawiera też wygenerowany projekt w eclipse (bez bibliotek). 
-Biblioteki można ściągnąć komendą <TT>sbt eclipse with-source=true</TT>. 
- 
+<li>W celu zapisywania stanu aktora, używamy wzorca <TT>Event Sourcing</TT> Zaimplementowanego w bibliotece <a href="http://doc.akka.io/docs/akka/2.3.6/scala/persistence.html">
+Akka persistence</a>.
+<li> Przykładowy <a href=reactive-persistence.zip>projekt</a> używający persystencji Akki</li>
+<li>Projekt można wykonać przy pomocy komendy <TT>sbt run</TT>. Można też z niego wygenerować projekt w eclipse: <TT>sbt eclipse</TT>. 
+<li>Proszę sprawdzić zachowanie aktora przy kilkukrotnym uruchomieniu projektu. Co się zmienia, gdy wyślemy do niego komunikat <TT>Snap</TT>?
+<li>Projekt wykorzystuje wbudowaną bazę danych LevelDB do zapisu dziennka zdarzeń. Pliki bazy tworzone są w katalogu <TT>journal/</TT>. 
+<li>Baza używa wbudowanej implementacji w Javie, co skonfigurowane jest w pliku <a href="https://github.com/balis/balis.github.io/blob/master/reactive/lab5/reactive-persistence/src/main/resources/application.conf"><TT>src/main/resources/application.conf</TT></a>.
+
+
 </ul>
 
 <H3>Zadanie</H3>
