@@ -17,43 +17,30 @@
 <h3>Persystencja aktorów</h3>
 
 <ul>
-<li>W celu zapisywania stanu aktora, używamy wzorca <TT>Event Sourcing</TT> Zaimplementowanego w bibliotece <a href="http://doc.akka.io/docs/akka/2.3.6/scala/persistence.html">
+<li>W celu zapisywania stanu aktora, używamy wzorca <TT>Event Sourcing</TT> zaimplementowanego w bibliotece <a href="http://doc.akka.io/docs/akka/2.3.6/scala/persistence.html">
 Akka persistence</a>.
 <li> Przykładowy <a href=reactive-persistence.zip>projekt</a> używający persystencji Akki</li>
 <li>Projekt można wykonać przy pomocy komendy <TT>sbt run</TT>. Można też z niego wygenerować projekt w eclipse: <TT>sbt eclipse</TT>. 
 <li>Proszę sprawdzić zachowanie aktora przy kilkukrotnym uruchomieniu projektu. Co się zmienia, gdy wyślemy do niego komunikat <TT>Snap</TT>?
 <li>Projekt wykorzystuje wbudowaną bazę danych LevelDB do zapisu dziennka zdarzeń. Pliki bazy tworzone są w katalogu <TT>journal/</TT>. 
 <li>Baza używa wbudowanej implementacji w Javie, co skonfigurowane jest w pliku <a href="https://github.com/balis/balis.github.io/blob/master/reactive/lab5/reactive-persistence/src/main/resources/application.conf"><TT>src/main/resources/application.conf</TT></a>.
+<li>Przykład użycia persystencji dla aktora wykorzystującego <TT>context.become()</TT> zamieszczony jest w pliku: <a href="https://github.com/balis/balis.github.io/blob/master/reactive/lab5/reactive-persistence/src/main/scala/reactive5/PersistentToggle.scala">PersistentToggle.scala</a>. 
 
 
 </ul>
 
 <H3>Zadanie</H3>
 <OL>
-    <LI>(20 pkt) Proszę dodać do systemu aukcyjnego aktora <B>MasterSearch</B> 
+    <LI>(20 pkt) Proszę dodać persystencję dla aktora <B>Auction</B> 
     <UL>
-        <LI><B>MasterSearch</B> zarządza wieloma aktorami <B>AuctionSearch</B> poprzez mechanizm routingu
-        <li> Aktorzy <B> Seller </B> rejestrują aukcje poprzez <B>MasterSearch</B></li>
-        <li>Aktorzy <B>Buyer</B> dokonują zapytań wyszukiwania również poprzez <B>MasterSearch</B></li>
-        <li>(<B>Wariant z partycjonowaniem</B>) Zaimplementować wariant, w którym rejestracja aukcji odbywa sie u jednego aktora <B>AuctionSearch</B>
-            poprzez logikę routera <I>RoundRobinRoutingLogic</I>, a wyszukiwanie odbywa się u wszystkich 
-            aktorów <B>AuctionSearch</B> (logika <I>BroadcastRoutingLogic</I>).
-        </li>
-        <li>(<B>Wariant z replikacją</B>) Zaimplementować wariant, w którym rejestracja aukcji odbywa sie u wszystkich aktorów <B>AuctionSearch</B>
-            poprzez logikę routera <I>BroadcastRoutingLogic</I> (redundacja danych), a wyszukiwanie u jednego aktora 
-             <B>AuctionSearch</B> (logika <I>RoundRobinRoutingLogic</I>).
-        </li>
+        <LI><B>Auction</B> zapisuje zdarzenia reprezentujące aktualny stan aukcji oraz zmiany kontekstu aktora (przejścia <TT>become()</TT>).
+        <li>Uwaga: aktorów persystentnych <a href="https://github.com/akka/akka/issues/15279">nie można</a> łączyć z użyciem FSM.  
+        <li>W dzienniku zdarzeń należy zapisać też czas trwania aukcji, a przy odtwarzaniu stanu aktora (komunikat <TT>RecoveryCompleted</TT>) uwzględnić ten czas przy ustalaniu nowego <TT>BidTimer</TT>.
     </UL>
     <P>
-    <LI>(10 pkt) Wykonać testy wydajnościowe obydwu przypadków. Jak długo trwa pojedyncze wyszukiwanie
-    w zależności od liczby zarejestrowanych aukcji oraz obciążenia systemu zapytaniami wyszukiwania?  
-    Jak długo trwa pojedyncze wyszukiwanie w zależności od różnej ilości aktorów <I>AuctionSearch</I>? 
-    Jaki jest średni czas odpowiedzi? W jakim czasie mieści się 75%, 90% zapytań? Wyniki przedstawić na wykresach.
+    <LI>(10 pkt) Przetestować scenariusz, w którym przed upływem końca aukcji aplikacja zostaje wyłączona (np. poprzez <TT>system.shutdown()</TT>). Po ponownym uruchomieniu aplikacji stan aktorów <B>Auction</B> powinien być odtworzony z dziennika, natomiast aktorzy <B>Seller</B>, <B>Buyer</B> oraz <B>AuctionSearch</B> mogą być zainicjalizowani od nowa. Kupujący powinni powrócić do licytowania zgodnie ze swoją strategią. Proszę sprawdzić, czy wielokrotne przerywanie i ponowne uruchamianie systemu aktorów umożliwia kontunuowanie licytacji.
     <P>
-    <LI>(10 pkt) Do dynamicznego skalowania Akka udostępnia mechanizm <a href="http://doc.akka.io/docs/akka/snapshot/scala/routing.html#Dynamically_Resizable_Pool"> Dynamically Resizable Pool</a>,
-    gdzie używa domyślnego
-    <a href=http://alvinalexander.com/java/jwarehouse/akka-2.3/akka-actor/src/main/scala/akka/routing/Resizer.scala.shtml> resizera</a>.
-    Proszę dodać ten mechanizm do wersji z replikacją danych i zbadać jego wpływ na działanie systemu. 
+    <LI>(10 pkt) Proszę porównać wydajność różnych mechanizmów persystencji (np. LevelDB z opcją native = true/false, InMemory, itp., <a href="http://akka.io/community/">lista wtyczek</a>)
     <UL>
 
     </UL>
