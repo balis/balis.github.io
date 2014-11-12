@@ -53,7 +53,6 @@ class PersistentToggle extends PersistentActor {
 
   val receiveRecover: Receive = {
     case evt: MoodChangeEvent => updateState(evt)
-    case SnapshotOffer(_, snapshot: MoodChangeEvent) => updateState(snapshot)
   }
 }
 
