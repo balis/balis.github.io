@@ -1,0 +1,87 @@
+<HTML>
+<HEAD>
+<META http-equiv="content-type" content="text/html; charset=utf-8">
+<TITLE>Scala</TITLE>
+<link rel="stylesheet" type="text/css" href="../style.css">
+</HEAD>
+<BODY>
+<TABLE WIDTH="80%" HEIGHT="90%" BORDER="0" ALIGN=CENTER>
+<TR>
+<TD ALIGN=CENTER>
+<DIV ALIGN=left>
+
+<hr>
+    <H2>Programowanie reaktywne w języku Scala</H2>
+<hr>
+
+<h3>Obsługa awarii</h3>
+
+<ul>
+<li>W celu zapewnienia obsługi awarii używamy wzorca nadzoru aktorów (<I>supervision</I>)
+<li>Przykładowy projekt: <a href="http://typesafe.com/activator/template/akka-supervision">Akka Supervision Tutorial</a> używający aktorów do obliczania wyrażeń arytmetycznych</li>
+<li>Pobranie i uruchamianie projektu:
+<pre>
+  git clone https://github.com/typesafehub/activator-akka-supervision.git
+  cd activator-akka-supervision/
+  sbt eclipse
+</pre>
+<li>Proszę sprawdzić zachowanie systemu aktorów przy kilkukrotnym uruchomieniu projektu. Jak obsługiwane są losowe błędy?
+<li>Proszę sprawdzić co się stanie, gdy wprowadzimy wyrażenie zawierające dzielenie przez 0.
+</ul>
+
+<h3>Komunikacja HTTP/REST</h3>
+
+<ul>
+<li>Do zapewnienia komunikacji pomiędzy aktorami a systemami zewnętrznymi używamy biblioteki Spray.
+<li>Szablon projektu serwera: <a href="https://github.com/spray/spray-template/">spray-template</a>
+<li>Pobranie i uruchomienie przy użyciu wbudowanego serwera HTTP:
+<pre>
+  git clone git://github.com/spray/spray-template.git my-spray-project
+  cd my-spray-project
+  sbt
+  test
+  re-start
+</pre>
+Serwer jest dostępny pod adresem <a href="http://localhost:8080">http://localhost:8080</a>
+<li>Przykładowy projekt klienta: <a href="my-spray-client.zip">my-spray-client.zip</a>
+<li>Uruchamianie klienta:
+<pre>
+  cd my-spray-client/
+  sbt run
+</pre>
+</ul>
+
+
+
+<H3>Zadanie</H3>
+<OL>
+    <LI>(20 pkt) Proszę rozszerzyć system aukcyjny o mechanizm publikowania informacji o przebiegu aukcji do zewnętrznego systemu <B>Auction Publisher</B> przy użyciu HTTP za pośrednictwem nowego aktora <B>Notifier</B>. 
+    <UL>
+        <LI><B>Auction</B> powiadamia aktora <B>Notifier</B> o zmianie stanu aukcji poprzez komunikaty <TT>Notify</TT> zawierające informację o tytue aukcji, aktualnym kupującym i bieżącej cenie.
+        <LI><B>Notifier</B> obsługuje komunikaty <TT>Notify</TT> i jest klientem HTTP przekazującym informacje do zewnętrznego serwera.
+        <LI>Serwer <B>Auction Publisher</B> przyjmuje powiadomienia poprzez komunikaty HTTP POST.
+    </UL>
+    <P>
+    <LI>(20 pkt) Proszę rozszerzyć aktora <B>Notifier</B> o mechanizmy fault-tolerance, tak aby działał poprawnie w wypadku awarii zewnętrznego serwera lub awarii sieci. Awarie te nie powinny zakłócać pracy systemu aukcyjnego.
+</OL>
+<!--
+<H3>Bibliografia</H3>
+<OL>
+</OL>
+!-->
+<P>
+<P>
+<HR>
+<I>Bartosz Baliś, balis at agh edu pl</I>
+<BR>
+<I>Maciej Malawski, malawski at agh edu pl</I>
+<BR>
+<I>Katarzyna Rycerz, kzajac at agh edu pl</I>
+<BR>
+<P> <P>
+</DIV>
+</TR>
+</TD>
+</TABLE>
+</BODY>
+</HTML>
