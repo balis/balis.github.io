@@ -26,13 +26,38 @@ Programming Principles in Scala </a>
 <P>
 Środowisko potrzebne do wykonywania ćwiczeń:
 <UL>
-  <LI>JDK 1.6 lub 1.7
-  <LI><A HREF=http://www.scala-sbt.org>sbt - build tool</A>
-  <LI><A HREF="http://scala-ide.org">Scala IDE for Eclipse</A> UWAGA: 
-należy pobrać wersję dla Scala 2.10.4 . 
+  <LI>JDK 1.8
+  <LI><A HREF=http://www.scala-sbt.org>sbt 0.13.x</A>
+  <LI><A HREF="http://scala-ide.org">Scala IDE for Eclipse</A>. 
 </UL>
 
 <H3>Zadanie</H3>
+<p>
+Pobranie źródeł potrzebnych do wykonania ćwiczenia:
+<code>
+ > git clone https://github.com/balis/reactive-lab1
+</code>
+</p>
+
+<p>
+ Uruchomienie:
+ <code>
+  > cd reactive-lab1
+  > sbt run
+ </code>
+</p>
+
+<p>
+ Wygenerowanie projektu Eclipse:
+ > echo "addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "4.0.0")" >> project/plugins.sbt
+ > sbt eclipse
+</p>
+
+<P>
+Tak przygotowany projekt prosze zaimportować do Scala IDE. 
+</P>
+
+<!--
 <ul>
 <li> Pobrać 
 <A HREF=reactive-scala1.zip>projekt</A> eclipse potrzebny do wykonania 
@@ -49,6 +74,8 @@ Scala Worksheet </a>
 src/main/scala. <a href=aktorzy_konfig.html> Wymagana konfiguracja. 
 </a>
 </ul>
+-->
+
 <!--
 <H3>Bibliografia</H3>
 <OL>
