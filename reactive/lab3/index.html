@@ -180,11 +180,8 @@ Wskazówki:
          notyfikacje, gdy ktoś przebije jego aktualna ofertę 
          i samemu  przebija ofertę, jeśli cena nie przekroczyła jego kwoty maksymalnej. Prosze rozszerzyć  
          Aktora <B>Auction</B> o potrzebne wsparcie dla takiego zachowania.
-        <LI>Prosze stworzyć testowy zbiór danych okreslający sposób tworzenia i zachowanie 
-        systemu aktorow: (i) ile aukcji ma byc utworzonych (z podzialem na sprzedających) 
-        oraz ich tytuly, (ii) ilu ma byc kupujących, jakimi aukcjami maja sie interesować (slowo kluczowe) i 
-        jaka maksymalną kwotę licytować.
-        <LI>Proszę stworzyć system aktorów i wykonac testy przy pomocy Akka TestKit.
+        <LI> Proszę napisać testy dla tego rozszerzenia (t.j. dla aktorów Buyer oraz Auction. Aby przetestować
+        aktora Buyer w izolacji od aktora Auction należy skorzystać z  < a href="http://doc.akka.io/docs/akka/snapshot/scala/testing.html#Using_Multiple_Probe_Actors"> TestProbe
     </UL>
 </OL>
 <!--
