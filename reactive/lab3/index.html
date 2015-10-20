@@ -138,9 +138,8 @@ systemu aktorów po zakonczeniu testów.
   git clone https://github.com/kzajac/reactive-lab3
 </pre>
 <li> Przykład testu znajduje sie w pliku src/test/scala/myActorTest/ToggleSpec.scala</li>
-
-  <li> uruchomienie głównego programu znajdujacego sie w src/main/scala: <pre> sbt run </pre> 
-  <li> uruchamienie testowanie za pomocą ScalaTest: <pre> sbt test </pre>   </li>
+  <li> uruchomienie głównego programu znajdujacego sie w src/main/scala: <pre>sbt run</pre> 
+  <li> uruchamienie testowanie za pomocą ScalaTest: <pre>sbt test</pre>   </li>
   <li> generacja projektu w eclipse <pre>sbt eclipse</pre></li>
  
 <li> Dla użytkowników Scala IDE: Aby uruchomic test aktora Toggle  znajdujacy się w src/test/scala należy wybrać <i>Run as -&gt; ScalaTest (File)</i> </li>
@@ -166,29 +165,40 @@ Wskazówki:
 <OL>
     <LI>(20 pkt) Prosze dodac do systemu aukcyjnego aktorow <B>Seller</B> i <B>AuctionSearch</B>
     <UL>
-        <LI><B>Seller</B> wystawia kilka aukcji o roznych tytulach (przykladowo "Audi A6 diesel manual"). Kazdemu aktorowi Seller mozna np. przekazywac przez konstruktor liste tytulow aukcji, ktore ma wystawic. 
-        <LI><B>AuctionSearch</B> to aktor, w ktorym mozna wyszukiwac aukcje. Zapytanie wyszukiwania moze skladac sie z jednego slowa i jesli slowo to wystepuje w tytule aukcji, to aukcja pasuje do zapytania. 
-        <LI>Kazda aukcja musi rejestrowac sie w <B>AuctionSearch</B>. Prosze wykorzystać mechanizm <A HREF=http://doc.akka.io/docs/akka/snapshot/general/addressing.html>Actor Selection</A> do wyszukiwania aktora <B>AuctionSearch</B>.
-        <LI>Aktorzy <B>Buyer</B> powinni korzystac z wyszukiwania przez <B>AuctionSearch</B> aby uzyskac referencje do iteresujacych ich aukcji. 
+        <LI><B>Seller</B> wystawia kilka aukcji o roznych tytulach (przykladowo "Audi A6 diesel manual"). <B>Seller</B>
+        tworzy aktorów aukcji (można np. przekazywac przez konstruktor liste tytulów aukcji, ktore ma wystawić). 
+        
+        <LI><B>AuctionSearch</B> to aktor, w którym można wyszukiwać aukcje. Zapytanie wyszukiwania może skladac sie
+        z jednego slowa i jesli slowo to wystepuje w tytule aukcji, to aukcja pasuje do zapytania. (Wynikiem zapytania 
+        jest lista identyfikatorów <TT>ActorRef</TT> aukcji).
+        
+        <LI>Kazda aukcja musi rejestrować sie w <B>AuctionSearch</B>. Prosze wykorzystać mechanizm 
+        <A HREF=http://doc.akka.io/docs/akka/snapshot/general/addressing.html>Actor Selection</A> do wyszukiwania aktora 
+        <B>AuctionSearch</B>.
+        
+        <LI>Aktorzy <B>Buyer</B> powinni korzystac z wyszukiwania przez <B>AuctionSearch</B> aby uzyskac referencje do 
+        iteresujacych ich aukcji. 
+        
         <li> po zakończeniu aukcji odpowiedni aktor <B>Auction</B> wysyła notyfikację do swojego aktora <B>Seller</B> .
     </UL>
     <P>
     <LI>(10 pkt) Wykorzystując Akka TestKit proszę napisac testy dla aktorów <B>Auction</B>,
     <B>AuctionSearch</B> i <B>Seller</B>.
     <ul>
-        <li> Aby przetestować wymianę komunikatów
-        między aktorami należy skorzystać z  <a href="http://doc.akka.io/docs/akka/snapshot/scala/testing.html#Using_Multiple_Probe_Actors"> TestProbe </a>.
-        <li><a href="http://doc.akka.io/docs/akka/snapshot/scala/testing.html#Testing_parent-child_relationships">Testowanie relacji rodzic-dziecko</a>  potrzebne  np.   dla relacji <B>Seller</B> - <B>Auction</B>) 
+        <li> Aby przetestować wymianę komunikatów między aktorami należy skorzystać 
+        z  <a href="http://doc.akka.io/docs/akka/snapshot/scala/testing.html#Using_Multiple_Probe_Actors">TestProbe</a>.
+        
+        <li><a href="http://doc.akka.io/docs/akka/snapshot/scala/testing.html#Testing_parent-child_relationships">Testowanie 
+        relacji rodzic-dziecko</a> (potrzebne np. dla relacji <B>Seller</B> - <B>Auction</B>) 
         
     </ul>
     <P>
-    <LI>(10 pkt) Prosze rozszerzyć funkcjonalność i przetestować rozszerzenie:
+    <LI>(10 pkt) Rozszerzenie systemu:
     <UL>
     <LI>Proszę rozszerzyć Aktora <B>Buyer</B> o nowe zachowanie (stan), w którym zapisuje się na 
-         notyfikacje, gdy ktoś przebije jego aktualna ofertę 
-         i samemu  przebija ofertę, jeśli cena nie przekroczyła jego kwoty maksymalnej. Prosze rozszerzyć  
-         Aktora <B>Auction</B> o potrzebne wsparcie dla takiego zachowania.
-        <LI> Proszę napisać testy dla tego rozszerzenia (t.j. dla aktorów Buyer oraz Auction).  
+         notyfikacje, gdy ktoś przebije jego aktualna ofertę i samemu przebija ofertę, jeśli cena nie przekroczyła 
+         jego kwoty maksymalnej. Prosze rozszerzyć Aktora <B>Auction</B> o potrzebne wsparcie dla takiego zachowania.
+        <LI> Proszę napisać testy dla tego rozszerzenia (tj. dla aktorów Buyer oraz Auction).  
     </UL>
 </OL>
 <!--
