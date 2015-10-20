@@ -23,9 +23,9 @@ Ogłoszenie --- w przyszłym tygodniu zajecia nie odbedą się - w ich ramach  z
   z testowanymi aktorami
 
 <li>Odpowiedzi od testowanych aktorów są kolejkowane przez testującego aktora
-i mogą być badane przy użyciu <a href="http://doc.akka.io/docs/akka/snapshot/scala/testing.html#Built-In_Assertions">asercji</a> takich jak <i> expectMsg </i>. 
-<li> Uzycie traitu <i>ImplicitSender</i>
-powoduje, że aktor testujący jest domyślnie używany jako ten, który wysyła wiadomości do testowanych aktorów.
+i mogą być badane przy użyciu <a href="http://doc.akka.io/docs/akka/snapshot/scala/testing.html#Built-In_Assertions">asercji</a> takich jak <i>expectMsg</i>. 
+<li> Uzycie traitu <i>ImplicitSender</i> powoduje, że aktor testujący jest domyślnie używany jako ten, który wysyła wiadomości 
+do testowanych aktorów.
 
 </ul>
   
@@ -36,11 +36,12 @@ powoduje, że aktor testujący jest domyślnie używany jako ten, który wysyła
 <li>Jako narzędzia do testowania używamy <a href=http://www.scalatest.org/>ScalaTest</a>
 <li>ScalaTest oferuje różne <a href="http://www.scalatest.org/user_guide/selecting_a_style">style testowania</a>
 czyli sposoby deklarowania testów. W przykładzie 
-wykorzystano naturalny styl <a href=http://doc.scalatest.org/2.2.4/#org.scalatest.WordSpec> WordSpec </a> (trait <i>WordSpecLike</i>)
+wykorzystano naturalny styl <a href=http://doc.scalatest.org/2.2.4/#org.scalatest.WordSpec>WordSpec</a> (trait <i>WordSpecLike</i>)
 <li> Trait <a href="http://doc.scalatest.org/2.2.4/org/scalatest/BeforeAndAfterAll.html"><i>BeforeAndAfterAll</i></a> zapewnia
 funkcje do wykonania przed i po zestawie testów. W przykładzie pokazano, jak wykorzystać funkcje <i>afterAll</i> do zamknięcia
 systemu aktorów po zakonczeniu testów.
 </ul>
+
 <h3>Przykład prostego testu</h3>
 <ul>
   <li> Przykład testuje aktora Toggle z poprzedniego przykladu z laboratorium 2</li>
