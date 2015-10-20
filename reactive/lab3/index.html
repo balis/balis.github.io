@@ -18,13 +18,12 @@ Ogłoszenie --- w przyszłym tygodniu zajecia nie odbedą się - w ich ramach  z
 
 <h3>Testowanie aktorów</h3>
 <ul>
-<li>Do testowania aktorów wykorzystujemy moduł <a href=http://doc.akka.io/docs/akka/snapshot/scala/testing.html>
-akka-testkit </a>. W przykładzie rozszerzana jest klasa TestKit inicjalizowana systemem aktorów do testowania. 
+<li>Do testowania aktorów wykorzystujemy moduł <a href=http://doc.akka.io/docs/akka/snapshot/scala/testing.html>akka-testkit</a>. W przykładzie rozszerzana jest klasa TestKit inicjalizowana systemem aktorów do testowania. 
 <li> Akka TestKit tworzy wewnętrznego testującego aktora (o nawie testActor), który służy do komunikacji
   z testowanymi aktorami
 
 <li>Odpowiedzi od testowanych aktorów są kolejkowane przez testującego aktora
-i mogą być badane przy użyciu <a href="http://doc.akka.io/docs/akka/snapshot/scala/testing.html#Built-In_Assertions"> asercji </a> takich jak <i> expectMsg </i>. 
+i mogą być badane przy użyciu <a href="http://doc.akka.io/docs/akka/snapshot/scala/testing.html#Built-In_Assertions">asercji</a> takich jak <i> expectMsg </i>. 
 <li> Uzycie traitu <i>ImplicitSender</i>
 powoduje, że aktor testujący jest domyślnie używany jako ten, który wysyła wiadomości do testowanych aktorów.
 
@@ -34,11 +33,11 @@ powoduje, że aktor testujący jest domyślnie używany jako ten, który wysyła
 <p>
 <H3>Uzycie akka testkit w ScalaTest </H3>
 <ul>
-<li>Jako narzędzia do testowania używamy <a href=http://www.scalatest.org/> ScalaTest</a>
-<li>ScalaTest oferuje różne <a href="http://www.scalatest.org/user_guide/selecting_a_style"> style testowania </a>
+<li>Jako narzędzia do testowania używamy <a href=http://www.scalatest.org/>ScalaTest</a>
+<li>ScalaTest oferuje różne <a href="http://www.scalatest.org/user_guide/selecting_a_style">style testowania</a>
 czyli sposoby deklarowania testów. W przykładzie 
 wykorzystano naturalny styl <a href=http://doc.scalatest.org/2.2.4/#org.scalatest.WordSpec> WordSpec </a> (trait <i>WordSpecLike</i>)
-<li> Trait <a href="http://doc.scalatest.org/2.2.4/org/scalatest/BeforeAndAfterAll.html"><i> BeforeAndAfterAll </i></a> zapewnia
+<li> Trait <a href="http://doc.scalatest.org/2.2.4/org/scalatest/BeforeAndAfterAll.html"><i>BeforeAndAfterAll</i></a> zapewnia
 funkcje do wykonania przed i po zestawie testów. W przykładzie pokazano, jak wykorzystać funkcje <i>afterAll</i> do zamknięcia
 systemu aktorów po zakonczeniu testów.
 </ul>
@@ -168,7 +167,7 @@ Wskazówki:
     <UL>
         <LI><B>Seller</B> wystawia kilka aukcji o roznych tytulach (przykladowo "Audi A6 diesel manual"). Kazdemu aktorowi Seller mozna np. przekazywac przez konstruktor liste tytulow aukcji, ktore ma wystawic. 
         <LI><B>AuctionSearch</B> to aktor, w ktorym mozna wyszukiwac aukcje. Zapytanie wyszukiwania moze skladac sie z jednego slowa i jesli slowo to wystepuje w tytule aukcji, to aukcja pasuje do zapytania. 
-        <LI>Kazda aukcja musi rejestrowac sie w <B>AuctionSearch</B>. Prosze wykorzystac mechanizm <A HREF=http://doc.akka.io/docs/akka/snapshot/general/addressing.html>Actor Selection</A> do wyszukiwania aktora <B>AuctionSearch</B>.
+        <LI>Kazda aukcja musi rejestrowac sie w <B>AuctionSearch</B>. Prosze wykorzystać mechanizm <A HREF=http://doc.akka.io/docs/akka/snapshot/general/addressing.html>Actor Selection</A> do wyszukiwania aktora <B>AuctionSearch</B>.
         <LI>Aktorzy <B>Buyer</B> powinni korzystac z wyszukiwania przez <B>AuctionSearch</B> aby uzyskac referencje do iteresujacych ich aukcji. 
         <li> po zakończeniu aukcji odpowiedni aktor <B>Auction</B> wysyła notyfikację do swojego aktora <B>Seller</B> .
     </UL>
