@@ -45,7 +45,7 @@ sbt eclipse
     <P>
     <LI>(10 pkt) Przetestować scenariusz, w którym przed upływem końca aukcji aplikacja zostaje wyłączona (np. poprzez <TT>system.shutdown()</TT>). Po ponownym uruchomieniu aplikacji stan aktorów <B>Auction</B> powinien być odtworzony z dziennika, natomiast aktorzy <B>Seller</B>, <B>Buyer</B> oraz <B>AuctionSearch</B> mogą być zainicjalizowani od nowa. Kupujący powinni powrócić do licytowania zgodnie ze swoją strategią. Proszę sprawdzić, czy wielokrotne przerywanie i ponowne uruchamianie systemu aktorów umożliwia kontunuowanie licytacji.
     <P>
-    <LI>(10 pkt) Proszę porównać wydajność różnych mechanizmów persystencji (np. LevelDB z opcją native = true/false, InMemory, itp., <a href="http://akka.io/community/">lista wtyczek</a>)
+    <LI>(10 pkt) Proszę porównać wydajność różnych mechanizmów persystencji (np. LevelDB z opcją native = true/false, InMemory, itp., <a href="http://akka.io/community/">lista wtyczek</a>) i oszacować średni czas zapisu/odczytu zdarzenia.
     <UL>
 
     </UL>
