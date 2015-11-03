@@ -28,7 +28,7 @@ sbt eclipse
 </li>
 <li>Uwaga: projekt używa najnowszej wersji Akka 2.4.0 oraz Java 8+. <A HREF=https://www.opencredo.com/2015/10/28/akka-persistence-2-4/>Nowosci w akka-persistence</A> w Akka 2.4.
 <li>Proszę sprawdzić zachowanie aktora <tt>PersistentBankAccount</tt> przy kilkukrotnym uruchomieniu projektu. Co się zmienia, gdy wyślemy do niego komunikat <TT>Snap</TT>?
-<li>Projekt wykorzystuje wbudowaną bazę danych LevelDB do zapisu dziennika zdarzeń. Pliki bazy tworzone są w katalogu <TT>journal/</TT>. 
+<li>Projekt wykorzystuje wbudowaną bazę danych LevelDB do zapisu dziennika zdarzeń. Pliki bazy tworzone są w katalogu <TT>target/journal/</TT> (dla eventów) oraz <tt> target/snapshot </tt> dla snapshotów. 
 <li>Baza używa wbudowanej implementacji w Javie, co skonfigurowane jest w pliku <a href="https://github.com/malawski/reactive-lab4/blob/master/src/main/resources/application.conf"><TT>src/main/resources/application.conf</TT></a>.
 <li>Przykład użycia persystencji dla aktora wykorzystującego <TT>context.become()</TT> zamieszczony jest w pliku: <a href="https://github.com/malawski/reactive-lab4/blob/master/src/main/scala/reactive4/persistence/PersistentToggle.scala">PersistentToggle.scala</a>. 
 <li>Przykład użycia persystencji dla aktora wykorzystującego <TT>FSM</TT> zamieszczony jest w pliku: <a href="https://github.com/malawski/reactive-lab4/blob/master/src/main/scala/reactive4/fsm/PersistentToggleFSM.scala">PersistentToggleFSM.scala</a>. Uwaga: pakiet <tt>akka.persistence.fsm</tt> jest na razie eksperymentalny.
