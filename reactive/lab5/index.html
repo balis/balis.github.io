@@ -14,36 +14,55 @@
     <H2>Programowanie reaktywne w języku Scala</H2>
 <hr>
 
-<h3>Persystencja aktorów</h3>
+<h3>Obsługa awarii</h3>
 
 <ul>
-<li>W celu zapisywania stanu aktora, używamy wzorca <TT>Event Sourcing</TT> zaimplementowanego w bibliotece <a href="http://doc.akka.io/docs/akka/2.3.6/scala/persistence.html">
-Akka persistence</a>.
-<li> Przykładowy <a href=reactive-persistence.zip>projekt</a> używający persystencji Akki</li>
-<li>Projekt można wykonać przy pomocy komendy <TT>sbt run</TT>. Można też z niego wygenerować projekt w eclipse: <TT>sbt eclipse</TT>. 
-<li>Proszę sprawdzić zachowanie aktora przy kilkukrotnym uruchomieniu projektu. Co się zmienia, gdy wyślemy do niego komunikat <TT>Snap</TT>?
-<li>Projekt wykorzystuje wbudowaną bazę danych LevelDB do zapisu dziennika zdarzeń. Pliki bazy tworzone są w katalogu <TT>journal/</TT>. 
-<li>Baza używa wbudowanej implementacji w Javie, co skonfigurowane jest w pliku <a href="https://github.com/balis/balis.github.io/blob/master/reactive/lab5/reactive-persistence/src/main/resources/application.conf"><TT>src/main/resources/application.conf</TT></a>.
-<li>Przykład użycia persystencji dla aktora wykorzystującego <TT>context.become()</TT> zamieszczony jest w pliku: <a href="https://github.com/balis/balis.github.io/blob/master/reactive/lab5/reactive-persistence/src/main/scala/reactive5/PersistentToggle.scala">PersistentToggle.scala</a>. 
-
-
+<li>W celu zapewnienia obsługi awarii używamy wzorca nadzoru aktorów (<I><a href="http://doc.akka.io/docs/akka/snapshot/general/supervision.html">supervision</a></I>)
+<li>Przykładowy projekt: <a href="http://typesafe.com/activator/template/akka-supervision">Akka Supervision Tutorial</a> używający aktorów do obliczania wyrażeń arytmetycznych</li>
+<li>Pobranie i uruchamianie projektu:
+<pre>
+  git clone https://github.com/typesafehub/activator-akka-supervision.git
+  cd activator-akka-supervision/
+  echo 'addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "4.0.0")' >> project/plugins.sbt
+  sbt eclipse
+</pre>
+<li>Proszę sprawdzić zachowanie systemu aktorów przy kilkukrotnym uruchomieniu projektu. Jak obsługiwane są losowe błędy?
+<li>Proszę sprawdzić co się stanie, gdy wprowadzimy wyrażenie zawierające dzielenie przez 0.
+<li><a href="http://doc.akka.io/docs/akka/snapshot/scala/fault-tolerance.html">Fault tolerance in akka</a></li>
+ <li> Wiecej <a href="http://doc.akka.io/docs/akka/snapshot/scala/futures.html">informacji</a> o ask <i>"?"</i> i Futures </li>   
 </ul>
+
+<h3>Komunikacja zdalna (remoting)</h3>
+
+<ul>
+<li>Aktorzy mogą komunikować się <a href="http://doc.akka.io/docs/akka/snapshot/scala/remoting.html">zdalnie</a> 
+(<a href="http://doc.akka.io/docs/akka/snapshot/general/remoting.html#remoting">przeźroczystość lokalizacji</a>).
+<li>Pobranie i uruchomienie przykłądowego projektu:
+<pre>
+  git clone https://github.com/malawski/reactive-lab5
+  cd reactive-lab5
+  sbt eclipse
+  sbt run
+</pre>
+<li>Aby pobrać referencję do zdalnego aktora, możemy użyć <tt>ActorSelection</tt>:
+<pre>
+  val account = context.actorSelection("akka.tcp://Reactive5@127.0.0.1:2552/user/account")
+</pre>
+<li><a href="http://doc.akka.io/docs/akka/snapshot/general/configuration.html">Konfiguracja</a> aktorów umożliwia stworzenie kilku systemów aktorów w jednej aplikacji
+</ul>
+
+
 
 <H3>Zadanie</H3>
 <OL>
-    <LI>(20 pkt) Proszę dodać persystencję dla aktora <B>Auction</B> 
+    <LI>(20 pkt) Proszę rozszerzyć system aukcyjny o mechanizm publikowania informacji o przebiegu aukcji do zewnętrznego systemu <B>Auction Publisher</B> przy użyciu zdalnej komunikacji za pośrednictwem nowego aktora <B>Notifier</B>:
     <UL>
-        <LI><B>Auction</B> zapisuje zdarzenia reprezentujące aktualny stan aukcji oraz zmiany kontekstu aktora (przejścia <TT>become()</TT>).
-        <li>Uwaga: aktorów persystentnych <a href="https://github.com/akka/akka/issues/15279">nie można</a> łączyć z użyciem FSM.  
-        <li>W dzienniku zdarzeń należy zapisać też czas trwania aukcji, a przy odtwarzaniu stanu aktora (komunikat <TT>RecoveryCompleted</TT>) uwzględnić ten czas przy ustalaniu nowego <TT>BidTimer</TT>.
+        <LI><B>Auction</B> powiadamia lokalnego aktora <B>Notifier</B> o zmianie stanu aukcji poprzez komunikaty <TT>Notify</TT> zawierające informację o tytule aukcji, aktualnym kupującym i bieżącej cenie.
+        <LI><B>Notifier</B> obsługuje komunikaty <TT>Notify</TT> i jest klientem przekazującym informacje do zewnętrznego serwera <B>Auction Publisher</B>.
+        <LI>Serwer <B>Auction Publisher</B> przyjmuje powiadomienia poprzez komunikaty.
     </UL>
     <P>
-    <LI>(10 pkt) Przetestować scenariusz, w którym przed upływem końca aukcji aplikacja zostaje wyłączona (np. poprzez <TT>system.shutdown()</TT>). Po ponownym uruchomieniu aplikacji stan aktorów <B>Auction</B> powinien być odtworzony z dziennika, natomiast aktorzy <B>Seller</B>, <B>Buyer</B> oraz <B>AuctionSearch</B> mogą być zainicjalizowani od nowa. Kupujący powinni powrócić do licytowania zgodnie ze swoją strategią. Proszę sprawdzić, czy wielokrotne przerywanie i ponowne uruchamianie systemu aktorów umożliwia kontunuowanie licytacji.
-    <P>
-    <LI>(10 pkt) Proszę porównać wydajność różnych mechanizmów persystencji (np. LevelDB z opcją native = true/false, InMemory, itp., <a href="http://akka.io/community/">lista wtyczek</a>)
-    <UL>
-
-    </UL>
+    <LI>(20 pkt) Proszę rozszerzyć aktora <B>Notifier</B> o mechanizmy <I>fault-tolerance</I>, tak aby działał poprawnie w wypadku awarii zewnętrznego serwera lub awarii sieci. Awarie te nie powinny zakłócać pracy systemu aukcyjnego. Wskazówka: dla każdego powiadomienia należy stworzyć nowego aktora <B>NotifierRequest</B> nadzorowanego przez aktora <B>Notifier</B>.
 </OL>
 <!--
 <H3>Bibliografia</H3>
