@@ -11,61 +11,50 @@
 <DIV ALIGN=left>
 
 <hr>
-    <H2>Programowanie reaktywne w języku Scala</H2>
+    <H2>Programowanie reaktywne w jezyku Scala</H2>
 <hr>
 
-<h3>Obsługa awarii</h3>
+<h3>Skalowanie systemu aktorów</h3>
 
 <ul>
-<li>W celu zapewnienia obsługi awarii używamy wzorca nadzoru aktorów (<I><a href="http://doc.akka.io/docs/akka/snapshot/general/supervision.html">supervision</a></I>)
-<li>Przykładowy projekt: <a href="http://typesafe.com/activator/template/akka-supervision">Akka Supervision Tutorial</a> używający aktorów do obliczania wyrażeń arytmetycznych</li>
-<li>Pobranie i uruchamianie projektu:
-<pre>
-  git clone https://github.com/typesafehub/activator-akka-supervision.git
-  cd activator-akka-supervision/
-  sbt eclipse
-</pre>
-<li>Proszę sprawdzić zachowanie systemu aktorów przy kilkukrotnym uruchomieniu projektu. Jak obsługiwane są losowe błędy?
-<li>Proszę sprawdzić co się stanie, gdy wprowadzimy wyrażenie zawierające dzielenie przez 0.
-<li><a href="http://doc.akka.io/docs/akka/snapshot/scala/fault-tolerance.html">Fault tolerance in akka</a></li>
- <li> Wiecej <a href="http://doc.akka.io/docs/akka/snapshot/scala/futures.html">informacji</a> o ask <i>"?"</i> i Futures </li>   
+<li>Do skalowania aktorów wykorzystujemy koncepcję routingu dostepnego w <a href="http://doc.akka.io/docs/akka/snapshot/scala/routing.html">
+routerach Akka</a>.
+<li> Przykładowy <a href=reactive-routers-demo.tgz>projekt</a> używający routera akki </li>
+<li>Projekt można wykonać przy pomocy komendy <TT>sbt run</TT>. 
+<li>Paczka zawiera też wygenerowany projekt w eclipse (bez bibliotek). 
+Biblioteki można ściągnąć komendą <TT>sbt eclipse with-source=true</TT>. 
+ 
 </ul>
-
-<h3>Komunikacja HTTP/REST</h3>
-
-<ul>
-<li>Do zapewnienia komunikacji pomiędzy aktorami a systemami zewnętrznymi używamy biblioteki Spray.
-<li>Szablon projektu serwera: <a href="https://github.com/spray/spray-template/">spray-template</a>
-<li>Pobranie i uruchomienie przy użyciu wbudowanego serwera HTTP:
-<pre>
-  git clone git://github.com/spray/spray-template.git my-spray-project
-  cd my-spray-project
-  sbt
-  test
-  re-start
-</pre>
-Serwer jest dostępny pod adresem <a href="http://localhost:8080">http://localhost:8080</a>
-<li>Przykładowy projekt klienta: <a href="my-spray-client.zip">my-spray-client.zip</a>
-<li>Uruchamianie klienta:
-<pre>
-  cd my-spray-client/
-  sbt run
-</pre>
-<li> Do działania z eclipse IDE potrzebna jest NOWA wersja IDE dla Scali w wersji 2.11.2 </li>
-</ul>
-
-
 
 <H3>Zadanie</H3>
 <OL>
-    <LI>(20 pkt) Proszę rozszerzyć system aukcyjny o mechanizm publikowania informacji o przebiegu aukcji do zewnętrznego systemu <B>Auction Publisher</B> przy użyciu HTTP za pośrednictwem nowego aktora <B>Notifier</B>:
+    <LI>(20 pkt) Proszę dodać do systemu aukcyjnego aktora <B>MasterSearch</B> 
     <UL>
-        <LI><B>Auction</B> powiadamia aktora <B>Notifier</B> o zmianie stanu aukcji poprzez komunikaty <TT>Notify</TT> zawierające informację o tytue aukcji, aktualnym kupującym i bieżącej cenie.
-        <LI><B>Notifier</B> obsługuje komunikaty <TT>Notify</TT> i jest klientem HTTP przekazującym informacje do zewnętrznego serwera <B>Auction Publisher</B>.
-        <LI>Serwer <B>Auction Publisher</B> przyjmuje powiadomienia poprzez komunikaty HTTP POST.
+        <LI><B>MasterSearch</B> zarządza wieloma aktorami <B>AuctionSearch</B> poprzez mechanizm routingu
+        <li> Aktorzy <B> Seller </B> rejestrują aukcje poprzez <B>MasterSearch</B></li>
+        <li>Aktorzy <B>Buyer</B> dokonują zapytań wyszukiwania również poprzez <B>MasterSearch</B></li>
+        <li>(<B>Wariant z partycjonowaniem</B>) Zaimplementować wariant, w którym rejestracja aukcji odbywa sie u jednego aktora <B>AuctionSearch</B>
+            poprzez logikę routera <I>RoundRobinRoutingLogic</I>, a wyszukiwanie odbywa się u wszystkich 
+            aktorów <B>AuctionSearch</B> (logika <I>BroadcastRoutingLogic</I>).
+        </li>
+        <li>(<B>Wariant z replikacją</B>) Zaimplementować wariant, w którym rejestracja aukcji odbywa sie u wszystkich aktorów <B>AuctionSearch</B>
+            poprzez logikę routera <I>BroadcastRoutingLogic</I> (redundacja danych), a wyszukiwanie u jednego aktora 
+             <B>AuctionSearch</B> (logika <I>RoundRobinRoutingLogic</I>).
+        </li>
     </UL>
     <P>
-    <LI>(20 pkt) Proszę rozszerzyć aktora <B>Notifier</B> o mechanizmy <I>fault-tolerance</I>, tak aby działał poprawnie w wypadku awarii zewnętrznego serwera lub awarii sieci. Awarie te nie powinny zakłócać pracy systemu aukcyjnego. Wskazówka: dla każdego wywołania HTTP należy stworzyć nowego aktora <B>NotifierRequest</B> nadzorowanego przez aktora <B>Notifier</B>.
+    <LI>(10 pkt) Wykonać testy wydajnościowe obydwu przypadków. Jak długo trwa pojedyncze wyszukiwanie
+    w zależności od liczby zarejestrowanych aukcji oraz obciążenia systemu zapytaniami wyszukiwania?  
+    Jak długo trwa pojedyncze wyszukiwanie w zależności od różnej ilości aktorów <I>AuctionSearch</I>? 
+    Jaki jest średni czas odpowiedzi? W jakim czasie mieści się 75%, 90% zapytań? Wyniki przedstawić na wykresach.
+    <P>
+    <LI>(10 pkt) Do dynamicznego skalowania Akka udostępnia mechanizm <a href="http://doc.akka.io/docs/akka/snapshot/scala/routing.html#Dynamically_Resizable_Pool"> Dynamically Resizable Pool</a>,
+    gdzie używa domyślnego
+    <a href=http://alvinalexander.com/java/jwarehouse/akka-2.3/akka-actor/src/main/scala/akka/routing/Resizer.scala.shtml> resizera</a>.
+    Proszę dodać ten mechanizm do wersji z replikacją danych i zbadać jego wpływ na działanie systemu. 
+    <UL>
+
+    </UL>
 </OL>
 <!--
 <H3>Bibliografia</H3>
