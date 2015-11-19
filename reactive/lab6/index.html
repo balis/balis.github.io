@@ -29,14 +29,10 @@ routerach Akka</a>.
     <LI>(20 pkt) Proszę dodać do systemu aukcyjnego aktora <B>MasterSearch</B> 
     <UL>
         <LI><B>MasterSearch</B> zarządza wieloma aktorami <B>AuctionSearch</B> poprzez mechanizm routingu
-        <li>Aktorzy <B> Seller </B> rejestrują aukcje poprzez <B>MasterSearch</B></li>
-        <li>Aktorzy <B>Buyer</B> dokonują zapytań wyszukiwania również poprzez <B>MasterSearch</B></li>
-        <li>Zaimplementować rozwiazanie, w którym rejestracja aukcji odbywa sie u wszystkich aktorów 
-        <B>AuctionSearch</B>
-            poprzez logikę routera <I>BroadcastRoutingLogic</I>,
-            a wyszukiwanie u jednego aktora 
-             <B>AuctionSearch</B> (logika <I>RoundRobinRoutingLogic</I>).
-        </li>
+        <li>Aktorzy <B> Seller </B> rejestrują aukcje poprzez <B>MasterSearch</B> poprzez logikę routera <I>BroadcastRoutingLogic</I>,</li>
+        <li>Aktorzy <B>Buyer</B> dokonują zapytań wyszukiwania również poprzez <B>MasterSearch</B> poprzez logike routera <I>RoundRobinRoutingLogic</I> </li>
+        
+        
     </UL>
     <P>
     <LI>(20 pkt) 
