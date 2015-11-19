@@ -20,9 +20,7 @@
 <li>Do skalowania aktorów wykorzystujemy koncepcję routingu dostepnego w <a href="http://doc.akka.io/docs/akka/snapshot/scala/routing.html">
 routerach Akka</a>.
 <li> Przykładowy <a href=reactive-routers-demo.tgz>projekt</a> używający routera akki </li>
-<li>Projekt można wykonać przy pomocy komendy <TT>sbt run</TT>. 
-<li>Paczka zawiera też wygenerowany projekt w eclipse (bez bibliotek). 
-Biblioteki można ściągnąć komendą <TT>sbt eclipse with-source=true</TT>. 
+
  
 </ul>
 
@@ -31,27 +29,29 @@ Biblioteki można ściągnąć komendą <TT>sbt eclipse with-source=true</TT>.
     <LI>(20 pkt) Proszę dodać do systemu aukcyjnego aktora <B>MasterSearch</B> 
     <UL>
         <LI><B>MasterSearch</B> zarządza wieloma aktorami <B>AuctionSearch</B> poprzez mechanizm routingu
-        <li> Aktorzy <B> Seller </B> rejestrują aukcje poprzez <B>MasterSearch</B></li>
+        <li>Aktorzy <B> Seller </B> rejestrują aukcje poprzez <B>MasterSearch</B></li>
         <li>Aktorzy <B>Buyer</B> dokonują zapytań wyszukiwania również poprzez <B>MasterSearch</B></li>
-        <li>(<B>Wariant z partycjonowaniem</B>) Zaimplementować wariant, w którym rejestracja aukcji odbywa sie u jednego aktora <B>AuctionSearch</B>
-            poprzez logikę routera <I>RoundRobinRoutingLogic</I>, a wyszukiwanie odbywa się u wszystkich 
-            aktorów <B>AuctionSearch</B> (logika <I>BroadcastRoutingLogic</I>).
-        </li>
-        <li>(<B>Wariant z replikacją</B>) Zaimplementować wariant, w którym rejestracja aukcji odbywa sie u wszystkich aktorów <B>AuctionSearch</B>
-            poprzez logikę routera <I>BroadcastRoutingLogic</I> (redundacja danych), a wyszukiwanie u jednego aktora 
+        <li>Zaimplementować rozwiazanie, w którym rejestracja aukcji odbywa sie u wszystkich aktorów 
+        <B>AuctionSearch</B>
+            poprzez logikę routera <I>BroadcastRoutingLogic</I>,
+            a wyszukiwanie u jednego aktora 
              <B>AuctionSearch</B> (logika <I>RoundRobinRoutingLogic</I>).
         </li>
     </UL>
     <P>
-    <LI>(10 pkt) Wykonać testy wydajnościowe obydwu przypadków. Jak długo trwa pojedyncze wyszukiwanie
-    w zależności od liczby zarejestrowanych aukcji oraz obciążenia systemu zapytaniami wyszukiwania?  
-    Jak długo trwa pojedyncze wyszukiwanie w zależności od różnej ilości aktorów <I>AuctionSearch</I>? 
-    Jaki jest średni czas odpowiedzi? W jakim czasie mieści się 75%, 90% zapytań? Wyniki przedstawić na wykresach.
+    <LI>(20 pkt) 
+    <ul>
+        <li> Zaimplementować nastepujacy scenariusz testowy: w pierwszym kroku tworzymy jednego 
+        aktora <B>Seller</B>, który rejestruje duża ilosć (np. 50000) aukcji, w drugim kroku (po zarejestrowaniu 
+        wszystkich aukcji) tworzymy jednego aktora <B>Buyer</B>, który wykonuje dużo (np. 10000) zapytań wyszukujacych 
+    
+    <li>wykonać testy wydajnościowe mierzace,  jak  długo trwa obsluzenie wszystich zapytan wyszukujcych 
+    w zależności od różnej ilości aktorów <I>AuctionSearch</I>. Zwrócic uwage na zwiazek z iloscia corów na 
+    maszynie, na ktorej wykonywane sa testy.
+    
+    </ul>
     <P>
-    <LI>(10 pkt) Do dynamicznego skalowania Akka udostępnia mechanizm <a href="http://doc.akka.io/docs/akka/snapshot/scala/routing.html#Dynamically_Resizable_Pool"> Dynamically Resizable Pool</a>,
-    gdzie używa domyślnego
-    <a href=http://alvinalexander.com/java/jwarehouse/akka-2.3/akka-actor/src/main/scala/akka/routing/Resizer.scala.shtml> resizera</a>.
-    Proszę dodać ten mechanizm do wersji z replikacją danych i zbadać jego wpływ na działanie systemu. 
+  
     <UL>
 
     </UL>
