@@ -36,7 +36,7 @@ routerach Akka</a>.
     <LI>(20 pkt) Proszę dodać do systemu aukcyjnego aktora <B>MasterSearch</B> 
     <UL>
         <LI><B>MasterSearch</B> zarządza wieloma aktorami <B>AuctionSearch</B> poprzez mechanizm routingu
-        <li>Aby każdy <B>AuctionSearch</B> mial wiedze o wszystkich aukcjach, aktorzy <B> Seller </B> rejestrują aukcje poprzez <B>MasterSearch</B> poprzez logikę routera <I>BroadcastRoutingLogic</I>,</li>
+        <li>Aby każdy <B>AuctionSearch</B> miał wiedzę o wszystkich aukcjach, aktorzy <B> Seller </B> rejestrują aukcje poprzez <B>MasterSearch</B> poprzez logikę routera <I>BroadcastRoutingLogic</I>,</li>
         <li>Aktorzy <B>Buyer</B> dokonują zapytań wyszukiwania również poprzez <B>MasterSearch</B> poprzez logike routera <I>RoundRobinRoutingLogic</I> </li>
         
         
@@ -44,14 +44,14 @@ routerach Akka</a>.
     <P>
     <LI>(20 pkt) 
     <ul>
-        <li> Zaimplementować nastepujacy scenariusz testowy: w pierwszym kroku tworzymy jednego 
-        aktora <B>Seller</B>, który rejestruje duża ilosć (np. 50000) aukcji, w drugim kroku (po zarejestrowaniu 
-        wszystkich aukcji) tworzymy jednego aktora <B>Buyer</B>, który wykonuje dużo (np. 10000) zapytań wyszukujacych.
-        <li> <B> Nie uzywać sleep !</B> Sugestia: Aby upewnić sie, że krok 1 zostanie zakonczony, zanim nastapi krok 2, można 
+        <li> Zaimplementować nastepujący scenariusz testowy: w pierwszym kroku tworzymy jednego 
+        aktora <B>Seller</B>, który rejestruje dużą ilość (np. 50000) aukcji, w drugim kroku (po zarejestrowaniu 
+        wszystkich aukcji) tworzymy jednego aktora <B>Buyer</B>, który wykonuje dużo (np. 10000) zapytań wyszukujących.
+        <li> <B> Aby upewnić sie, że krok 1 zostanie zakonczony, zanim nastapi krok 2, <B>nie używać sleep !</B>można 
         stworzyć pomocniczego aktora, który realizuje każdy krok testowy jako osobny stan. 
     
-    <li>wykonać testy wydajnościowe mierzace,  jak  długo trwa obsluzenie wszystich zapytan <b>wyszukujacych</b>
-    w zależności od różnej ilości aktorów <I>AuctionSearch</I>. Zwrócic uwage na zwiazek z iloscia corów na 
+    <li>wykonać testy wydajnościowe mierzące,  jak  długo trwa obsłużenie wszystkich zapytań <b>wyszukujących</b>
+    w zależności od różnej ilości aktorów <I>AuctionSearch</I>. Zwrócić uwagę na związek z ilością corów na 
     maszynie, na ktorej wykonywane sa testy.
     <li> porównać wyniki dla <i>RoundRobinRoutingLogic</i> oraz <i>SmallestMailboxRoutingLogic</i></li>
     
