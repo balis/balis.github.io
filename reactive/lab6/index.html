@@ -46,9 +46,11 @@ routerach Akka</a>.
     <ul>
         <li> Zaimplementować nastepujacy scenariusz testowy: w pierwszym kroku tworzymy jednego 
         aktora <B>Seller</B>, który rejestruje duża ilosć (np. 50000) aukcji, w drugim kroku (po zarejestrowaniu 
-        wszystkich aukcji) tworzymy jednego aktora <B>Buyer</B>, który wykonuje dużo (np. 10000) zapytań wyszukujacych 
+        wszystkich aukcji) tworzymy jednego aktora <B>Buyer</B>, który wykonuje dużo (np. 10000) zapytań wyszukujacych.
+        <li> <B> Nie uzywać sleep !</B> Sugestia: Aby upewnić sie, że krok 1 zostanie zakonczony, zanim nastapi krok 2, można 
+        stworzyć pomocniczego aktora, który realizuje każdy krok testowy jako osobny stan. 
     
-    <li>wykonać testy wydajnościowe mierzace,  jak  długo trwa obsluzenie wszystich zapytan <b>wyszukujacych</b> 
+    <li>wykonać testy wydajnościowe mierzace,  jak  długo trwa obsluzenie wszystich zapytan <b>wyszukujacych</b>
     w zależności od różnej ilości aktorów <I>AuctionSearch</I>. Zwrócic uwage na zwiazek z iloscia corów na 
     maszynie, na ktorej wykonywane sa testy.
     <li> porównać wyniki dla <i>RoundRobinRoutingLogic</i> oraz <i>SmallestMailboxRoutingLogic</i></li>
