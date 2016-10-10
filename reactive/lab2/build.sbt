@@ -2,7 +2,7 @@ name := "buddychat"
 
 version := "1.0"
 
-scalaVersion := "2.11.6"
+scalaVersion := "2.11.8"
 
 libraryDependencies += 
-  "com.typesafe.akka" %% "akka-actor" % "2.3.11"
+  "com.typesafe.akka" %% "akka-actor" % "2.4.11"
