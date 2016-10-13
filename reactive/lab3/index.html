@@ -26,8 +26,8 @@ systemu aktorów po zakonczeniu testów.
 </ul>
     
 <h3>Testowanie aktorów</h3>
-<ul>
-<li>Do testowania aktorów wykorzystujemy moduł <a href=http://doc.akka.io/docs/akka/current/scala/testing.html>akka-testkit</a>. W przykładzie rozszerzana jest klasa TestKit inicjalizowana systemem aktorów do testowania. 
+
+Do testowania aktorów wykorzystujemy moduł <a href=http://doc.akka.io/docs/akka/current/scala/testing.html>akka-testkit</a>. W przykładzie rozszerzana jest klasa TestKit inicjalizowana systemem aktorów do testowania. 
  <ol>
      <li> <b>Testowanie aktora w jednym wątku</b>. Testowanie stanu wewnętrznego aktora może odbywać się przy pomocy <i> TestActorRef</i>, 
         wtedy aktor jest wywoływany w tym samym
@@ -42,28 +42,16 @@ systemu aktorów po zakonczeniu testów.
                 takich jak <i>expectMsg</i>. 
          <li> Uzycie traitu <i>ImplicitSender</i> powoduje, że aktor testujący jest domyślnie używany jako ten, który wysyła wiadomości 
                 do testowanych aktorów.
+         <li><a href="https://github.com/kzajac/reactive-lab3/blob/master/src/test/scala/myActorTest/ToggleSpec.scala"> Przykład</a> testuje aktora Toggle z poprzedniego przykladu z laboratorium 2</li>
+         <li> W zestawie zawarte są trzy testy w stylu <i>WordSpec</i></li>
          </ul>
-    </ol>
-</ul>
-  
-</ul>
-<p>
-<H3>Uzycie akka testkit w ScalaTest </H3>
-<ul>
-<li>Jako narzędzia do testowania używamy <a href=http://www.scalatest.org/>ScalaTest</a>
-<li>ScalaTest oferuje różne <a href="http://www.scalatest.org/user_guide/selecting_a_style">style testowania</a>
-czyli sposoby deklarowania testów. W przykładzie 
-wykorzystano naturalny styl <a href=http://doc.scalatest.org/3.0.0/#org.scalatest.WordSpec>WordSpec</a> (trait <i>WordSpecLike</i>)
-<li> Trait <a href="http://doc.scalatest.org/3.0.0/org/scalatest/BeforeAndAfterAll.html"><i>BeforeAndAfterAll</i></a> zapewnia
-funkcje do wykonania przed i po zestawie testów. W przykładzie pokazano, jak wykorzystać funkcje <i>afterAll</i> do zamknięcia
-systemu aktorów po zakonczeniu testów.
-</ul>
+ </ol>
 
-    <h3>Przykład prostego testu</h3>
-<ul>
-  <li><a href="https://github.com/kzajac/reactive-lab3/blob/master/src/test/scala/myActorTest/ToggleSpec.scala"> Przykład</a> testuje aktora Toggle z poprzedniego przykladu z laboratorium 2</li>
-  <li> W zestawie zawarte są trzy testy w stylu <i>WordSpec</i></li>
-</ul>
+  
+<p>
+
+
+    
 
 
 
@@ -156,12 +144,12 @@ systemu aktorów po zakonczeniu testów.
 <pre>
   git clone https://github.com/kzajac/reactive-lab3
 </pre>
-<li> Przykład testu znajduje sie w pliku src/test/scala/myActorTest/ToggleSpec.scala</li>
-  <li> uruchomienie głównego programu znajdujacego sie w src/main/scala: <pre>sbt run</pre> 
+<li> Przykłady testów znajdują sie w katalogu src/test/scala/myActorTest/</li>
+  <li> uruchomienie programów znajdujacego sie w src/main/scala: <pre>sbt run</pre> 
   <li> uruchamienie testowanie za pomocą ScalaTest: <pre>sbt test</pre>   </li>
   <li> generacja projektu w eclipse <pre>sbt eclipse</pre></li>
  
-<li> Dla użytkowników Scala IDE: Aby uruchomic test aktora Toggle  znajdujacy się w src/test/scala należy wybrać <i>Run as -&gt; ScalaTest (File)</i> </li>
+<li> Dla użytkowników Scala IDE: Aby uruchomic testy aktora   znajdujace się w src/test/scala należy wybrać <i>Run as -&gt; ScalaTest (File)</i> </li>
 <!--
 <li> Aby wykonać ten krok na własnym Scala IDE
 wymagana jest instalacja 
