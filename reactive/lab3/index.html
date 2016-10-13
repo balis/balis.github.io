@@ -14,16 +14,15 @@
     <H2>Programowanie reaktywne w jezyku Scala</H2>
 <hr>
 
-Ogłoszenie --- w przyszłym tygodniu zajecia nie odbedą się - w ich ramach  zachęcamy do udziału w <a href=http://www.cyfronet.krakow.pl/cgw15/programme.html>CGW 2015</a> 
-
 <h3>Testowanie aktorów</h3>
 <ul>
-<li>Do testowania aktorów wykorzystujemy moduł <a href=http://doc.akka.io/docs/akka/snapshot/scala/testing.html>akka-testkit</a>. W przykładzie rozszerzana jest klasa TestKit inicjalizowana systemem aktorów do testowania. 
+<li>Do testowania aktorów wykorzystujemy moduł <a href=http://doc.akka.io/docs/akka/current/scala/testing.html>akka-testkit</a>. W przykładzie rozszerzana jest klasa TestKit inicjalizowana systemem aktorów do testowania. 
 <li> Akka TestKit tworzy wewnętrznego testującego aktora (o nawie testActor), który służy do komunikacji
   z testowanymi aktorami
 
 <li>Odpowiedzi od testowanych aktorów są kolejkowane przez testującego aktora
-i mogą być badane przy użyciu <a href="http://doc.akka.io/docs/akka/snapshot/scala/testing.html#Built-In_Assertions">asercji</a> takich jak <i>expectMsg</i>. 
+i mogą być badane przy użyciu <a href="http://doc.akka.io/docs/akka/current/scala/testing.html#Built-In_Assertions">asercji</a> 
+    takich jak <i>expectMsg</i>. 
 <li> Uzycie traitu <i>ImplicitSender</i> powoduje, że aktor testujący jest domyślnie używany jako ten, który wysyła wiadomości 
 do testowanych aktorów.
 
@@ -36,8 +35,8 @@ do testowanych aktorów.
 <li>Jako narzędzia do testowania używamy <a href=http://www.scalatest.org/>ScalaTest</a>
 <li>ScalaTest oferuje różne <a href="http://www.scalatest.org/user_guide/selecting_a_style">style testowania</a>
 czyli sposoby deklarowania testów. W przykładzie 
-wykorzystano naturalny styl <a href=http://doc.scalatest.org/2.2.4/#org.scalatest.WordSpec>WordSpec</a> (trait <i>WordSpecLike</i>)
-<li> Trait <a href="http://doc.scalatest.org/2.2.4/org/scalatest/BeforeAndAfterAll.html"><i>BeforeAndAfterAll</i></a> zapewnia
+wykorzystano naturalny styl <a href=http://doc.scalatest.org/3.0.0/#org.scalatest.WordSpec>WordSpec</a> (trait <i>WordSpecLike</i>)
+<li> Trait <a href="http://doc.scalatest.org/3.0.0/org/scalatest/BeforeAndAfterAll.html"><i>BeforeAndAfterAll</i></a> zapewnia
 funkcje do wykonania przed i po zestawie testów. W przykładzie pokazano, jak wykorzystać funkcje <i>afterAll</i> do zamknięcia
 systemu aktorów po zakonczeniu testów.
 </ul>
@@ -173,7 +172,7 @@ Wskazówki:
         jest lista identyfikatorów <TT>ActorRef</TT> aukcji).
         
         <LI>Kazda aukcja musi rejestrować sie w <B>AuctionSearch</B>. Prosze wykorzystać mechanizm 
-        <A HREF=http://doc.akka.io/docs/akka/snapshot/general/addressing.html>Actor Selection</A> do wyszukiwania aktora 
+        <A HREF=http://doc.akka.io/docs/akka/current/general/addressing.html>Actor Selection</A> do wyszukiwania aktora 
         <B>AuctionSearch</B>.
         
         <LI>Aktorzy <B>Buyer</B> powinni korzystac z wyszukiwania przez <B>AuctionSearch</B> aby uzyskac referencje do 
@@ -186,9 +185,9 @@ Wskazówki:
     <B>AuctionSearch</B> i <B>Seller</B>.
     <ul>
         <li> Aby przetestować wymianę komunikatów między aktorami należy skorzystać 
-        z  <a href="http://doc.akka.io/docs/akka/snapshot/scala/testing.html#Using_Multiple_Probe_Actors">TestProbe</a>.
+        z  <a href="http://doc.akka.io/docs/akka/current/scala/testing.html#Using_Multiple_Probe_Actors">TestProbe</a>.
         
-        <li><a href="http://doc.akka.io/docs/akka/snapshot/scala/testing.html#Testing_parent-child_relationships">Testowanie 
+        <li><a href="http://doc.akka.io/docs/akka/current/scala/testing.html#Testing_parent-child_relationships">Testowanie 
         relacji rodzic-dziecko</a> (potrzebne np. dla relacji <B>Seller</B> - <B>Auction</B>) 
         
     </ul>
