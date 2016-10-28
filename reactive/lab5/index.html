@@ -17,7 +17,7 @@
 <h3>Obsługa awarii</h3>
 
 <ul>
-<li>W celu zapewnienia obsługi awarii używamy wzorca nadzoru aktorów (<I><a href="http://doc.akka.io/docs/akka/snapshot/general/supervision.html">supervision</a></I>)
+<li>W celu zapewnienia obsługi awarii używamy wzorca nadzoru aktorów (<I><a href="http://doc.akka.io/docs/akka/current/general/supervision.html">supervision</a></I>)
 <li>Przykładowy projekt: <a href="http://typesafe.com/activator/template/akka-supervision">Akka Supervision Tutorial</a> używający aktorów do obliczania wyrażeń arytmetycznych</li>
 <li>Pobranie i uruchamianie projektu:
 <pre>
@@ -28,15 +28,15 @@
 </pre>
 <li>Proszę sprawdzić zachowanie systemu aktorów przy kilkukrotnym uruchomieniu projektu. Jak obsługiwane są losowe błędy?
 <li>Proszę sprawdzić co się stanie, gdy wprowadzimy wyrażenie zawierające dzielenie przez 0.
-<li><a href="http://doc.akka.io/docs/akka/snapshot/scala/fault-tolerance.html">Fault tolerance in akka</a></li>
- <li> Wiecej <a href="http://doc.akka.io/docs/akka/snapshot/scala/futures.html">informacji</a> o ask <i>"?"</i> i Futures </li>   
+<li><a href="http://doc.akka.io/docs/akka/current/scala/fault-tolerance.html">Fault tolerance in akka</a></li>
+ <li> Wiecej <a href="http://doc.akka.io/docs/akka/current/scala/futures.html">informacji</a> o ask <i>"?"</i> i Futures </li>   
 </ul>
 
 <h3>Komunikacja zdalna (remoting)</h3>
 
 <ul>
-<li>Aktorzy mogą komunikować się <a href="http://doc.akka.io/docs/akka/snapshot/scala/remoting.html">zdalnie</a> 
-(<a href="http://doc.akka.io/docs/akka/snapshot/general/remoting.html#remoting">przeźroczystość lokalizacji</a>).
+<li>Aktorzy mogą komunikować się <a href="http://doc.akka.io/docs/akka/current/scala/remoting.html">zdalnie</a> 
+(<a href="http://doc.akka.io/docs/akka/current/general/remoting.html#remoting">przeźroczystość lokalizacji</a>).
 <li>Pobranie i uruchomienie przykłądowego projektu:
 <pre>
   git clone https://github.com/malawski/reactive-lab5
@@ -48,7 +48,7 @@
 <pre>
   val account = context.actorSelection("akka.tcp://Reactive5@127.0.0.1:2552/user/account")
 </pre>
-<li><a href="http://doc.akka.io/docs/akka/snapshot/general/configuration.html">Konfiguracja</a> aktorów umożliwia stworzenie kilku systemów aktorów w jednej aplikacji.
+<li><a href="http://doc.akka.io/docs/akka/current/general/configuration.html">Konfiguracja</a> aktorów umożliwia stworzenie kilku systemów aktorów w jednej aplikacji.
 <li>Przyklad pliku <a href="https://github.com/malawski/reactive-lab5/blob/master/src/main/resources/application.conf">application.conf</a>.
 </ul>
 
