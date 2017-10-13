@@ -13,8 +13,6 @@
 <H2>Programowanie reaktywne w jezyku Scala</H2>
 <hr>
 
-<B COLOR="red">Uwaga</B>: wykład 3 odbędzie się w dniu 26.10.2016 (nie ma wykładu 19.10).
-  
 <H3>Projektowanie systemu aktorów</H3>
 
 <H3>Przykłady</H3>
@@ -65,41 +63,48 @@ Workspace)
   </PRE>
 
 <LI><A HREF=http://doc.akka.io/docs/akka/current/scala/fsm.html>Akka FSM</A>
+
+<LI>Maszyna stan�w -- notacja</LI>
+<IMG SRC=statechart-notation.png>
 </ul>
 <p>
 
-<H3>Zadanie - system aukcyjny</H3>
-Zadanie polega na zaimplementowaniu fragmentu systemu aukcyjnego 
-z nastepujacymi aktorami:
+<H3>Zadanie - e-Sklep</H3>
+Zadanie polega na zaimplementowaniu fragmentu systemu e-Sklepu zlozonego z nastepujacych aktorow: 
 <OL>
-<LI><B>Auction</B>: aktor reprezentujący aukcje, ktory ma dzialac wedlug nastepującej maszyny stanow:
-<IMG SRC=auction-fsm.png>
-<LI><B>Buyer</B>: aktor, ktory licytuje w istniejacych aukcjach.
+<LI><B>Cart</B>: aktor reprezentujący koszyk na zakupy, ktory ma dzialac wedlug nastepującej maszyny stanow:
+<P>
+<IMG SRC="cart.png" style="width: 75%; height: 75%">
+<LI><B>Checkout</B>: aktor, ktory reprezentuje operace finalizacji zakupu, dzialajacy wg nastepujacej maszyny stanow:
+<P>
+<IMG SRC="checkout.png" style="width: 75%; height: 75%">
 </OL>
 
 
 Zadania do wykonania:
 <OL>
-<LI>(20 pkt) Prosze zaimplementować i uruchomic uproszczony system, w ktorym na poczatku tworzona jest pewna liczbe aukcji (aktorow <B>Auction</B>) oraz kilku aktorow <B>Buyer</B>, ktorzy licytuja w istniejacych aukcjach. 
+<LI>(20 pkt) Prosze zaimplementować aktorow <B>Cart</B> i <B>Checkout</B>
+
 <UL>
 <LI>Prosze zaprojektować wiadomości jako Case Class'y 
-<li> Proszę zaprojektować  niezbędny wewnetrzny stan aktorow. 
-<LI>Prosze sprawdzac czy licytacja jest poprawna, tj. czy oferta w licytacji przebija aktualna cene. 
-<LI>Aktorzy <B>Buyer</B> moga dostac liste referencji (ActorRef) do aktorow aukcji przez konstruktor. 
+<LI>Do sterowania maszyna stanow prosze wykorzystac standardowy mechanizm become .
+<li>Proszę zaprojektować  niezbędny wewnetrzny stan aktorow. 
+<LI>Prosze stworzyc aplikacje, ktora wykonuje prosty test stworzonych aktorow. 
+<LI>Timery prosze zrealizowac przy pomocy <A HREF=http://doc.akka.io/docs/akka/current/scala/scheduler.html>Schedulera</A>: aktor powinien zaplanowac wyslanie wiadomosci do samego siebie oznaczajacej uplyniecie okreslonego terminu:
+<UL>
+<LI>CartTimer: czas po jakim koszyk jest  
+<LI>CheckoutTimer: czas po jakim rozpoczeta operacja finalizacji zakupu jest anulowana. 
+<LI>PaymentTimer: maksymalny czas oczekiwania na zrealizowanie platnosci, po ktorym operacja zakupu jest anulowana.
+
+
+</UL>
 </UL>
 
 <P>
-<LI>(10 pkt) Prosze zaimplementować i uruchomic pelna maszyne stanow. 
-<UL>
-<LI>Timery prosze zrealizowac przy pomocy <A HREF=http://doc.akka.io/docs/akka/current/scala/scheduler.html>Schedulera</A>: aktor powinien zaplanowac wyslanie wiadomosci do samego siebie oznaczajacej uplyniecie okreslonego terminu (BidTimer: konca licytacji, DeleteTimer: usuniecia licytacji z systemu).
 
-</UL>
+<LI>(10 pkt) Prosze wykorzystac <A HREF=http://doc.akka.io/docs/akka/current/scala/fsm.html>Akka FSM</A> do implementacji maszyny stanow w Aktorze <B>Cart</B>.
 
-<P>
-<LI>(10 pkt) 
-<UL>
-<LI>Prosze wykorzystac <A HREF=http://doc.akka.io/docs/akka/current/scala/fsm.html>Akka FSM</A> do implementacji maszyny stanow w Aktorze <B>Auction</B>.
-</UL>
+<LI>(10 pkt) Prosze wykorzystac <A HREF=http://doc.akka.io/docs/akka/current/scala/fsm.html>Akka FSM</A> do implementacji maszyny stanow w Aktorze <B>Checkout</B>.
 
 </OL>
 
