@@ -65,7 +65,7 @@ Workspace)
 <LI><A HREF=http://doc.akka.io/docs/akka/current/scala/fsm.html>Akka FSM</A>
 
 <LI>Maszyna stan�w -- notacja</LI>
-<IMG SRC=statechart-notation.png>
+<IMG SRC="statechart-notation.png" width="600">
 </ul>
 <p>
 
@@ -74,10 +74,10 @@ Zadanie polega na zaimplementowaniu fragmentu systemu e-Sklepu zlozonego z naste
 <OL>
 <LI><B>Cart</B>: aktor reprezentujący koszyk na zakupy, ktory ma dzialac wedlug nastepującej maszyny stanow:
 <P>
-<IMG SRC="cart.png" style="width: 75%; height: 75%">
+<IMG SRC="cart.png" width="800">
 <LI><B>Checkout</B>: aktor, ktory reprezentuje operace finalizacji zakupu, dzialajacy wg nastepujacej maszyny stanow:
 <P>
-<IMG SRC="checkout.png" style="width: 75%; height: 75%">
+<IMG SRC="checkout.png" width="800">
 </OL>
 
 
@@ -86,9 +86,8 @@ Zadania do wykonania:
 <LI>(20 pkt) Prosze zaimplementować aktorow <B>Cart</B> i <B>Checkout</B>
 
 <UL>
-<LI>Prosze zaprojektować wiadomości jako Case Class'y 
-<LI>Do sterowania maszyna stanow prosze wykorzystac standardowy mechanizm become .
-<li>Proszę zaprojektować  niezbędny wewnetrzny stan aktorow. 
+<LI>Prosze zaprojektować wiadomości jako Case Class'y.
+<LI>Do sterowania maszyna stanow prosze wykorzystac standardowy mechanizm <TT>become</TT>.
 <LI>Prosze stworzyc aplikacje, ktora wykonuje prosty test stworzonych aktorow. 
 <LI>Timery prosze zrealizowac przy pomocy <A HREF=http://doc.akka.io/docs/akka/current/scala/scheduler.html>Schedulera</A>: aktor powinien zaplanowac wyslanie wiadomosci do samego siebie oznaczajacej uplyniecie okreslonego terminu:
 <UL>
