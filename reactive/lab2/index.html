@@ -1,6 +1,6 @@
 <HTML>
 <HEAD>
-<META http-equiv="content-type" content="text/html; charset=utf-8">
+<META http-equiv="content-type" content="text/html; charset=iso-8859-2">
 <TITLE>Scala</TITLE>
 <link rel="stylesheet" type="text/css" href="../style.css">
 </HEAD>
@@ -39,19 +39,19 @@
 </p>
 
 <p>
-Konfiguracja logowania znajduje sie w pliku <TT>src/main/resources/application.conf</TT> (<A HREF=https://github.com/balis/reactive-lab2/blob/master/src/main/resources/application.conf>źródlo</A>).
+Konfiguracja logowania znajduje się w pliku <TT>src/main/resources/application.conf</TT> (<A HREF=https://github.com/balis/reactive-lab2/blob/master/src/main/resources/application.conf>źródło</A>).
 
 </p>
 
 <!--
-Pobrać
-<A HREF=reactive-scala2.zip>projekt</A> eclipse, rozpakować go i otworzyć 
+PobraÄ‡
+<A HREF=reactive-scala2.zip>projekt</A> eclipse, rozpakowaÄ‡ go i otworzyÄ‡ 
 w Scala IDE
 (File-&gt;Import-general-&gt;Existing Project into
 Workspace)
   -->
   
-  <LI>Przyklad <A HREF=http://sdanzig.blogspot.com/2013/06/buddychat-simple-example-of-akka-actors.html>BuddyChat</A>
+  <LI>Przykład <A HREF=http://sdanzig.blogspot.com/2013/06/buddychat-simple-example-of-akka-actors.html>BuddyChat</A>
   <P>
   Uruchomienie przykładu:
 
@@ -64,18 +64,18 @@ Workspace)
 
 <LI><A HREF=http://doc.akka.io/docs/akka/current/scala/fsm.html>Akka FSM</A>
 
-<LI>Maszyna stan�w -- notacja</LI>
+<LI>Maszyna stanów -- notacja</LI>
 <IMG SRC="statechart-notation.png" width="600">
 </ul>
 <p>
 
-<H3>Zadanie - e-Sklep</H3>
-Zadanie polega na zaimplementowaniu fragmentu systemu e-Sklepu zlozonego z nastepujacych aktorow: 
+<H3>Zadanie -- e-Sklep</H3>
+Zadanie polega na zaimplementowaniu fragmentu systemu e-Sklepu złożonego z następujących aktorów: 
 <OL>
-<LI><B>Cart</B>: aktor reprezentujący koszyk na zakupy, ktory ma dzialac wedlug nastepującej maszyny stanow:
+<LI><B>Cart</B>: aktor reprezentujący koszyk na zakupy, który ma działać według nastepującej maszyny stanów:
 <P>
 <IMG SRC="cart.png" width="800">
-<LI><B>Checkout</B>: aktor, ktory reprezentuje operace finalizacji zakupu, dzialajacy wg nastepujacej maszyny stanow:
+<LI><B>Checkout</B>: aktor, który reprezentuje operację finalizacji zakupu, działający wg następującej maszyny stanów:
 <P>
 <IMG SRC="checkout.png" width="800">
 </OL>
@@ -83,17 +83,17 @@ Zadanie polega na zaimplementowaniu fragmentu systemu e-Sklepu zlozonego z naste
 
 Zadania do wykonania:
 <OL>
-<LI>(20 pkt) Prosze zaimplementować aktorow <B>Cart</B> i <B>Checkout</B>
+<LI>(20 pkt) Proszę zaimplementować aktorów <B>Cart</B> i <B>Checkout</B>
 
 <UL>
 <LI>Prosze zaprojektować wiadomości jako Case Class'y.
-<LI>Do sterowania maszyna stanow prosze wykorzystac standardowy mechanizm <TT>become</TT>.
-<LI>Prosze stworzyc aplikacje, ktora wykonuje prosty test stworzonych aktorow. 
-<LI>Timery prosze zrealizowac przy pomocy <A HREF=http://doc.akka.io/docs/akka/current/scala/scheduler.html>Schedulera</A>: aktor powinien zaplanowac wyslanie wiadomosci do samego siebie oznaczajacej uplyniecie okreslonego terminu:
+<LI>Do sterowania maszyną stanów proszę wykorzystać standardowy mechanizm <TT>become</TT>.
+<LI>Proszę stworzyć aplikację, która wykonuje prosty test stworzonych aktorów. 
+<LI>Timery proszę zrealizować przy pomocy <A HREF=http://doc.akka.io/docs/akka/current/scala/scheduler.html>Schedulera</A>: aktor powinien zaplanować wysłanie wiadomości do samego siebie oznaczającej upłyniecie określonego terminu:
 <UL>
-<LI>CartTimer: czas po jakim koszyk jest  
-<LI>CheckoutTimer: czas po jakim rozpoczeta operacja finalizacji zakupu jest anulowana. 
-<LI>PaymentTimer: maksymalny czas oczekiwania na zrealizowanie platnosci, po ktorym operacja zakupu jest anulowana.
+<LI>CartTimer: czas po jakim koszyk jest automatycznie opróżniany.
+<LI>CheckoutTimer: czas po jakim rozpoczęta operacja finalizacji zakupu jest anulowana. 
+<LI>PaymentTimer: maksymalny czas oczekiwania na zrealizowanie płatności, po którym operacja zakupu jest anulowana.
 
 
 </UL>
@@ -101,9 +101,9 @@ Zadania do wykonania:
 
 <P>
 
-<LI>(10 pkt) Prosze wykorzystac <A HREF=http://doc.akka.io/docs/akka/current/scala/fsm.html>Akka FSM</A> do implementacji maszyny stanow w Aktorze <B>Cart</B>.
+<LI>(10 pkt) Proszę wykorzystać <A HREF=http://doc.akka.io/docs/akka/current/scala/fsm.html>Akka FSM</A> do implementacji maszyny stanów w Aktorze <B>Cart</B>.
 
-<LI>(10 pkt) Prosze wykorzystac <A HREF=http://doc.akka.io/docs/akka/current/scala/fsm.html>Akka FSM</A> do implementacji maszyny stanow w Aktorze <B>Checkout</B>.
+<LI>(10 pkt) Proszę wykorzystać <A HREF=http://doc.akka.io/docs/akka/current/scala/fsm.html>Akka FSM</A> do implementacji maszyny stanów w Aktorze <B>Checkout</B>.
 
 </OL>
 
@@ -119,7 +119,7 @@ Zadania do wykonania:
 <P>
 <P>
 <HR>
-<I>Bartosz Baliś, balis at agh edu pl</I>
+<I>Bartosz Baliś>, balis at agh edu pl</I>
 <BR>
 <I>Maciej Malawski, malawski at agh edu pl</I>
 <BR>
