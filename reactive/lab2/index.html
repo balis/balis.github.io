@@ -58,21 +58,28 @@ Workspace)
   <PRE>
   $ git clone https://github.com/sdanzig/buddychat
   $ cd buddychat
-  ==> Prosze podmienić plik <A HREF=build.sbt>build.sbt</A>
+  ==> Proszę podmienić plik <A HREF=build.sbt>build.sbt</A>
   $ sbt run
   </PRE>
+</UL>
 
-<LI><A HREF=http://doc.akka.io/docs/akka/current/scala/fsm.html>Akka FSM</A>
 
-<LI>Maszyna stanów -- notacja</LI>
-<IMG SRC="statechart-notation.png" width="600">
+<H3>Maszyna stanów</H3>
+<UL>
+    <LI>Notacja
+    <P><IMG SRC="statechart-notation.png" width="600">
+    <UL>
+      <LI>Event1, Event2 -- każde ze zdarzeń może inicjować zmianę stanu
+      <LI>[guard] -- wyrażenie logiczne, które dodatkowo musi być spełnione, żeby doszło do zmiany stanu
+     </UL>
+     <LI><A HREF=http://doc.akka.io/docs/akka/current/scala/fsm.html>Akka FSM</A>
 </ul>
-<p>
+
 
 <H3>Zadanie -- e-Sklep</H3>
 Zadanie polega na zaimplementowaniu fragmentu systemu e-Sklepu złożonego z następujących aktorów: 
 <OL>
-<LI><B>Cart</B>: aktor reprezentujący koszyk na zakupy, który ma działać według nastepującej maszyny stanów:
+<LI><B>Cart</B>: aktor reprezentujący koszyk na zakupy, który ma działać według następującej maszyny stanów:
 <P>
 <IMG SRC="cart.png" width="800">
 <LI><B>Checkout</B>: aktor, który reprezentuje operację finalizacji zakupu, działający wg następującej maszyny stanów:
@@ -119,7 +126,7 @@ Zadania do wykonania:
 <P>
 <P>
 <HR>
-<I>Bartosz Baliś>, balis at agh edu pl</I>
+<I>Bartosz Baliś, balis at agh edu pl</I>
 <BR>
 <I>Maciej Malawski, malawski at agh edu pl</I>
 <BR>
