@@ -96,7 +96,10 @@ Zadania do wykonania:
 <LI>Prosze zaprojektować wiadomości jako Case Class'y.
 <LI>Do sterowania maszyną stanów proszę wykorzystać standardowy mechanizm <TT>become</TT>.
 <LI>Proszę stworzyć aplikację, która wykonuje prosty test stworzonych aktorów. 
-<LI>Timery proszę zrealizować przy pomocy <A HREF=http://doc.akka.io/docs/akka/current/scala/scheduler.html>Schedulera</A>: aktor powinien zaplanować wysłanie wiadomości do samego siebie oznaczającej upłyniecie określonego terminu:
+<LI>Do implementacji limitów czasowych proszę wykorzystać mechanizm 
+  <A HREF=https://doc.akka.io/docs/akka/current/scala/actors.html#actors-timers>timerów</A> (do przeczytania również rozdział o 
+  <A HREF=http://doc.akka.io/docs/akka/current/scala/scheduler.html>Schedulerach</A>). Aktor powinien zaplanować wysłanie 
+  wiadomości do samego siebie oznaczającej upłyniecie określonego terminu:
 <UL>
 <LI>CartTimer: czas po jakim koszyk jest automatycznie opróżniany.
 <LI>CheckoutTimer: czas po jakim rozpoczęta operacja finalizacji zakupu jest anulowana. 
