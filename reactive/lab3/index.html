@@ -102,14 +102,11 @@ Do testowania aktorów wykorzystujemy moduł <a href=http://doc.akka.io/docs/akk
     <P>
         </ul>
     <LI>(20 pkt) Wykorzystując Akka TestKit proszę napisac testy dla aktora <B>Checkout</B>
-    zawierające:
-    <ul>
-        <li> reakcję na  komunikaty wg diagramu <img src="checkout_test.png" width="400">
-        
-        <li> test relacji <a href="http://doc.akka.io/docs/akka/current/scala/testing.html#Testing_parent-child_relationships"> 
-            rodzic-dziecko</a> w szczególności sprawdzenie, czy <B>Cart</B> dostaje komunikat CheckOutClosed, od
+    zawierające reakcję na  komunikaty wg diagramu poniżej
+    w tym test relacji <a href="http://doc.akka.io/docs/akka/current/scala/testing.html#Testing_parent-child_relationships"> 
+        rodzic-dziecko</a> w szczególności sprawdzenie, czy <B>Cart</B> dostaje komunikat </i>CheckOutClosed</i> od
             testowanego aktora <B>CheckOut</B> (patrz diagram)
-        
+        <img src="checkout_test.png" width="400">
     </ul>
     <P>
     
