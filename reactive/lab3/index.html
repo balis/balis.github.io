@@ -40,6 +40,8 @@ Do testowania aktorów wykorzystujemy moduł <a href=http://doc.akka.io/docs/akk
          <li>Odpowiedzi od testowanych aktorów są kolejkowane przez testującego aktora
             i mogą być badane przy użyciu <a href="http://doc.akka.io/docs/akka/current/scala/testing.html#Built-In_Assertions">asercji</a> 
                 takich jak <i>expectMsg</i>. 
+             <li> Jeśli aktor wysyła wiadomości do więcej niż jednego aktora możemy przetestować to używając mechanizmu
+                 <a href="https://doc.akka.io/docs/akka/current/scala/testing.html#using-multiple-probe-actors">TestProbe</a>.
          <li> Uzycie traitu <i>ImplicitSender</i> powoduje, że aktor testujący jest domyślnie używany jako ten, który wysyła wiadomości 
                 do testowanych aktorów.
          <li><a href="https://github.com/kzajac/reactive-lab3/blob/master/src/test/scala/myActorTest/ToggleSpec.scala"> Przykład</a> testuje aktora Toggle z poprzedniego przykladu z laboratorium 2</li>
@@ -56,11 +58,7 @@ Do testowania aktorów wykorzystujemy moduł <a href=http://doc.akka.io/docs/akk
 
 
 
-}
 
-</pre>
-
--->
 
 <h3> Jak uruchomić testy ?</h3>
 <ul>
