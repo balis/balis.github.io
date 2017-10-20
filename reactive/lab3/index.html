@@ -55,81 +55,6 @@ Do testowania aktorów wykorzystujemy moduł <a href=http://doc.akka.io/docs/akk
 
 
 
-<!-- HTML generated using hilite.me -->
-    <!--
-    <div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"> <span style="color: #AA22FF; font-weight: bold">class</span> <span style="color: #0000FF">ToggleSpec</span> <span style="color: #AA22FF; font-weight: bold">extends</span> <span style="color: #0000FF">TestKit</span><span style="color: #666666">(</span><span style="color: #0000FF">ActorSystem</span><span style="color: #666666">(</span><span style="color: #BB4444">&quot;ToggleSpec&quot;</span><span style="color: #666666">))</span>
-  <span style="color: #AA22FF; font-weight: bold">with</span> <span style="color: #0000FF">WordSpecLike</span> <span style="color: #AA22FF; font-weight: bold">with</span> <span style="color: #0000FF">BeforeAndAfterAll</span> <span style="color: #AA22FF; font-weight: bold">with</span> <span style="color: #0000FF">ImplicitSender</span> <span style="color: #666666">{</span>
-  
-  <span style="color: #AA22FF; font-weight: bold">override</span> <span style="color: #AA22FF; font-weight: bold">def</span> afterAll<span style="color: #666666">()</span><span style="color: #AA22FF; font-weight: bold">:</span> <span style="color: #00BB00; font-weight: bold">Unit</span> <span style="color: #666666">=</span> <span style="color: #666666">{</span>
-    system<span style="color: #666666">.</span>shutdown<span style="color: #666666">()</span>
-  <span style="color: #666666">}</span>
-
-  <span style="color: #BB4444">&quot;A Toggle&quot;</span> must <span style="color: #666666">{</span>
-
-    <span style="color: #BB4444">&quot;start in a happy mood&quot;</span> in <span style="color: #666666">{</span>
-      <span style="color: #AA22FF; font-weight: bold">val</span> toggle <span style="color: #AA22FF; font-weight: bold">=</span> system<span style="color: #666666">.</span>actorOf<span style="color: #666666">(</span><span style="color: #0000FF">Props</span><span style="color: #666666">[</span><span style="color: #00BB00; font-weight: bold">Toggle</span><span style="color: #666666">])</span>
-    
-      toggle <span style="color: #666666">!</span> <span style="color: #BB4444">&quot;How are you?&quot;</span>
-      expectMsg<span style="color: #666666">(</span><span style="color: #BB4444">&quot;happy&quot;</span><span style="color: #666666">)</span>
-    <span style="color: #666666">}</span>
-    
-    <span style="color: #BB4444">&quot;change its mood&quot;</span> in <span style="color: #666666">{</span>
-      <span style="color: #AA22FF; font-weight: bold">val</span> toggle <span style="color: #AA22FF; font-weight: bold">=</span> system<span style="color: #666666">.</span>actorOf<span style="color: #666666">(</span><span style="color: #0000FF">Props</span><span style="color: #666666">[</span><span style="color: #00BB00; font-weight: bold">Toggle</span><span style="color: #666666">])</span>
-      <span style="color: #AA22FF; font-weight: bold">for</span> <span style="color: #666666">(</span>i <span style="color: #AA22FF; font-weight: bold">&lt;-</span> <span style="color: #666666">1</span> to <span style="color: #666666">5){</span>
-        toggle <span style="color: #666666">!</span> <span style="color: #BB4444">&quot;How are you?&quot;</span>
-        expectMsg<span style="color: #666666">(</span><span style="color: #BB4444">&quot;happy&quot;</span><span style="color: #666666">)</span>
-        toggle <span style="color: #666666">!</span> <span style="color: #BB4444">&quot;How are you?&quot;</span>
-        expectMsg<span style="color: #666666">(</span><span style="color: #BB4444">&quot;sad&quot;</span><span style="color: #666666">)</span>
-      <span style="color: #666666">}</span>
-    <span style="color: #666666">}</span> 
-    
-    <span style="color: #BB4444">&quot;finish when done&quot;</span> in<span style="color: #666666">{</span>
-      <span style="color: #AA22FF; font-weight: bold">val</span> toggle <span style="color: #AA22FF; font-weight: bold">=</span> system<span style="color: #666666">.</span>actorOf<span style="color: #666666">(</span><span style="color: #0000FF">Props</span><span style="color: #666666">[</span><span style="color: #00BB00; font-weight: bold">Toggle</span><span style="color: #666666">])</span>
-      toggle <span style="color: #666666">!</span> <span style="color: #BB4444">&quot;Done&quot;</span>
-      expectMsg<span style="color: #666666">(</span><span style="color: #BB4444">&quot;Done&quot;</span><span style="color: #666666">)</span>
-    <span style="color: #666666">}</span>
-  <span style="color: #666666">}</span>
-<span style="color: #666666">}</span>
-</pre></div>
-
-!-->
-<!--
-
-<pre>
-
-  class ToggleSpec extends TestKit(ActorSystem("ToggleSpec"))
-  with WordSpecLike with BeforeAndAfterAll with ImplicitSender {
-  
-  override def afterAll(): Unit = {
-    system.shutdown()
-  }
-
-  "A Toggle" must {
-
-    "start in a happy mood" in {
-      val toggle = system.actorOf(Props[Toggle])
-    
-      toggle ! "How are you?"
-      expectMsg("happy")
-    }
-    
-    "change its mood" in {
-      val toggle = system.actorOf(Props[Toggle])
-      for (i <- 1 to 5){
-        toggle ! "How are you?"
-        expectMsg("happy")
-        toggle ! "How are you?"
-        expectMsg("sad")
-      }
-    } 
-    
-    "finish when done" in{
-      val toggle = system.actorOf(Props[Toggle])
-      toggle ! "Done"
-      expectMsg("Done")
-    }
- 
-  }
 
 }
 
@@ -151,19 +76,7 @@ Do testowania aktorów wykorzystujemy moduł <a href=http://doc.akka.io/docs/akk
  
 <li> Dla użytkowników Scala IDE: Aby uruchomic testy aktora   znajdujace się w src/test/scala należy wybrać 
     <i>Run as -&gt; ScalaTest</i> </li>
-<!--
-<li> Aby wykonać ten krok na własnym Scala IDE
-wymagana jest instalacja 
-<a href=http://www.scalatest.org/user_guide/using_scalatest_with_eclipse> pluginu ScalaTest pod Eclipse </a>. 
-Plugin ten jest już zainstalowany na obrazie ICSR na PCoIP.
-Wskazówki:
-<ul>
-<li>wybrać z menu Scala IDE Help -&gt; Install New Software
-<li> wpisac w Work with <i>http://download.scala-ide.org/sdk/e38/scala210/stable/site</i></li>
-<li> po pojawieniu sie pakietow zaznaczyc ScalaTest i  kliknać Next</li>
-  
-</ul>
-!-->
+
 
 </ul>
 
@@ -173,8 +86,9 @@ Wskazówki:
 <OL>
     <li>(20 pkt) 
     <ul>
-    <LI>Prosze dodać do systemu aukcyjnego aktorow <B>Customer</B> i <B>PaymentService</B> działających zgodnie z
-        <img src=eShop_system.png width="800">.
+    <LI>Prosze dodać do systemu aukcyjnego aktorow <B>Customer</B> i <B>PaymentService</B> działających zgodnie z diagramem:
+        <p>
+        <img src=eShop_system.png width="800">
     
      <li> Napisać testy dla aktora Cart. Testy powinny zawierać:
          <ul>
@@ -187,10 +101,10 @@ Wskazówki:
          </ul>
     <P>
         </ul>
-    <LI>(20 pkt) Wykorzystując Akka TestKit proszę napisac testy dla aktora <B>Checkout</B>,
-    zawierające
+    <LI>(20 pkt) Wykorzystując Akka TestKit proszę napisac testy dla aktora <B>Checkout</B>
+    zawierające:
     <ul>
-        <li> reakcję na  komunikaty wg diagramu <img src="checkout_test.png" width="800">
+        <li> reakcję na  komunikaty wg diagramu <img src="checkout_test.png" width="400">
         
         <li> test relacji <a href="http://doc.akka.io/docs/akka/current/scala/testing.html#Testing_parent-child_relationships"> 
             rodzic-dziecko</a> w szczególności sprawdzenie, czy <B>Cart</B> dostaje komunikat CheckOutClosed, od
