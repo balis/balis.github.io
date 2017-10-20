@@ -171,24 +171,18 @@ Wskazówki:
 
 <H3>Zadanie</H3>
 <OL>
-    <LI>(20 pkt) Prosze dodac do systemu aukcyjnego aktorow <B>Seller</B> i <B>AuctionSearch</B>
-    <UL>
-        <LI><B>Seller</B> wystawia kilka aukcji o roznych tytulach (przykladowo "Audi A6 diesel manual"). <B>Seller</B>
-        tworzy aktorów aukcji (można np. przekazywac przez konstruktor liste tytulów aukcji, ktore ma wystawić). 
-        
-        <LI><B>AuctionSearch</B> to aktor, w którym można wyszukiwać aukcje. Zapytanie wyszukiwania może skladac sie
-        z jednego slowa i jesli slowo to wystepuje w tytule aukcji, to aukcja pasuje do zapytania. (Wynikiem zapytania 
-        jest lista identyfikatorów <TT>ActorRef</TT> aukcji).
-        
-        <LI>Kazda aukcja musi rejestrować sie w <B>AuctionSearch</B>. Prosze wykorzystać mechanizm 
-        <A HREF=http://doc.akka.io/docs/akka/current/general/addressing.html>Actor Selection</A> do wyszukiwania aktora 
-        <B>AuctionSearch</B>.
-        
-        <LI>Aktorzy <B>Buyer</B> powinni korzystac z wyszukiwania przez <B>AuctionSearch</B> aby uzyskac referencje do 
-        iteresujacych ich aukcji. 
-        
-        <li> po zakończeniu aukcji odpowiedni aktor <B>Auction</B> wysyła notyfikację do swojego aktora <B>Seller</B> .
-    </UL>
+    <LI>(20 pkt) Prosze dodac do systemu aukcyjnego aktorow <B>Customer</B> i <B>PaymentService</B> działających zgodnie z
+        <img src=eShop_checkout_Actor_system_.png>.
+    
+     <li> Napisać testy dla aktora Cart. Testy powinny zawierać:
+         <ul>
+             <li> tesowanie synchroniczne (test zmiany zawartości koszyka przy użyciu <i> TestActorRef</i>)
+                 <li> testowanie asynchroniczne za pomocą  aktora testActor i asercji typu  <i>expectMsg</i>. 
+         </ul> 
+         alternatywnie:
+         <ul>
+             <li> Testy za pomocą <a href="https://doc.akka.io/docs/akka/current/scala/testing.html#testing-finite-state-machines"><i>TestFSMRef</i></a>
+         </ul>
     <P>
     <LI>(10 pkt) Wykorzystując Akka TestKit proszę napisac testy dla aktorów <B>Auction</B>,
     <B>AuctionSearch</B> i <B>Seller</B>.
