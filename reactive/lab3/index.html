@@ -171,12 +171,14 @@ Wskazówki:
 
 <H3>Zadanie</H3>
 <OL>
-    <LI>(20 pkt) Prosze dodac do systemu aukcyjnego aktorow <B>Customer</B> i <B>PaymentService</B> działających zgodnie z
-        <img src=eShop_checkout_Actor_system_.png>.
+    <li>(20 pkt) 
+    <ul>
+    <LI>Prosze dodać do systemu aukcyjnego aktorow <B>Customer</B> i <B>PaymentService</B> działających zgodnie z
+        <img src=eShop_checkout_Actor_system_.png width="800">.
     
      <li> Napisać testy dla aktora Cart. Testy powinny zawierać:
          <ul>
-             <li> tesowanie synchroniczne (test zmiany zawartości koszyka przy użyciu <i> TestActorRef</i>)
+             <li> testowanie synchroniczne (test zmiany zawartości koszyka przy użyciu <i> TestActorRef</i>)
                  <li> testowanie asynchroniczne za pomocą  aktora testActor i asercji typu  <i>expectMsg</i>. 
          </ul> 
          alternatywnie:
@@ -184,14 +186,15 @@ Wskazówki:
              <li> Testy za pomocą <a href="https://doc.akka.io/docs/akka/current/scala/testing.html#testing-finite-state-machines"><i>TestFSMRef</i></a>
          </ul>
     <P>
+        </ul>
     <LI>(20 pkt) Wykorzystując Akka TestKit proszę napisac testy dla aktora <B>Checkout</B>,
     zawierające
     <ul>
-        <li> reakcję na  komunikaty wg diagramu <img src="eShop_checkout_Checkout_full_test.png">
+        <li> reakcję na  komunikaty wg diagramu <img src="eShop_checkout_Checkout_full_test.png" width="800">
         
         <li> test relacji <a href="http://doc.akka.io/docs/akka/current/scala/testing.html#Testing_parent-child_relationships"> 
             rodzic-dziecko</a> w szczególności sprawdzenie, czy <B>Cart</B> dostaje komunikat CheckOutClosed, od
-            aktora <B>CheckOut</B> (patrz diagram)
+            testowanego aktora <B>CheckOut</B> (patrz diagram)
         
     </ul>
     <P>
