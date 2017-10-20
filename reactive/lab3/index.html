@@ -184,24 +184,18 @@ Wskazówki:
              <li> Testy za pomocą <a href="https://doc.akka.io/docs/akka/current/scala/testing.html#testing-finite-state-machines"><i>TestFSMRef</i></a>
          </ul>
     <P>
-    <LI>(10 pkt) Wykorzystując Akka TestKit proszę napisac testy dla aktorów <B>Auction</B>,
-    <B>AuctionSearch</B> i <B>Seller</B>.
+    <LI>(20 pkt) Wykorzystując Akka TestKit proszę napisac testy dla aktora <B>Checkout</B>,
+    zawierające
     <ul>
-        <li> Aby przetestować wymianę komunikatów między aktorami należy skorzystać 
-        z  <a href="http://doc.akka.io/docs/akka/current/scala/testing.html#Using_Multiple_Probe_Actors">TestProbe</a>.
+        <li> reakcję na  komunikaty 
         
-        <li><a href="http://doc.akka.io/docs/akka/current/scala/testing.html#Testing_parent-child_relationships">Testowanie 
-        relacji rodzic-dziecko</a> (potrzebne np. dla relacji <B>Seller</B> - <B>Auction</B>) 
+        <li>test relacji <a href="http://doc.akka.io/docs/akka/current/scala/testing.html#Testing_parent-child_relationships"> 
+            rodzic-dziecko</a> w szczgólności sprawdzenie, czy <B>Cart</B> dostaje komunikat CheckOutClosed, od
+            aktora <B>CheckOut</B>) 
         
     </ul>
     <P>
-    <LI>(10 pkt) Rozszerzenie systemu:
-    <UL>
-    <LI>Proszę rozszerzyć Aktora <B>Buyer</B> o nowe zachowanie (stan), w którym zapisuje się na 
-         notyfikacje, gdy ktoś przebije jego aktualna ofertę i samemu przebija ofertę, jeśli cena nie przekroczyła 
-         jego kwoty maksymalnej. Prosze rozszerzyć Aktora <B>Auction</B> o potrzebne wsparcie dla takiego zachowania.
-        <LI> Proszę napisać testy dla tego rozszerzenia (tj. dla aktorów Buyer oraz Auction).  
-    </UL>
+    
 </OL>
 <!--
 <H3>Bibliografia</H3>
