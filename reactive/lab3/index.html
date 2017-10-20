@@ -19,8 +19,8 @@
 <li>Jako narzędzia do testowania używamy <a href=http://www.scalatest.org/>ScalaTest</a>
 <li>ScalaTest oferuje różne <a href="http://www.scalatest.org/user_guide/selecting_a_style">style testowania</a>
 czyli sposoby deklarowania testów. W przykładzie 
-wykorzystano naturalny styl <a href=http://doc.scalatest.org/3.0.0/#org.scalatest.WordSpec>WordSpec</a> (trait <i>WordSpecLike</i>)
-<li> Trait <a href="http://doc.scalatest.org/3.0.0/org/scalatest/BeforeAndAfterAll.html"><i>BeforeAndAfterAll</i></a> zapewnia
+wykorzystano naturalny styl <a href=http://doc.scalatest.org/3.0.4/#org.scalatest.WordSpec>WordSpec</a> (trait <i>WordSpecLike</i>)
+<li> Trait <a href="http://doc.scalatest.org/3.0.4/org/scalatest/BeforeAndAfterAll.html"><i>BeforeAndAfterAll</i></a> zapewnia
 funkcje do wykonania przed i po zestawie testów. W przykładzie pokazano, jak wykorzystać funkcje <i>afterAll</i> do zamknięcia
 systemu aktorów po zakonczeniu testów.
 </ul>
@@ -92,7 +92,8 @@ Do testowania aktorów wykorzystujemy moduł <a href=http://doc.akka.io/docs/akk
     
      <li> Napisać testy dla aktora Cart. Testy powinny zawierać:
          <ul>
-             <li> testowanie synchroniczne (test zmiany zawartości koszyka przy użyciu <i> TestActorRef</i>)
+             <li> testowanie synchroniczne - test zmiany zawartości koszyka przy użyciu 
+                 <a href="https://doc.akka.io/docs/akka/current/scala/testing.html#obtaining-a-reference-to-an-actor"><i>TestActorRef</i></a>
                  <li> testowanie asynchroniczne za pomocą  aktora testActor i asercji typu  <i>expectMsg</i>. 
          </ul> 
          alternatywnie:
@@ -102,8 +103,8 @@ Do testowania aktorów wykorzystujemy moduł <a href=http://doc.akka.io/docs/akk
     <P>
         </ul>
     <LI>(20 pkt) Wykorzystując Akka TestKit proszę napisac testy dla aktora <B>Checkout</B>
-    zawierające reakcję na  komunikaty wg diagramu poniżej
-    w tym test relacji <a href="http://doc.akka.io/docs/akka/current/scala/testing.html#Testing_parent-child_relationships"> 
+    zawierające reakcję na  komunikaty wg diagramu poniżej.
+    Zestaw powinien zawierać test relacji <a href="https://doc.akka.io/docs/akka/current/scala/testing.html#testing-parent-child-relationships"> 
         rodzic-dziecko</a> w szczególności sprawdzenie, czy <B>Cart</B> dostaje komunikat </i>CheckOutClosed</i> od
             testowanego aktora <B>CheckOut</B> (patrz diagram)
         <p>
