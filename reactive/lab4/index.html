@@ -24,27 +24,18 @@ Dobrą praktyką w projektowaniu systemu aktorów jest oddzielenie logiki dziedz
     i aktora <TT>CartManager</TT> implementującego protokół komunikacji:
     
     <pre>
-    case class Item(id: URI, name: String, price: BigDecimal, count: Int) // item is identified by a unique URI (java.net.URI)
-    case class Cart(items: Map[URI, Item]) {       
-    def addItem(it: Item, cnt: Int): ShoppingCart = {
-        val currentCount = items.get(it.id).getOrElse(0)
-        copy(items = items.updated(it.id, it.copy(count = currentCount + cnt))
+  case class Item(id: URI, name: String, price: BigDecimal, count: Int) // item is identified by a unique URI (java.net.URI)
+  case class Cart(items: Map[URI, Item]) {       
+    def addItem(it: Item): Cart = {
+        val currentCount = if (items contains it.id) items(it.id).count else 0
+        copy(items = items.updated(it.id, it.copy(count = currentCount + it.count)))
       }
       def removeItem(id: Item, cnt: Int) = ???
     }
-    object Cart {
+    object Cart { // "Cart.empty will represent an empty cart"
       val empty = Cart(Map.empty)
     }
-    
-    class CartManager(var shoppingCart: ShoppingCart) extends Actor {
-      def this() = this(ShoppingCart.empty)
-      
-      def receive = {
-        case AddItem(item, count) => ???
-        case RemoveItem(item, count) => ???
-        ...
-      }
-    }
+
     </pre>
     
     <H3>Utrwalanie i odtwarzanie stanu</H3>
