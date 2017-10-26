@@ -18,7 +18,7 @@
 
     <H3>Separacja logiki dziedzinowej</H3>
 Dobrą praktyką w projektowaniu systemu aktorów jest oddzielenie logiki dziedzinowej od logiki komunikacji. 
-    Przykładowo aktor Cart nie powinien implementować jednocześnie stan koszyka i protokołu komunikacji, bo 
+    Przykładowo aktor Cart nie powinien implementować jednocześnie stanu koszyka i protokołu komunikacji, bo 
     utrudnia to testowanie samej logiki biznesowej (stanu koszyka) -- można to robić tylko przez asynchroniczny
     protokół komunikacji. W tym przypadku najlepiej wydzielić klasę <TT>Cart</TT> reprezentująca obiekt dzidzinowy
     i aktora <TT>CartManager</TT> implementującego protokół komunikacji:
@@ -70,7 +70,7 @@ sbt eclipse
 <OL>
     <LI>(20 pkt) Separacja logiki dziedzinoiwej i persystencja aktora <TT>Cart</TT>
     <UL>
-        <LI><B>Proszę wydzielić osobną klasę <TT>Cart</TT> do implementacji stanu koszyka i aktora <TT>Cart Manager</TT>, który
+        <LI>Proszę wydzielić osobną klasę <TT>Cart</TT> do implementacji stanu koszyka i aktora <TT>Cart Manager</TT>, który
             obsługuje komunikację i przechowuje stan koszyka jako instancję <TT>Cart</TT>. 
         <li>Proszę zaimplementować persystencję stanu koszyka przy pomocy mechanizmu EventSourcingu. Proszę zwrócić uwagę na poprawne 
             odtwarzanie timerów. 
