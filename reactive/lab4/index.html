@@ -32,8 +32,19 @@ Dobrą praktyką w projektowaniu systemu aktorów jest oddzielenie logiki dziedz
       }
       def removeItem(id: Item, cnt: Int) = ???
     }
-    object Cart { // "Cart.empty" will represent an empty cart
+    
+    object Cart { 
       val empty = Cart(Map.empty)
+    }
+    
+    class CartManager(var shoppingCart: ShoppingCart) extends Actor {
+      def this() = this(Cart.empty)
+      
+      def receive = {
+        case AddItem(item, count) => ???
+        case RemoveItem(item, count) => ???
+        ...
+      }
     }
 
     </pre>
