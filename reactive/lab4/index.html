@@ -20,7 +20,7 @@
 Dobrą praktyką w projektowaniu systemu aktorów jest oddzielenie logiki dziedzinowej od logiki komunikacji. 
     Przykładowo aktor Cart nie powinien implementować jednocześnie stanu koszyka i protokołu komunikacji, bo 
     utrudnia to testowanie samej logiki biznesowej (stanu koszyka) -- można to robić tylko przez asynchroniczny
-    protokół komunikacji. W tym przypadku najlepiej wydzielić klasę <TT>Cart</TT> reprezentująca obiekt dzidzinowy
+    protokół komunikacji. W tym przypadku najlepiej wydzielić klasę <TT>Cart</TT> reprezentująca obiekt dziedzinowy
     i aktora <TT>CartManager</TT> implementującego protokół komunikacji:
     
     <pre>
