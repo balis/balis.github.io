@@ -14,10 +14,42 @@
     <H2>Programowanie reaktywne w języku Scala</H2>
 <hr>
 
-<h3>Persystencja aktorów</h3>
+<h2>Zarządzanie stanem aktorów</h2>
 
+    <H3>Separacja logiki dziedzinowej</H3>
+Dobrą praktyką w projektowaniu systemu aktorów jest oddzielenie logiki dziedzinowej od logiki komunikacji. 
+    Przykładowo aktor Cart nie powinien implementować jednocześnie stan koszyka i protokołu komunikacji, bo 
+    utrudnia to testowanie samej logiki biznesowej (stanu koszyka) -- można to robić tylko przez asynchroniczny
+    protokół komunikacji. W tym przypadku najlepiej wydzielić klasę <TT>Cart</TT> reprezentująca obiekt dzidzinowy
+    i aktora <TT>CartManager</TT> implementującego protokół komunikacji:
+    
+    <pre>
+    case class Item(id: URI, name: String, price: BigDecimal, count: Int)
+    case class Cart(items: Map[URI, Item]) { // item is identified by a unique URI
+      def addItem(it: Item, cnt: Int): ShoppingCart = {
+        val currentCount = items.get(it.id).getOrElse(0)
+        copy(items = items.updated(it.id, it.copy(count = currentCount + cnt))
+      }
+      def removeItem(id: Item, cnt: Int) = ???
+    }
+    object Cart {
+      val empty = Cart(Map.empty)
+    }
+    
+    class CartManager(var shoppingCart: ShoppingCart) extends Actor {
+      def this() = this(ShoppingCart.empty)
+      
+      def receive = {
+        case AddItem(item, count) => ???
+        case RemoveItem(item, count) => ???
+        ...
+      }
+    }
+    </pre>
+    
+    <H3>Utrwalanie i odtwarzanie stanu</H3>
 <ul>
-<li>W celu zapisywania stanu aktora, używamy wzorca <TT>Event Sourcing</TT> zaimplementowanego w bibliotece <a href="http://doc.akka.io/docs/akka/current/scala/persistence.html">
+<li>W celu utrwalania stanu aktora, używamy wzorca <TT>Event Sourcing</TT> zaimplementowanego w bibliotece <a href="http://doc.akka.io/docs/akka/current/scala/persistence.html">
 Akka persistence</a>.
 <li> Przykładowy projekt używający persystencji Akki
 <pre>
@@ -36,15 +68,20 @@ sbt eclipse
 
 <H3>Zadanie</H3>
 <OL>
-    <LI>(20 pkt) Proszę dodać persystencję dla aktora <B>Auction</B> 
+    <LI>(20 pkt) Separacja logiki dziedzinoiwej i persystencja aktora <TT>Cart</TT>
     <UL>
-        <LI><B>Auction</B> zapisuje zdarzenia reprezentujące aktualny stan aukcji oraz zmiany kontekstu aktora (przejścia).  
-        <li>W dzienniku zdarzeń należy zapisać też czas trwania aukcji, a przy odtwarzaniu stanu aktora (komunikat <TT>RecoveryCompleted</TT>) uwzględnić ten czas przy ustalaniu nowego <TT>BidTimer</TT>.
+        <LI><B>Proszę wydzielić osobną klasę <TT>Cart</TT> do implementacji stanu koszyka i aktora <TT>Cart Manager</TT>, który
+            obsługuje komunikację i przechowuje stan koszyka jako instancję <TT>Cart</TT>. 
+        <li>Proszę zaimplementować persystencję stanu koszyka przy pomocy mechanizmu EventSourcingu. Proszę zwrócić uwagę na poprawne 
+            odtwarzanie timerów. 
     </UL>
     <P>
-    <LI>(10 pkt) Przetestować scenariusz, w którym przed upływem końca aukcji aplikacja zostaje wyłączona (np. poprzez <TT>system.shutdown()</TT>). Po ponownym uruchomieniu aplikacji stan aktorów <B>Auction</B> powinien być odtworzony z dziennika, natomiast aktorzy <B>Seller</B>, <B>Buyer</B> oraz <B>AuctionSearch</B> mogą być zainicjalizowani od nowa. Kupujący powinni powrócić do licytowania zgodnie ze swoją strategią. Proszę sprawdzić, czy wielokrotne przerywanie i ponowne uruchamianie systemu aktorów umożliwia kontunuowanie licytacji.
+    <LI>(10 pkt) Przetestować scenariusz, w którym przed upływem końca aukcji aplikacja zostaje wyłączona 
+        (np. poprzez <TT>system.shutdown()</TT>). Po ponownym uruchomieniu aplikacji stan aktora <B>CartManager</B> powinien 
+        być odtworzony z dziennika. 
     <P>
-    <LI>(10 pkt) Proszę porównać wydajność różnych mechanizmów persystencji (np. LevelDB z opcją native = true/false, InMemory, itp., <a href="http://akka.io/community/">lista wtyczek</a>) i oszacować średni czas zapisu/odczytu zdarzenia.
+    <LI>(10 pkt) Proszę porównać wydajność różnych mechanizmów persystencji (np. LevelDB z opcją native = true/false, 
+        InMemory, itp., <a href="http://akka.io/community/">lista wtyczek</a>) i oszacować średni czas zapisu/odczytu zdarzenia.
     <UL>
 
     </UL>
