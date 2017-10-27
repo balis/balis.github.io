@@ -80,9 +80,9 @@ sbt eclipse
             odtwarzanie timerów. 
     </UL>
     <P>
-    <LI>(10 pkt) Przetestować scenariusz, w którym przed upływem końca aukcji aplikacja zostaje wyłączona 
-        (np. poprzez <TT>system.shutdown()</TT>). Po ponownym uruchomieniu aplikacji stan aktora <B>CartManager</B> powinien 
-        być odtworzony z dziennika. 
+        <LI>(10 pkt) Proszę zaimplementować persystencję stanu aktora <TT>Checkout</TT> i przetestować scenariusz, w którym w trakcie
+            operacji checkout-u aplikacja zostaje przerwana (np. poprzez <TT>system.terminate</TT>). Po ponownym uruchomieniu  
+            stan aplikacji powinien być poprawnie odtworzony (łącznie z timerami). 
     <P>
     <LI>(10 pkt) Proszę porównać wydajność różnych mechanizmów persystencji (np. LevelDB z opcją native = true/false, 
         InMemory, itp., <a href="http://akka.io/community/">lista wtyczek</a>) i oszacować średni czas zapisu/odczytu zdarzenia.
