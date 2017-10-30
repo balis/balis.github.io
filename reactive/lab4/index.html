@@ -24,8 +24,11 @@ Dobrą praktyką w projektowaniu systemu aktorów jest oddzielenie logiki dziedz
     i aktora <TT>CartManager</TT> implementującego protokół komunikacji:
     
 <pre>
-    
-  case class Item(id: URI, name: String, price: BigDecimal, count: Int) // item is identified by a unique URI (java.net.URI)
+  
+  /**
+   * @param id: unique item identifier (java.net.URI)
+   */
+  case class Item(id: URI, name: String, price: BigDecimal, count: Int) 
   case class Cart(items: Map[URI, Item]) {       
     def addItem(it: Item): Cart = {
         val currentCount = if (items contains it.id) items(it.id).count else 0
@@ -84,8 +87,11 @@ sbt eclipse
             operacji checkout-u aplikacja zostaje przerwana (np. poprzez <TT>system.terminate</TT>). Po ponownym uruchomieniu  
             stan aplikacji powinien być poprawnie odtworzony (łącznie z timerami). 
     <P>
+        <LI>(10 pkt) Proszę napisać testy dla klasy <TT>Cart</TT> i aktora <TT>Cart Manager</TT> (modyfikując poprzednie testy). 
+    <!--
     <LI>(10 pkt) Proszę porównać wydajność różnych mechanizmów persystencji (np. LevelDB z opcją native = true/false, 
         InMemory, itp., <a href="http://akka.io/community/">lista wtyczek</a>) i oszacować średni czas zapisu/odczytu zdarzenia.
+    -->
     <UL>
 
     </UL>
