@@ -51,18 +51,44 @@
 <li>Przyklad pliku <a href="https://github.com/malawski/reactive-lab5/blob/master/src/main/resources/application.conf">application.conf</a>.
 </ul>
 
+<h3>Komunikacja z uzyciem Akka HTTP</h3>
 
+<ul>
+<li>Biblioteka  <a href="https://doc.akka.io/docs/akka-http/current/scala/http/index.html">Akka HTTP</a> 
+.
+<li>Pobranie i uruchomienie przykładowego projektu:
+<pre>
+  git clone https://github.com/malawski/reactive-http
+  cd reactive-http
+  sbt eclipse
+</pre>
+<li>Serwer korzysta z DSL do określania ściezki wywołania:  
+  <a href="https://doc.akka.io/docs/akka-http/current/scala/http/routing-dsl/index.html#minimal-example">High-lever server API</a> 
+
+<li>Klient jest aktorem, który dostaje odpowiedź jako komunikat:   
+      <a href="https://doc.akka.io/docs/akka-http/current/scala/http/client-side/request-level.html#using-the-future-based-api-in-actors">przykład</a>.
+</ul>
 
 <H3>Zadanie</H3>
 <OL>
-    <LI>(20 pkt) Proszę rozszerzyć system aukcyjny o mechanizm publikowania informacji o przebiegu aukcji do zewnętrznego systemu <B>Auction Publisher</B> przy użyciu zdalnej komunikacji za pośrednictwem nowego aktora <B>Notifier</B>:
+    <LI>(10 pkt) Proszę rozszerzyć sklep o katalog produktow <b>ProductCatalog</b> zaimplementowany jako zewnętrzny system korzystajac z remoting. Odpowiedzialności katalogu:
     <UL>
-        <LI><B>Auction</B> powiadamia lokalnego aktora <B>Notifier</B> o zmianie stanu aukcji poprzez komunikaty <TT>Notify</TT> zawierające informację o tytule aukcji, aktualnym kupującym i bieżącej cenie.
-        <LI><B>Notifier</B> obsługuje komunikaty <TT>Notify</TT> i jest klientem przekazującym informacje do zewnętrznego serwera <B>Auction Publisher</B>.
-        <LI>Serwer <B>Auction Publisher</B> przyjmuje powiadomienia poprzez komunikaty.
+        <LI>przechowywanie elementów <b>Item</b>, zgodnie z konwencją z lab4 (id jako URI), liczba sztuk w magazynie;
+        <LI>wyszukiwanie po nazwach i ich fragmentach, przyklady nazw: "czerwone skarpetki XXL" "srebrny macbook pro" "samsung galaxy S10" "czerwone ferrari 488";
+        <LI>aktualizacja liczby towarów w magazynie.
     </UL>
+    Należy oddzielić logikę biznesową od logiki komunikacji.
     <P>
-    <LI>(20 pkt) Proszę rozszerzyć aktora <B>Notifier</B> o mechanizmy <I>fault-tolerance</I>, tak aby działał poprawnie w wypadku awarii zewnętrznego serwera lub awarii sieci. Awarie te nie powinny zakłócać pracy systemu aukcyjnego. Wskazówka: dla każdego powiadomienia należy stworzyć nowego aktora <B>NotifierRequest</B> nadzorowanego przez aktora <B>Notifier</B>.
+    <LI>(15 pkt) Proszę zaimplementować <b>PaymentService</b> przy użyciu komunikacji HTTP: klient przy użyciu Akka-http, serwer:
+      <ul>
+        <li>lokalny z Akka HTTP</li>
+        <li>Korzystający z <a href="http://httpbin.org/">http://httpbin.org/</a></li>
+        <li>Korzystający z <a href="https://requestb.in/">https://requestb.in/</a></li>
+      </ul>
+      Należy wykorzystać wzorzec w którym aktor jest tworzony per wywołanie.
+    <LI>(15 pkt) Proszę dodać mechanizmy fault tolerance do obsługi błędów po stronie klienta <b>PaymentService</b>
+    Należy wykorzystać wzorzec nadzorcy. 
+    Punktowana będzie obsługa ciekawych błędów, np. błędy HTTP, błędy transakcji, błędy sieciowe, itp.
 </OL>
 <!--
 <H3>Bibliografia</H3>
