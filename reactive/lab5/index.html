@@ -79,11 +79,13 @@
     </UL>
     Należy oddzielić logikę biznesową od logiki komunikacji.
     <P>
-    <LI>(15 pkt) Proszę zaimplementować <b>PaymentService</b> przy użyciu komunikacji HTTP: klient przy użyciu Akka-http, serwer:
+    <LI>(15 pkt) Proszę zaimplementować <b>PaymentService</b> przy użyciu komunikacji HTTP: klient przy użyciu Akka-http, kilka wersji serwera reprezentującego rózne usługi płatności (np. VISA, PayU, PayPal itp). Do implementacji serwera mozna skorzystać z takich opcji jak:
       <ul>
         <li>lokalny z Akka HTTP</li>
         <li>Korzystający z <a href="http://httpbin.org/">http://httpbin.org/</a></li>
         <li>Korzystający z <a href="https://requestb.in/">https://requestb.in/</a></li>
+        <li>Korzystający z <a href="https://www.playframework.com/">https://www.playframework.com/</a></li>
+        
       </ul>
       Należy wykorzystać wzorzec w którym aktor jest tworzony per wywołanie.
     <LI>(15 pkt) Proszę dodać mechanizmy fault tolerance do obsługi błędów po stronie klienta <b>PaymentService</b>
