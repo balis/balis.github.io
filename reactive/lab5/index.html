@@ -74,8 +74,13 @@
     <LI>(15 pkt) Proszę rozszerzyć sklep o katalog produktow <b>ProductCatalog</b> zaimplementowany jako zewnętrzny system korzystajac z remoting. Odpowiedzialności katalogu:
     <UL>
         <LI>przechowywanie elementów <b>Item</b>, zgodnie z konwencją z lab4 (id jako URI), liczba sztuk w magazynie;
-        <LI>wyszukiwanie wg słów kluczowych po producentach, nazwach i ich fragmentach, przykłady: <tt>"Frappuccino Coffee Drink","Starbucks"; "Teeny Bodies Moisturizing Cream","Gerber"; "32 New Disposable Razor Twin Blades Great Deal 3 ea","Gillette"; "Coke Classic Bottles","Coca-Cola"</tt>. Należy skorzystać z pliku z danymi: <a href="query_result.bz2">query_result.bz2</a>.
-          Jako rezultat zapytania zwracane powinno być domyślnie 10 najlepiej pasujących produktów (czyli tych, które mają w nazwie najwięcej słów kluczowych z zapytania).
+        <LI>wyszukiwanie wg słów kluczowych, którymi są: nazwa producenta i wyrazy z nazwy produktu. 
+            <UL>
+                <LI>Przykłady: <tt>"Frappuccino Coffee Drink","Starbucks"; "Teeny Bodies Moisturizing Cream","Gerber"; "32 New Disposable Razor Twin Blades Great Deal 3 ea","Gillette"; "Coke Classic Bottles","Coca-Cola"</tt>.</LI> 
+                <LI>Należy skorzystać z pliku z danymi: <a href="query_result.bz2">query_result.bz2</a>.</LI>
+                 <LI>Przykład zapytania: "gerber cream"
+                <LI>Jako rezultat zapytania zwracane powinno być domyślnie 10 najlepiej pasujących produktów (czyli tych, które mają w nazwie najwięcej słów kluczowych z zapytania).</LI>
+             </UL>               
         <LI>aktualizacja liczby towarów w magazynie.
     </UL>
     Należy oddzielić logikę biznesową od logiki komunikacji.
@@ -89,6 +94,8 @@
         
       </ul>
       Należy wykorzystać wzorzec w którym aktor jest tworzony per wywołanie.
+        
+    <P>
     <LI>(15 pkt) Proszę dodać mechanizmy fault tolerance do obsługi błędów po stronie klienta <b>PaymentService</b>
     Należy wykorzystać wzorzec nadzorcy. 
     Punktowana będzie obsługa ciekawych błędów, np. błędy HTTP, błędy transakcji, błędy sieciowe, itp.
