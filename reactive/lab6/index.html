@@ -18,7 +18,7 @@
 
 <ul>
 <li>Do skalowania aktorów wykorzystujemy koncepcję routingu dostepnego w <a href="http://doc.akka.io/docs/akka/current/scala/routing.html">
-routerach Akka</a>.
+routerach Akka</a>
 <li>Pobranie i uruchomienie przykładowego projektu:
 <pre>
   git clone https://github.com/kzajac/reactive-lab6
@@ -26,8 +26,8 @@ routerach Akka</a>.
   sbt run
   sbt eclipse
 </pre>
-
 </ul>
+    
 <h3>Klastrowanie w Akka</h3>
 
 <ul>
@@ -46,6 +46,7 @@ routerach Akka</a>.
         <li>Przeprowadzić testy obciążeniowe API wybranym narzędziem, krótko uzasadnić wybór narzędzia do testów.</li>
         <li>Oszacować liczbę użytkowników sklepu jaką możemy obsłużyć. Podać przyjęte założenia.</li>
     </UL>
+    </li>
     <LI>(10 pkt) Akka Cluster
     <ul>
         <li>Skonfigurować Akka Cluster dla 3 węzłów.</li>
@@ -53,7 +54,8 @@ routerach Akka</a>.
         <li>Skonfigurować load-balancer HTTP (<a href="http://nginx.org/en/docs/http/load_balancing.html">nginx</a> lub <a href="https://www.digitalocean.com/community/tutorials/an-introduction-to-haproxy-and-load-balancing-concepts">haproxy</a>)</li>
         <li>Powtórzyć testy</li>
     </ul>
-    <LI>(10 pkt) <a href="https://doc.akka.io/docs/akka/2.5/distributed-pub-sub.html?language=scala">PubSub</a> w klastrze 
+    </li>
+    <LI>(10 pkt) <a href="https://doc.akka.io/docs/akka/2.5/distributed-pub-sub.html?language=scala">PubSub</a> w klastrze
     <ul>
         <li>Stworzyć aktora zliczającego liczbę zapytań obsługiwanych przez poszczególne instancje katalogu produktów. Statystyka powinna być dostępna przez REST.</li>
         <li>Stworzyć aktora loguącego na konsolę (loggerem) wszystkie zapytania.</li>
