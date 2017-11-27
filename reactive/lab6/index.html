@@ -41,7 +41,7 @@ routerach Akka</a>.
 <OL>
     <LI>(20 pkt) API RESTowe i skalowanie w systemie aktorowym
     <UL>
-        <li>Wyskalować katalog produktów za pomocą mechanizmu routingu (<a href="https://doc.akka.io/docs/akka/current/scala/routing.html">https://doc.akka.io/docs/akka/current/scala/routing.html</a>),</li>
+        <li>Wyskalować katalog produktów za pomocą mechanizmu <a href="https://doc.akka.io/docs/akka/current/scala/routing.html">routingu</a>,</li>
         <LI>Stworzyć API (REST) udostępniające przeszukiwanie katalogu zwracające wyniki jako JSON,</LI>
         <li>Przeprowadzić testy obciążeniowe API wybranym narzędziem, krótko uzasadnić wybór narzędzia do testów.</li>
         <li>Oszacować liczbę użytkowników sklepu jaką możemy obsłużyć. Podać przyjęte założenia.</li>
@@ -53,13 +53,14 @@ routerach Akka</a>.
         <li>Skonfigurować load-balancer HTTP (<a href="http://nginx.org/en/docs/http/load_balancing.html">nginx</a> lub <a href="https://www.digitalocean.com/community/tutorials/an-introduction-to-haproxy-and-load-balancing-concepts">haproxy</a>)</li>
         <li>Powtórzyć testy</li>
     </ul>
-    <LI>(10 pkt) PubSub w klastrze (<a href="https://doc.akka.io/docs/akka/2.5/distributed-pub-sub.html?language=scala">https://doc.akka.io/docs/akka/2.5/distributed-pub-sub.html?language=scala</a>)
+    <LI>(10 pkt) <a href="https://doc.akka.io/docs/akka/2.5/distributed-pub-sub.html?language=scala">PubSub</a> w klastrze 
     <ul>
         <li>Stworzyć aktora zliczającego liczbę zapytań obsługiwanych przez poszczególne instancje katalogu produktów. Statystyka powinna być dostępna przez REST.</li>
         <li>Stworzyć aktora loguącego na konsolę (loggerem) wszystkie zapytania.</li>
         <li>Katalog produktów wysyła informację o każdym zapytaniu korzystając z mechanizmu publish-subscribe wraz z identyfikatorem instancji katalogu obsługującej żądanie.</li>
         <li>Oba aktory powinny być uruchomione na dedykowanym węźle (nie obsługującym żądań)</li>
     </ul>
+    </li>
 </OL>
 <P>
 <P>
