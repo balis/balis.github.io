@@ -43,3 +43,21 @@ t.start();
 ```
 
 [Dokumentacja klasy Thread](https://docs.oracle.com/javase/8/docs/api/java/lang/Thread.html)
+
+
+Niektóre ważne metody:
+
+```java
+void start()
+void join()
+static void sleep(long milis, int nanos)
+static Thread currentThread()
+void setName(String name)
+String getName()
+String toString()
+```
+
+----
+
+## Wątki w JVM
+![Alt text](http://galaxy.agh.edu.pl/~balis/dydakt/tw/lab1/JVM_Internal_Architecture.png)
