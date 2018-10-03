@@ -57,7 +57,7 @@ String getName()
 String toString()
 ```
 
-----
+---
 
 ## Wątki w JVM
 ![Alt text](http://galaxy.agh.edu.pl/~balis/dydakt/tw/lab1/JVM_Internal_Architecture.png)
