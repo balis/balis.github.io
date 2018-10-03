@@ -1,7 +1,7 @@
 
 # Teoria współbieżności - laboratorium 1: model i programowanie wielowątkowe
-* Dokument: https://github.com/balis/tw/lab1/blob/README.md
-* Slajdy: http://malawski.github.io/tw/lab1/
+* Dokument: https://github.com/balis/balis.github.io/blob/master/tw/lab1/README.md
+* Slajdy: http://balis.github.io/tw/lab1/
 
 ---
 
