@@ -60,4 +60,5 @@ String toString()
 ---
 
 ## Wątki w JVM
-![Alt text](http://galaxy.agh.edu.pl/~balis/dydakt/tw/lab1/JVM_Internal_Architecture.png)
+![JVM Arch](http://galaxy.agh.edu.pl/~balis/dydakt/tw/lab1/JVM_Internal_Architecture.png) 
+<!-- .element height="50%" width="50%" -->
