@@ -93,7 +93,18 @@ Zadania do wykonania:
 <LI>(20 pkt) Proszę zaimplementować aktorów <B>Cart</B> i <B>Checkout</B>
 
 <UL>
-<LI>Prosze zaprojektować wiadomości jako Case Class'y.
+<LI>Proszę zaprojektować wiadomości jako Case Class'y. Proszę pamiętać o rozróżnieniu na wiadomości-komendy 
+  (np. <TT>AddItem(...)</TT>) i wiadomości-zdarzenia (np. <TT>ItemAdded(...)</TT>) (ewentualnie również wiadomości-dokumenty). 
+  Więcej <A HREF="http://www.informit.com/articles/article.aspx?p=2428369">tutaj</A>.
+  <PRE>
+    case object Cart {
+      sealed trait Command
+      case class AddItem(id: String) extends Command
+      ...
+      sealed trait Event
+      case class ItemAdded(id: String) extends Event
+    }
+    </PRE>
 <LI>Do sterowania maszyną stanów proszę wykorzystać standardowy mechanizm <TT>become</TT>.
 <LI>Proszę stworzyć aplikację, która wykonuje prosty test stworzonych aktorów. 
 <LI>Do implementacji limitów czasowych proszę wykorzystać mechanizm 
