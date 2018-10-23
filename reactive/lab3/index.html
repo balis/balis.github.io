@@ -91,7 +91,8 @@ Do testowania aktorów wykorzystujemy moduł <a href=http://doc.akka.io/docs/akk
         <p>Do wykorzystania wzorcowy interfejs aktora <B>OrderManager</B> (obiekty rozszerzające <TT>State</TT> 
             przydadzą się do implementacji opartej na FSM): 
          <pre>
- object OrderManager {
+
+object OrderManager {
   sealed trait State
   case object Uninitialized extends State
   case object Open          extends State
@@ -110,14 +111,15 @@ Do testowania aktorów wykorzystujemy moduł <a href=http://doc.akka.io/docs/akk
   case object Done extends Ack //trivial ACK
 
   sealed trait Data
-  case class Empty()                                                                              extends Data
-  case class CartData(cartRef: ActorRef)                                                          extends Data
-  case class CartDataWithSender(cartRef: ActorRef, sender: ActorRef)                              extends Data
-  case class InCheckoutData(cartRef: ActorRef, checkoutRef: ActorRef)                             extends Data
-  case class InCheckoutDataWithSender(cartRef: ActorRef, checkoutRef: ActorRef, sender: ActorRef) extends Data
-  case class InPaymentData(cartRef: ActorRef, checkoutRef: ActorRef, paymentRef: ActorRef)        extends Data
-  case class InPaymentDataWihtSender(paymentRef: ActorRef, sender: ActorRef)                      extends Data
+  case class Empty()                                                           extends Data
+  case class CartData(cartRef: ActorRef)                                       extends Data
+  case class CartDataWithSender(cartRef: ActorRef, sender: ActorRef)           extends Data
+  case class InCheckoutData(checkoutRef: ActorRef)                             extends Data
+  case class InCheckoutDataWithSender(checkoutRef: ActorRef, sender: ActorRef) extends Data
+  case class InPaymentData(paymentRef: ActorRef)                               extends Data
+  case class InPaymentDataWithSender(paymentRef: ActorRef, sender: ActorRef)   extends Data
 }
+
 </pre>
     
      <li> Napisać testy dla aktora Cart. Testy powinny zawierać:
