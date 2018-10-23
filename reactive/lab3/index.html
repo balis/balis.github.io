@@ -84,9 +84,41 @@ Do testowania aktorów wykorzystujemy moduł <a href=http://doc.akka.io/docs/akk
 <OL>
     <li>(20 pkt) 
     <ul>
-    <LI>Prosze dodać do systemu aukcyjnego aktorow <B>Customer</B> i <B>PaymentService</B> działających zgodnie z diagramem:
+    <LI>Prosze dodać do systemu aukcyjnego aktorow <B>OrderManager</B> i <B>Payment</B>, a następnie utworzyć system aktorów 
+        działający zgodnie z diagramem:
         <p>
         <img src=eShop_system.png width="800"> 
+        <p>Do wykorzystania wzorcowy interfejs aktora <B>OrderManager</B> (obiekty rozszerzające <TT>State</TT> 
+            przydadzą się do implementacji opartej na FSM): 
+         <pre>
+ object OrderManager {
+  sealed trait State
+  case object Uninitialized extends State
+  case object Open          extends State
+  case object InCheckout    extends State
+  case object InPayment     extends State
+  case object Finished      extends State
+
+  sealed trait Command
+  case class AddItem(id: String)                                               extends Command
+  case class RemoveItem(id: String)                                            extends Command
+  case class SelectDeliveryAndPaymentMethod(delivery: String, payment: String) extends Command
+  case object Buy                                                              extends Command
+  case object Pay                                                              extends Command
+
+  sealed trait Ack
+  case object Done extends Ack //trivial ACK
+
+  sealed trait Data
+  case class Empty()                                                                              extends Data
+  case class CartData(cartRef: ActorRef)                                                          extends Data
+  case class CartDataWithSender(cartRef: ActorRef, sender: ActorRef)                              extends Data
+  case class InCheckoutData(cartRef: ActorRef, checkoutRef: ActorRef)                             extends Data
+  case class InCheckoutDataWithSender(cartRef: ActorRef, checkoutRef: ActorRef, sender: ActorRef) extends Data
+  case class InPaymentData(cartRef: ActorRef, checkoutRef: ActorRef, paymentRef: ActorRef)        extends Data
+  case class InPaymentDataWihtSender(paymentRef: ActorRef, sender: ActorRef)                      extends Data
+}
+</pre>
     
      <li> Napisać testy dla aktora Cart. Testy powinny zawierać:
          <ul>
