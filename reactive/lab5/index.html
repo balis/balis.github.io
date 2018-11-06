@@ -85,7 +85,7 @@
     </UL>
     Należy oddzielić logikę biznesową od logiki komunikacji.
     <P>
-    <LI>(10 pkt) Proszę zaimplementować <b>PaymentService</b> przy użyciu komunikacji HTTP: klient przy użyciu Akka-http, kilka prostych wersji serwera reprezentującego rózne usługi płatności (np. VISA, PayU, PayPal itp). Do implementacji serwera mozna skorzystać z takich opcji jak:
+    <LI>(10 pkt) Proszę zaimplementować aktora <b>Payment</b> komunikującego się przy użyciu Akka-http z zewnętrznymi serwisami obsługującymi kilka metod płatności (np. VISA, PayU, PayPal itp). Do implementacji serwera mozna skorzystać z takich opcji jak:
       <ul>
         <li>lokalny z Akka HTTP</li>
         <li>Korzystający z <a href="http://httpbin.org/">http://httpbin.org/</a></li>
@@ -96,9 +96,9 @@
       Należy wykorzystać wzorzec w którym aktor jest tworzony per wywołanie.
         
     <P>
-    <LI>(15 pkt) Proszę dodać mechanizmy fault tolerance do obsługi błędów po stronie klienta <b>PaymentService</b>
+    <LI>(15 pkt) Proszę dodać mechanizmy obsługi awarii do obsługi błędów w trakcie wykonywania operacji płatności.
     Należy wykorzystać wzorzec nadzorcy. 
-    Punktowana będzie obsługa ciekawych błędów, np. błędy HTTP, błędy transakcji, błędy sieciowe, itp.
+    Punktowana będzie obsługa ciekawych błędów, np. błędy HTTP, błędy sieciowe, itp.
 </OL>
 <!--
 <H3>Bibliografia</H3>
