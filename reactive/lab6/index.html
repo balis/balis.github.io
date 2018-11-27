@@ -18,22 +18,50 @@
 
 <ul>
 <li>Do skalowania aktorów wykorzystujemy koncepcję routingu dostepnego w <a href="http://doc.akka.io/docs/akka/current/scala/routing.html">
-routerach Akka</a>
-<li>Pobranie i uruchomienie przykładowego projektu:
+    routerach Akka</a></li>
+    <li>Pobranie i uruchomienie przykładowego projektu:</li>
 <pre>
   git clone https://github.com/kzajac/reactive-lab6
   cd reactive-lab6
-  sbt run
-  sbt eclipse
+  sbt compile
+  //for the rest, please take a look to README file
 </pre>
 </ul>
-    
-<h3>Klastrowanie w Akka</h3>
 
+<h3>akka-http jako prosty server HTTP</h3>
+<ul>
+    <li>Minimalny przykład <a href="https://doc.akka.io/docs/akka-http/current/routing-dsl/index.html#minimal-example">https://doc.akka.io/docs/akka-http/current/routing-dsl/index.html#minimal-example</a></li>
+</ul>
+Wskazówka: Jeśli chcemy zobaczyć jak takie DSL zostało zbudowane i jakie mechanizmy `implicit` zostały użyte, to w Intellij: `ctrl + shift + alt + +`. Jeśli chcemy potem zwinąć to zamiast '+' wstawiamy '-'
+
+<h3>Przygotowanie klustra w Akka</h3>
 <ul>
     <li>Dokumentacja — <a href="https://doc.akka.io/docs/akka/2.5/scala/cluster-usage.html">https://doc.akka.io/docs/akka/2.5/scala/cluster-usage.html</a></li>
-    <li>Tutorial — <a href="http://michalplachta.com/2016/01/23/scalability-using-sharding-from-akka-cluster/">http://michalplachta.com/2016/01/23/scalability-using-sharding-from-akka-cluster/</a></li>
+</ul>
+
+<h3>Wykorzystanie clustra razem z routingiem</h3>
+<ul>
+    <li>Custer Aware Routers - <a href="https://doc.akka.io/docs/akka/2.5/cluster-routing.html">https://doc.akka.io/docs/akka/2.5/cluster-routing.html</a></li>
+</ul>
+
+<h3>Zaawansowane zrównoleglanie - Akka Sharding (nie będzie bezpośrednio tematem zadań)</h3>
+<ul>
+    <li>Akka Sharding - <a href="https://doc.akka.io/docs/akka/2.5/cluster-sharding.html">https://doc.akka.io/docs/akka/2.5/cluster-sharding.html</a> </li>
+    <li>AkkaPaint jako przykład: <a href="https://medium.com/virtuslab/akkapaint-simplicity-and-power-of-akka-f439dcea73bc">https://medium.com/virtuslab/akkapaint-simplicity-and-power-of-akka-f439dcea73bc</a></li>
+    <li>AkkaPaint source code: <a href="https://github.com/liosedhel/akkapaint">https://github.com/liosedhel/akkapaint</a></li>
+    <li>Inny przykład — <a href="http://michalplachta.com/2016/01/23/scalability-using-sharding-from-akka-cluster/">http://michalplachta.com/2016/01/23/scalability-using-sharding-from-akka-cluster/</a></li>
     <li>Przykład z tutoriala — <a href="https://github.com/miciek/akka-sharding-example/tree/master">https://github.com/miciek/akka-sharding-example/tree/master</a></li>
+</ul>
+
+<h3>Testy wydajnościowe za pomocą Gatling</h3>
+<ul>
+    <li><a href="https://gatling.io/">https://gatling.io/</a></li>
+
+    Aby uruchomić testy w projekcie:
+    <pre>sbt gatling-it:test</pre>
+    Trzeba pamiętać o uruchomieniu najpierw odpowiednich serwerów (zobacz plik `cluster_demo.sh`). <br />
+    Wyświetlenie bezpośrednio w przeglądarce ostatniego raport:
+    <pre>sbt gatling-it:lastReport</pre>
 </ul>
 
 
@@ -43,18 +71,18 @@ routerach Akka</a>
     <UL>
         <li>Wyskalować katalog produktów za pomocą mechanizmu <a href="https://doc.akka.io/docs/akka/current/scala/routing.html">routingu</a></li>
         <LI>Stworzyć API (REST) udostępniające przeszukiwanie katalogu zwracające wyniki jako JSON</LI>
-        <li>Przeprowadzić testy obciążeniowe API wybranym narzędziem, krótko uzasadnić wybór narzędzia do testów</li>
-        <li>Oszacować liczbę użytkowników sklepu jaką możemy obsłużyć. Podać przyjęte założenia. 
-        <li>(Dla zainteresowanych). Można skorzystać 
+        <li>Przeprowadzić testy obciążeniowe API wybranym narzędziem (w przykładzie z laboratoriów znajdziemy przykład testów w Gatlingu), krótko uzasadnić wybór narzędzia do testów</li>
+        <li>Oszacować liczbę użytkowników sklepu jaką możemy obsłużyć. Podać przyjęte założenia.
+        <li>(Dla zainteresowanych). Można skorzystać
             z <A HREF="https://blogs.msdn.microsoft.com/chwitt/2017/10/04/littles-law-and-how-it-impacts-load-testers/">prawa Little'a</a>,
-            żeby obliczyć parametry wydajności (i testów) teoretycznie i porównać je z wynikami eksperymentalnymi.</li> 
+            żeby obliczyć parametry wydajności (i testów) teoretycznie i porównać je z wynikami eksperymentalnymi.</li>
     </UL>
     </li>
     <LI>(10 pkt) Akka Cluster
     <ul>
         <li>Skonfigurować Akka Cluster dla 3 węzłów.</li>
         <li>Każdy węzęł powinien udostępiać endpoint RESTowy.</li>
-        <li>Skonfigurować load-balancer HTTP (<a href="http://nginx.org/en/docs/http/load_balancing.html">nginx</a> lub <a href="https://www.digitalocean.com/community/tutorials/an-introduction-to-haproxy-and-load-balancing-concepts">haproxy</a>)</li>
+        <li>(Opcjonalnie - w Gatlingu można po prostu podać kilka adresów http) Skonfigurować load-balancer HTTP (<a href="http://nginx.org/en/docs/http/load_balancing.html">nginx</a> lub <a href="https://www.digitalocean.com/community/tutorials/an-introduction-to-haproxy-and-load-balancing-concepts">haproxy</a>)</li>
         <li>Powtórzyć testy</li>
     </ul>
     </li>
