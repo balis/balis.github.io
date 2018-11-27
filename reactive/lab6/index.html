@@ -24,7 +24,7 @@
   git clone https://github.com/agh-reactive/reactive-lab6
   cd reactive-lab6
   sbt compile
-  //for the rest, please take a look to README file
+  // for the rest, please take a look at the README file
 </pre>
 </ul>
 
@@ -34,17 +34,17 @@
 </ul>
 Wskazówka: Jeśli chcemy zobaczyć jak takie DSL zostało zbudowane i jakie mechanizmy `implicit` zostały użyte, to w Intellij: `ctrl + shift + alt + +`. Jeśli chcemy potem zwinąć to zamiast '+' wstawiamy '-'
 
-<h3>Przygotowanie klustra w Akka</h3>
+<h3>Przygotowanie klastra w Akka</h3>
 <ul>
     <li>Dokumentacja — <a href="https://doc.akka.io/docs/akka/2.5/scala/cluster-usage.html">https://doc.akka.io/docs/akka/2.5/scala/cluster-usage.html</a></li>
 </ul>
 
 <h3>Wykorzystanie clustra razem z routingiem</h3>
 <ul>
-    <li>Custer Aware Routers - <a href="https://doc.akka.io/docs/akka/2.5/cluster-routing.html">https://doc.akka.io/docs/akka/2.5/cluster-routing.html</a></li>
+    <li>Cluster Aware Routers — <a href="https://doc.akka.io/docs/akka/2.5/cluster-routing.html">https://doc.akka.io/docs/akka/2.5/cluster-routing.html</a></li>
 </ul>
 
-<h3>Zaawansowane zrównoleglanie - Akka Sharding (nie będzie bezpośrednio tematem zadań)</h3>
+<h3>Zaawansowane zrównoleglanie — Akka Sharding (nie będzie bezpośrednio tematem zadań)</h3>
 <ul>
     <li>Akka Sharding - <a href="https://doc.akka.io/docs/akka/2.5/cluster-sharding.html">https://doc.akka.io/docs/akka/2.5/cluster-sharding.html</a> </li>
     <li>AkkaPaint jako przykład: <a href="https://medium.com/virtuslab/akkapaint-simplicity-and-power-of-akka-f439dcea73bc">https://medium.com/virtuslab/akkapaint-simplicity-and-power-of-akka-f439dcea73bc</a></li>
@@ -60,7 +60,7 @@ Wskazówka: Jeśli chcemy zobaczyć jak takie DSL zostało zbudowane i jakie mec
     Aby uruchomić testy w projekcie:
     <pre>sbt gatling-it:test</pre>
     Trzeba pamiętać o uruchomieniu najpierw odpowiednich serwerów (zobacz plik `cluster_demo.sh`). <br />
-    Wyświetlenie bezpośrednio w przeglądarce ostatniego raport:
+    Wyświetlenie bezpośrednio w przeglądarce ostatniego raportu:
     <pre>sbt gatling-it:lastReport</pre>
 </ul>
 
@@ -70,6 +70,7 @@ Wskazówka: Jeśli chcemy zobaczyć jak takie DSL zostało zbudowane i jakie mec
     <LI>(20 pkt) API RESTowe i skalowanie w systemie aktorowym
     <UL>
         <li>Wyskalować katalog produktów za pomocą mechanizmu <a href="https://doc.akka.io/docs/akka/current/scala/routing.html">routingu</a></li>
+        <li>Proszę skorzystać z dostarczonej implementacji Katalogu z <A HREF=https://github.com/agh-reactive/reactive-lab5>poprzednich zajęć</A>.
         <LI>Stworzyć API (REST) udostępniające przeszukiwanie katalogu zwracające wyniki jako JSON</LI>
         <li>Przeprowadzić testy obciążeniowe API wybranym narzędziem (w przykładzie z laboratoriów znajdziemy przykład testów w Gatlingu), krótko uzasadnić wybór narzędzia do testów</li>
         <li>Oszacować liczbę użytkowników sklepu jaką możemy obsłużyć. Podać przyjęte założenia.
@@ -99,6 +100,8 @@ Wskazówka: Jeśli chcemy zobaczyć jak takie DSL zostało zbudowane i jakie mec
 <P>
 <HR>
 <I>Bartosz Baliś, balis at agh edu pl</I>
+<BR>
+<I>Krzysztof Borowski
 <BR>
 <I>Maciej Malawski, malawski at agh edu pl</I>
 <BR>
