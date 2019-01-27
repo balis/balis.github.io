@@ -26,9 +26,26 @@ Programming Principles in Scala </a>
 <P>
 Środowisko potrzebne do wykonywania ćwiczeń:
 <UL>
-  <LI>JDK 1.8
-  <LI><A HREF=http://www.scala-sbt.org>sbt 1.x</A>
-  <LI><A HREF="http://scala-ide.org">Scala IDE for Eclipse</A>. 
+    <LI>JDK 1.8</LI>
+    <LI><A HREF=http://www.scala-sbt.org>sbt 1.x</A></LI>
+    <LI>
+        <A HREF="https://www.scala-lang.org/download/">IntelliJ IDEA (2. krok)</A>.
+        <UL>
+            <LI>
+                Wystarczy edycja Community, ale studenci w ramach zajęć mogą korzystać ze specjalnej
+                <A HREF="https://www.jetbrains.com/student/">licencji studenckiej</A>, która obejmuje wersję Ultimate
+            </LI>
+            <LI><A HREF="https://www.jetbrains.com/idea/download/">Link bezpośredni do pobierania IntelliJ IDEA</A></LI>
+            <LI>
+                <A HREF="https://docs.scala-lang.org/getting-started-intellij-track/building-a-scala-project-with-intellij-and-sbt.html">Podstawy pracy nad projektami Scala w IntelliJ IDEA</A>
+            </LI>
+            <LI>Projekty korzystające z SBT wystarczy "otworzyć", nie trzeba ich "importować".</LI>
+            <LI>
+                Po pierwszym otworzeniu projektu w IntelliJ na pytanie czy zaimportować zmiany w projekcie czy włączyć
+                autoimportowanie, warto wybrać opcję automatycznego importu zmian.
+            </LI>
+        </UL>
+    </LI>
 </UL>
 
 <H3>Ćwiczenie</H3>
@@ -47,16 +64,10 @@ Pobranie źródeł potrzebnych do wykonania ćwiczenia:
  </pre>
 </p>
 
-<p>
- Wygenerowanie projektu Eclipse:
- <pre>
- > echo 'addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "5.2.4")' >> project/plugins.sbt
- > sbt eclipse
- </pre>
-</p>
-
 <P>
-Tak przygotowany projekt prosze zaimportować do Scala IDE. 
+    Proszę otworzyć projekt przy pomocy IDE i uruchomić go korzystając z opcji "Run...". Podczas pierwszego
+    otwarcia projektu pojawi się dialog, w którym należy wybrać JRE i wskazać używane SBT (zainstalowane ręcznie, bądź
+    dołączone do IntelliJ).
 </P>
 <H3>Zadanie</H3>
 Proszę uruchomić i przeanalizować przykład <A HREF="http://developer.lightbend.com/guides/akka-quickstart-scala/">Akka quickstart guide</A>  
@@ -100,7 +111,9 @@ src/main/scala. <a href=aktorzy_konfig.html> Wymagana konfiguracja.
 <I>Katarzyna Rycerz, kzajac at agh edu pl</I>
 <BR>
 <I>Krzysztof Borowski</I>
-</BR>
+<BR>
+<I>Maciej Pawlik</I>
+<BR>
 
 <P> <P>
 
