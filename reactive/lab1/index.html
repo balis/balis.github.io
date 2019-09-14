@@ -17,18 +17,48 @@
 <hr>
 
 <H3>Wprowadzenie do języka Scala oraz do Akka Actors</H3>
-<p> 
+<p>
 
 Strona domowa:  <A HREF="http://www.scala-lang.org">http://www.scala-lang.org</A>
 <p>
- <a href=https://www.coursera.org/course/progfun> Coursera Functional 
+ <a href=https://www.coursera.org/course/progfun> Coursera Functional
 Programming Principles in Scala </a>
 <P>
 Środowisko potrzebne do wykonywania ćwiczeń:
 <UL>
-  <LI>JDK 1.8
-  <LI><A HREF=http://www.scala-sbt.org>sbt 1.x</A>
-  <LI><A HREF="http://scala-ide.org">Scala IDE for Eclipse</A>. 
+    <LI>JDK 1.8</LI>
+    <LI><A HREF=http://www.scala-sbt.org>sbt 1.x</A></LI>
+    <LI>
+        <A HREF="https://www.scala-lang.org/download/">IntelliJ IDEA (2. krok)</A>.
+        <UL>
+            <LI>
+                IntelliJ IDEA posiada wsparcie dla Scali w postaci pluginu, podczas instalacji należy w kroku "Featured
+                plugins" wybrać opcję "Scala".
+            </LI>
+            <LI>
+                Wystarczy edycja Community, ale studenci w ramach zajęć mogą korzystać ze specjalnej
+                <A HREF="https://www.jetbrains.com/student/">licencji studenckiej</A>, która obejmuje wersję Ultimate.
+                Podczas rejestracji należy skorzystać z adresu email znajdującego się w domenie .edu.pl.
+            </LI>
+            <LI><A HREF="https://www.jetbrains.com/idea/download/">Link bezpośredni do pobierania IntelliJ IDEA</A></LI>
+            <LI>
+                <A HREF="https://docs.scala-lang.org/getting-started-intellij-track/building-a-scala-project-with-intellij-and-sbt.html">Podstawy pracy nad projektami Scala w IntelliJ IDEA</A>
+            </LI>
+            <LI>Projekty korzystające z SBT wystarczy "otworzyć", nie trzeba ich "importować".</LI>
+            <LI>
+                Podczas zajęć korzystamy z projektów typu "Scala SBT", co pozwala zachować przenośność w przeciwieństwie
+                do projektów zarządzanych jako zwykłe projekty Scala w IntelliJ.
+            </LI>
+            <LI>
+                Po pierwszym otworzeniu projektu w IntelliJ, na pytanie czy zaimportować zmiany w projekcie czy włączyć
+                autoimportowanie, warto wybrać opcję automatycznego importu zmian.
+            </LI>
+            <LI>
+                Niektóre opcje i funkcje IDE będą dostępne dopiero po zaimportowaniu zależności projektu i
+                zakończeniu skanowania środowiska.
+            </LI>
+        </UL>
+    </LI>
 </UL>
 
 <H3>Ćwiczenie</H3>
@@ -47,38 +77,33 @@ Pobranie źródeł potrzebnych do wykonania ćwiczenia:
  </pre>
 </p>
 
-<p>
- Wygenerowanie projektu Eclipse:
- <pre>
- > echo 'addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "5.2.4")' >> project/plugins.sbt
- > sbt eclipse
- </pre>
-</p>
-
 <P>
-Tak przygotowany projekt prosze zaimportować do Scala IDE. 
+    Proszę otworzyć projekt przy pomocy IDE i uruchomić go korzystając ze zdefiniowanego taska SBT (opcja "Run..." i
+    "edit configurations"), lub przy pomocy SBT Shell. Podczas pierwszego
+    otwarcia projektu pojawi się dialog, w którym należy wybrać JRE i wskazać używane SBT (zainstalowane ręcznie, bądź
+    dołączone do IntelliJ).
 </P>
 <H3>Zadanie</H3>
-Proszę uruchomić i przeanalizować przykład <A HREF="http://developer.lightbend.com/guides/akka-quickstart-scala/">Akka quickstart guide</A>  
+Proszę uruchomić i przeanalizować przykład <A HREF="http://developer.lightbend.com/guides/akka-quickstart-scala/">Akka quickstart guide</A>
  <!--
 <H3>Zadanie</H3>
-Wykonaj tutorial <A HREF="http://www.typesafe.com/activator/template/hello-akka">Hello Akka</A> 
-wykorzystujac Lightbend Activator. 
+Wykonaj tutorial <A HREF="http://www.typesafe.com/activator/template/hello-akka">Hello Akka</A>
+wykorzystujac Lightbend Activator.
 
 <ul>
-<li> Pobrać 
-<A HREF=reactive-scala1.zip>projekt</A> eclipse potrzebny do wykonania 
+<li> Pobrać
+<A HREF=reactive-scala1.zip>projekt</A> eclipse potrzebny do wykonania
 ćwiczenia.
-Rozpakować i otworzyć go w Scala IDE 
-(File-&gt;Import-general-&gt;Existing Project into 
+Rozpakować i otworzyć go w Scala IDE
+(File-&gt;Import-general-&gt;Existing Project into
 Workspace)
-<li> Wykonać zadania w arkuszach od tutorial.cs  do tutorial4.cs. Są to 
-interaktywne 
-arkusze Scali czyli <a 
+<li> Wykonać zadania w arkuszach od tutorial.cs  do tutorial4.cs. Są to
+interaktywne
+arkusze Scali czyli <a
 href="https://github.com/scala-ide/scala-worksheet/wiki/Getting-Started">
 Scala Worksheet </a>
 <li> Zapoznać się i  uruchomić przykłady aktorów znajdujących się w
-src/main/scala. <a href=aktorzy_konfig.html> Wymagana konfiguracja. 
+src/main/scala. <a href=aktorzy_konfig.html> Wymagana konfiguracja.
 </a>
 </ul>
 -->
@@ -100,7 +125,9 @@ src/main/scala. <a href=aktorzy_konfig.html> Wymagana konfiguracja.
 <I>Katarzyna Rycerz, kzajac at agh edu pl</I>
 <BR>
 <I>Krzysztof Borowski</I>
-</BR>
+<BR>
+<I>Maciej Pawlik</I>
+<BR>
 
 <P> <P>
 
