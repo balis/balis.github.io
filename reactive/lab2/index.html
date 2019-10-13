@@ -1,159 +1,163 @@
-<HTML>
-<HEAD>
-<META http-equiv="content-type" content="text/html; charset=iso-8859-2">
-<TITLE>Scala</TITLE>
-<link rel="stylesheet" type="text/css" href="../style.css">
-</HEAD>
-<BODY>
-<TABLE WIDTH="80%" HEIGHT="90%" BORDER="0" ALIGN=CENTER>
-<TR>
-<TD ALIGN=CENTER>
-<DIV ALIGN=left>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=iso-8859-2" />
+  <title>Scala</title>
+  <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body>
+<table WIDTH="80%" HEIGHT="90%" BORDER="0" ALIGN=CENTER>
+<tr>
+<td ALIGN=CENTER>
+<div ALIGN=left>
 <hr>
-<H2>Programowanie reaktywne w jezyku Scala</H2>
+<h2>Programowanie reaktywne w jezyku Scala</h2>
 <hr>
 
-<H3>Projektowanie systemu aktorĂłw</H3>
+<h3>Projektowanie systemu aktorów</h3>
 
-<H3>PrzykĹady</H3>
+<h3>Przykłady</h3>
 <ul>
-<li> 
-<pre>
-  git clone https://github.com/balis/reactive-lab2
-</pre>
-<P>
-  Uruchomienie w konsoli:
-</P>
-<pre>
-  cd reactive-lab2
-  sbt "run-main reactive2.BankApp"
-  sbt "run-main reactive2.ToggleApp"
-</pre>
+  <li>
+    <pre>
+git clone https://github.com/balis/reactive-lab2
+    </pre>
+    <p>
+      Uruchomienie w konsoli:
+    </p>
+    <pre>
+cd reactive-lab2
+sbt "runMain reactive2.BankApp"
+sbt "runMain reactive2.ToggleApp"
+    </pre>
 
-<P>
-    Uruchomienie w IntelliJ:
-</P>
-Po otwarciu projektu wybieramy "sbt shell" na dolnej belce i po uruchomieniu Ĺrodowiska wpisujemy:
-<pre>
-sbt "run-main reactive2.BankApp"
-sbt "run-main reactive2.ToggleApp"
-</pre>
+    <p>
+      Uruchomienie w IntelliJ:
+    </p>
+    Po otwarciu projektu wybieramy "sbt shell" na dolnej belce i po uruchomieniu środowiska wpisujemy:
+    <pre>
+sbt "runMain reactive2.BankApp"
+sbt "runMain reactive2.ToggleApp"
+    </pre>
+    Ewentualnie sposob prostszy: klikamy prawym przyciskiem myszy na
+    <pre>object BankApp</pre>
+    i wybieramy
+    <pre>Run: BankApp</pre>
 
+    <p></p>
+    Konfiguracja logowania znajduje się w pliku
+    <a href="https://github.com/balis/reactive-lab2/blob/master/src/main/resources/application.conf">src/main/resources/application.conf</a>
 
-<p>
-Konfiguracja logowania znajduje siÄ w pliku <A HREF="https://github.com/balis/reactive-lab2/blob/master/src/main/resources/application.conf"><TT>src/main/resources/application.conf</TT></A>
+    </p>
+  </li>
 
-</p>
+  <li>
+    Przykład <a href=http://sdanzig.blogspot.com/2013/06/buddychat-simple-example-of-akka-actors.html>BuddyChat</a>
+  </li>
+  Zaktualizowana wersja znajduje się tutaj: <a href="https://github.com/agh-reactive/buddychat">https://github.com/agh-reactive/buddychat</a>
+  <p></p>
+  Uruchomienie przykładu:
 
-<!--
-PobraĂâĄ
-<A HREF=reactive-scala2.zip>projekt</A> eclipse, rozpakowaĂâĄ go i otworzyĂâĄ 
-w Scala IDE
-(File-&gt;Import-general-&gt;Existing Project into
-Workspace)
-  -->
-  
-  <LI>PrzykĹad <A HREF=http://sdanzig.blogspot.com/2013/06/buddychat-simple-example-of-akka-actors.html>BuddyChat</A>
-    <LI>Zaktualizowana wersja znajduje siÄ tutaj: https://github.com/agh-reactive/buddychat
-    <P>
-  Uruchomienie przykĹadu:
-
-  <PRE>
-  $ git clone https://github.com/agh-reactive/buddychat.git
-  $ cd buddychat
-  $ sbt run
-  </PRE>
-</UL>
-
-
-<H3>Maszyna stanĂłw</H3>
-<UL>
-    <LI>Notacja
-    <P><IMG SRC="statechart-notation.png" width="600">
-    <UL>
-      <LI>Event1, Event2 -- kaĹźde ze zdarzeĹ moĹźe inicjowaÄ zmianÄ stanu
-      <LI>[guard] -- warunek logiczny, ktĂłry dodatkowo musi byÄ speĹniony, Ĺźeby doszĹo do zmiany stanu
-     </UL>
-     <LI><A HREF=http://doc.akka.io/docs/akka/current/scala/fsm.html>Akka FSM</A>
+  <pre>
+git clone https://github.com/agh-reactive/buddychat.git
+cd buddychat
+sbt run
+  </pre>
 </ul>
 
 
-<H3>Zadanie -- e-Sklep</H3>
-Zadanie polega na zaimplementowaniu fragmentu systemu e-Sklepu zĹoĹźonego z nastÄpujÄcych aktorĂłw: 
-<OL>
-<LI><B>Cart</B>: aktor reprezentujÄcy koszyk na zakupy, ktĂłry ma dziaĹaÄ wedĹug nastÄpujÄcej maszyny stanĂłw:
-<P>
-<IMG SRC="cart.png" width="800">
-<LI><B>Checkout</B>: aktor, ktĂłry reprezentuje operacjÄ finalizacji zakupu, dziaĹajÄcy wg nastÄpujÄcej maszyny stanĂłw:
-<P>
-<IMG SRC="checkout.png" width="800">
-</OL>
+<h3>Maszyna stanów</h3>
+<ul>
+  <li>Notacja
+  <p><IMG SRC="statechart-notation.png" width="600">
+  <ul>
+      <li>Event1, Event2 -- każde ze zdarzeń może inicjować zmianę stanu</li>
+      <li>[guard] -- warunek logiczny, który dodatkowo musi być spełniony, żeby doszło do zmiany stanu</li>
+   </ul>
+  </li>
+  <li><A HREF=http://doc.akka.io/docs/akka/current/scala/fsm.html>Akka FSM</A></li>
+</ul>
 
+
+<h3>Zadanie -- e-Sklep</h3>
+Zadanie polega na zaimplementowaniu fragmentu systemu e-Sklepu złożonego z następujących aktorów:
+<ol>
+  <li><B>Cart</B>: aktor reprezentujący koszyk na zakupy, który ma działać według następującej maszyny stanów:
+    <p></p>
+    <img SRC="cart.png" width="800"/>
+  </li>
+  <li>
+    <B>Checkout</B>: aktor, który reprezentuje operację finalizacji zakupu, działający wg następującej maszyny stanów:
+  </li>
+    <p></p>
+  <img SRC="checkout.png" width="800" />
+</ol>
 
 Zadania do wykonania:
-<OL>
-<LI>(20 pkt) ProszÄ zaimplementowaÄ aktorĂłw <B>Cart</B> i <B>Checkout</B>
+<ol>
 
-<UL>
-<LI>ProszÄ zaprojektowaÄ wiadomoĹci jako Case Class'y. ProszÄ pamiÄtaÄ o rozrĂłĹźnieniu na wiadomoĹci-komendy 
-  (np. <TT>AddItem(...)</TT>) i wiadomoĹci-zdarzenia (np. <TT>ItemAdded(...)</TT>) (ewentualnie rĂłwnieĹź wiadomoĹci-dokumenty). 
-  WiÄcej <A HREF="http://www.informit.com/articles/article.aspx?p=2428369">tutaj</A>.
-  <PRE>
-    case object Cart {
-      sealed trait Command
-      case class AddItem(id: String) extends Command
-      ...
-      sealed trait Event
-      case class ItemAdded(id: String) extends Event
-    }
-    </PRE>
-<LI>Do sterowania maszynÄ stanĂłw proszÄ wykorzystaÄ standardowy mechanizm <TT>become</TT>.
-<LI>ProszÄ stworzyÄ aplikacjÄ, ktĂłra wykonuje prosty test stworzonych aktorĂłw. 
-<LI>Do implementacji limitĂłw czasowych proszÄ wykorzystaÄ mechanizm 
-  <A HREF=https://doc.akka.io/docs/akka/current/scala/actors.html#actors-timers>timerĂłw</A> (do przeczytania rĂłwnieĹź rozdziaĹ o 
-  <A HREF=http://doc.akka.io/docs/akka/current/scala/scheduler.html>Schedulerach</A>). Aktor powinien zaplanowaÄ wysĹanie 
-  wiadomoĹci do samego siebie oznaczajÄcej upĹyniecie okreĹlonego terminu:
-<UL>
-<LI>CartTimer: czas po jakim koszyk jest automatycznie oprĂłĹźniany.
-<LI>CheckoutTimer: czas po jakim rozpoczÄta operacja finalizacji zakupu jest anulowana. 
-<LI>PaymentTimer: maksymalny czas oczekiwania na zrealizowanie pĹatnoĹci, po ktĂłrym operacja zakupu jest anulowana.
+  <li>(20 pkt) Proszę zaimplementować aktorów <B>CartActor</B> i <B>Checkout</B>
+    <ul>
+      <li>Proszę zaprojektować wiadomości jako Case Class'y. Proszę pamiętać o rozróżnieniu na wiadomości-komendy
+        (np. <TT>AddItem(...)</TT>) i wiadomości-zdarzenia (np. <TT>ItemAdded(...)</TT>) (ewentualnie również wiadomości-dokumenty).
+        Więcej <A HREF="http://www.informit.com/articles/article.aspx?p=2428369">tutaj</A>.
+        <pre>
+          case object Cart {
+            sealed trait Command
+            case class AddItem(id: String) extends Command
+            ...
+            sealed trait Event
+            case class ItemAdded(id: String) extends Event
+          }
+        </pre>
+      </li>
+      <li>Do sterowania maszyną stanów proszę wykorzystać standardowy mechanizm <TT>become</TT>.</li>
+      <li>Proszę stworzyć aplikację, która wykonuje prosty test stworzonych aktorów.</li>
+      <li>Do implementacji limitów czasowych proszę wykorzystać mechanizm
+        <A HREF=https://doc.akka.io/docs/akka/current/scala/actors.html#actors-timers>timerów</A> (do przeczytania również rozdział o
+        <A HREF=http://doc.akka.io/docs/akka/current/scala/scheduler.html>Schedulerach</A>). Aktor powinien zaplanować wysłanie
+        wiadomości do samego siebie oznaczającej upłyniecie określonego terminu:
+        <ul>
+          <li>CartTimer: czas po jakim koszyk jest automatycznie opróżniany.</li>
+          <li>CheckoutTimer: czas po jakim rozpoczęta operacja finalizacji zakupu jest anulowana.</li>
+          <li>PaymentTimer: maksymalny czas oczekiwania na zrealizowanie płatności, po którym operacja zakupu jest anulowana.</li>
+        </ul>
+      </li>
+    </ul>
+  <p></p>
+  </li>
+
+  <li>(10 pkt) Proszę wykorzystać <A HREF=http://doc.akka.io/docs/akka/current/scala/fsm.html>Akka FSM</A> do implementacji maszyny stanów w Aktorze <B>CartActor</B>.
+
+  <li>(10 pkt) Proszę wykorzystać <A HREF=http://doc.akka.io/docs/akka/current/scala/fsm.html>Akka FSM</A> do implementacji maszyny stanów w Aktorze <B>Checkout</B>.
+
+</ol>
+
+  <p>
+    <b>
+      Do implementacji powyższych zadań można wykorzystać przygotowany szablon z początkowymi testami znajdujący się tutaj:
+      <a href="https://github.com/agh-reactive/reactive-scala-labs-templates">https://github.com/agh-reactive/reactive-scala-labs-templates</a>
+    </b>
+  </p>
 
 
-</UL>
-</UL>
+  <p></p>
+  <p></p>
+  <hr>
+  <i>Bartosz Baliś, balis at agh edu pl</i>
+  <br>
+  <i>Maciej Malawski, malawski at agh edu pl</i>
+  <br>
+  <i>Katarzyna Rycerz, kzajac at agh edu pl</i>
+  <br>
+  <i>Krzysztof Borowski, kborowski at agh edu pl</i>
+  <br>
+  <p></p>
 
-<P>
-
-<LI>(10 pkt) ProszÄ wykorzystaÄ <A HREF=http://doc.akka.io/docs/akka/current/scala/fsm.html>Akka FSM</A> do implementacji maszyny stanĂłw w Aktorze <B>Cart</B>.
-
-<LI>(10 pkt) ProszÄ wykorzystaÄ <A HREF=http://doc.akka.io/docs/akka/current/scala/fsm.html>Akka FSM</A> do implementacji maszyny stanĂłw w Aktorze <B>Checkout</B>.
-
-</OL>
-
-
-  
-</a>
-</ul>
-<!--
-<H3>Bibliografia</H3>
-<OL>
-</OL>
-!-->
-<P>
-<P>
-<HR>
-<I>Bartosz BaliĹ, balis at agh edu pl</I>
-<BR>
-<I>Maciej Malawski, malawski at agh edu pl</I>
-<BR>
-<I>Katarzyna Rycerz, kzajac at agh edu pl</I>
-<BR>
-<I>Krzysztof Borowski, kborowski at agh edu pl</I>
-<BR>
-<P> <P>
-</DIV>
-</TR>
-</TD>
-</TABLE>
-</BODY>
-</HTML>
+</div>
+</td>
+</tr>
+</table>
+</body>
+</html>
