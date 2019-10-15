@@ -1,98 +1,95 @@
-<HTML>
-<HEAD>
-<META http-equiv="content-type" content="text/html; charset=utf-8">
-<TITLE>Scala</TITLE>
-<link rel="stylesheet" type="text/css" href="../style.css">
-</HEAD>
-<BODY>
-<TABLE WIDTH="80%" HEIGHT="90%" BORDER="0" ALIGN=CENTER>
-<TR>
-<TD ALIGN=CENTER>
-<DIV ALIGN=left>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>Scala</title>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body>
+<table width="80%" height="90%" border="0" ALIGN=CENTER>
+<tr>
+<td align="CENTER">
+<div align="LEFT">
 
 <hr>
-    <H2>Programowanie reaktywne w jezyku Scala</H2>
+    <h2>Programowanie reaktywne w jezyku Scala</h2>
 <hr>
-<p>
-<H3>Uzycie akka testkit w ScalaTest </H3>
+    <p></p>
+<h3>Uzycie akka testkit w ScalaTest </h3>
 <ul>
-<li>Jako narzędzia do testowania używamy <a href=http://www.scalatest.org/>ScalaTest</a>
-<li>ScalaTest oferuje różne <a href="http://www.scalatest.org/user_guide/selecting_a_style">style testowania</a>
-czyli sposoby deklarowania testów. W przykładzie 
-wykorzystano naturalny styl <a href=http://doc.scalatest.org/3.0.0/#org.scalatest.WordSpec>WordSpec</a> (trait <i>WordSpecLike</i>)
-<li> Trait <a href="http://doc.scalatest.org/3.0.0/org/scalatest/BeforeAndAfterAll.html"><i>BeforeAndAfterAll</i></a> zapewnia
-funkcje do wykonania przed i po zestawie testów. W przykładzie pokazano, jak wykorzystać funkcje <i>afterAll</i> do zamknięcia
-systemu aktorów po zakonczeniu testów.
+    <li>Jako narzędzia do testowania używamy <a href=http://www.scalatest.org/>ScalaTest</a></li>
+    <li>
+        ScalaTest oferuje różne <a href="http://www.scalatest.org/user_guide/selecting_a_style">style testowania</a> 
+        czyli sposoby deklarowania testów. W przykładzie wykorzystano naturalny styl 
+        <a href=http://doc.scalatest.org/3.0.0/#org.scalatest.WordSpec>WordSpec</a> (trait <i>WordSpecLike</i>)
+    </li>
+    <li> 
+        Trait <a href="http://doc.scalatest.org/3.0.0/org/scalatest/BeforeAndAfterAll.html"><i>BeforeAndAfterAll</i></a> zapewnia 
+        funkcje do wykonania przed i po zestawie testów. W przykładzie pokazano, jak wykorzystać funkcje <i>afterAll</i> do zamknięcia 
+        systemu aktorów po zakonczeniu testów.
+    </li>
 </ul>
     
 <h3>Testowanie aktorów</h3>
 
 Do testowania aktorów wykorzystujemy moduł <a href=http://doc.akka.io/docs/akka/current/scala/testing.html>akka-testkit</a>. W przykładzie rozszerzana jest klasa TestKit inicjalizowana systemem aktorów do testowania. 
  <ol>
-     <li> <b>Testowanie aktora w jednym wątku</b>. Testowanie stanu wewnętrznego aktora może odbywać się przy pomocy <i> TestActorRef</i>, 
-        wtedy aktor jest wywoływany w tym samym
-        wątku, co cały test, ale dzięki temu możemy bezpiecznie przetestować zmiany jego wewnętrznego stanu. <a href="https://github.com/agh-reactive/reactive-lab3/blob/master/src/test/scala/myActorTest/CounterSpec.scala">Przykład</a> testowania
-        wewnętrznego stanu licznika.
+     <li>
+         <b>Testowanie aktora w jednym wątku</b>. Testowanie stanu wewnętrznego aktora może odbywać się przy pomocy <i> TestActorRef</i>,
+         wtedy aktor jest wywoływany w tym samym wątku, co cały test, ale dzięki temu możemy bezpiecznie przetestować zmiany jego wewnętrznego stanu.
+         <a href="https://github.com/agh-reactive/reactive-lab3/blob/master/src/test/scala/myActorTest/CounterSpec.scala">Przykład</a> testowania wewnętrznego stanu licznika.
+     </li>
      <li> <b> Wielowątkowe testowanie poprzez wiadomości </b>.
          <ul>
-         <li>Akka TestKit tworzy wewnętrznego testującego aktora (o nawie testActor), który służy do komunikacji
-            z testowanymi aktorami
-         <li>Odpowiedzi od testowanych aktorów są kolejkowane przez testującego aktora
-            i mogą być badane przy użyciu <a href="https://doc.akka.io/docs/akka/current/scala/testing.html#built-in-assertions">asercji</a> 
-                takich jak <i>expectMsg</i>. 
-             <li> Jeśli aktor wysyła wiadomości do więcej niż jednego aktora możemy przetestować to używając mechanizmu
+             <li>Akka TestKit tworzy wewnętrznego testującego aktora (o nawie testActor), który służy do komunikacji z testowanymi aktorami </li>
+             <li>
+                 Odpowiedzi od testowanych aktorów są kolejkowane przez testującego aktora
+                 i mogą być badane przy użyciu <a href="https://doc.akka.io/docs/akka/current/scala/testing.html#built-in-assertions">asercji</a> takich jak <i>expectMsg</i>.
+             </li>
+             <li>
+                 Jeśli aktor wysyła wiadomości do więcej niż jednego aktora możemy przetestować to używając mechanizmu
                  <a href="https://doc.akka.io/docs/akka/current/scala/testing.html#using-multiple-probe-actors">TestProbe</a>.
-         <li> Uzycie traitu <i>ImplicitSender</i> powoduje, że aktor testujący jest domyślnie używany jako ten, który wysyła wiadomości 
-                do testowanych aktorów.
-         <li><a href="https://github.com/agh-reactive/reactive-lab3/blob/master/src/test/scala/myActorTest/ToggleSpec.scala"> Przykład</a> testuje aktora Toggle z poprzedniego przykladu z laboratorium 2</li>
-         <li> W zestawie zawarte są trzy testy w stylu <i>WordSpec</i></li>
+             </li>
+             <li>
+                 Uzycie traitu <i>ImplicitSender</i> powoduje, że aktor testujący jest domyślnie używany jako ten, który wysyła wiadomości do testowanych aktorów.
+             </li>
+             <li>
+                 <a href="https://github.com/agh-reactive/reactive-lab3/blob/master/src/test/scala/myActorTest/ToggleSpec.scala"> Przykład</a> testuje aktora Toggle z poprzedniego przykladu z laboratorium 2
+             </li>
+             <li> W zestawie zawarte są trzy testy w stylu <i>WordSpec</i></li>
          </ul>
+     </li>
+
  </ol>
+<p></p>
 
-  
-<p>
-
-
-    
-
-
-
-
-
-
-<h3> Jak uruchomić testy ?</h3>
+<h3>Jak uruchomić testy?</h3>
 <ul>
-<li> Pobrać projekt potrzebny do wykonania
-ćwiczenia. 
+    <li> Pobrać projekt potrzebny do wykonania ćwiczenia. </li>
 <pre>
   git clone https://github.com/agh-reactive/reactive-lab3
 </pre>
-<li> Przykłady testów znajdują sie w katalogu src/test/scala/myActorTest/</li>
-  <li> uruchomienie programów znajdujacego sie w src/main/scala: <pre>sbt run</pre> 
-  <li> uruchamienie testowanie za pomocą ScalaTest: <pre>sbt test</pre>   </li>
- 
-<li>
-    Dla korzystających z IDE:
-    <A HREF="https://docs.scala-lang.org/getting-started-intellij-track/testing-scala-in-intellij-with-scalatest.html">
-        Opis uruchamiania testów w IntelliJ IDEA</A>
-</li>
-
-
+    <li> Przykłady testów znajdują sie w katalogu src/test/scala/myActorTest/ </li>
+    <li> uruchomienie programów znajdujacego sie w src/main/scala: <pre>sbt run</pre> </li>
+    <li> uruchamienie testowanie za pomocą ScalaTest: <pre>sbt test</pre>   </li>
+    <li>
+        Dla korzystających z IDE:
+        <a href="https://docs.scala-lang.org/getting-started-intellij-track/testing-scala-in-intellij-with-scalatest.html">
+            Opis uruchamiania testów w IntelliJ IDEA</a>
+    </li>
 </ul>
 
-
-
-<H3>Zadanie</H3>
-<OL>
-    <li>(20 pkt) 
+<h3>Zadanie</h3>
+<ol>
+    <li>(20 pkt) </li>
     <ul>
-    <LI>Prosze dodać do systemu aukcyjnego aktorow <B>OrderManager</B> i <B>Payment</B>, a następnie utworzyć system aktorów 
-        działający zgodnie z diagramem:
-        <p>
-        <img src=eShop_system.png width="800"> 
-        <p>Do wykorzystania wzorcowy interfejs aktora <B>OrderManager</B> (obiekty rozszerzające <TT>State</TT> 
-            przydadzą się do implementacji opartej na FSM): 
-         <pre>
+        <li>Prosze dodać do systemu aukcyjnego aktorow <b>OrderManager</b> i <b>Payment</b>, a następnie utworzyć system aktorów
+            działający zgodnie z diagramem:
+            <p>
+            <img src=eShop_system.png width="800">
+            <p>Do wykorzystania wzorcowy interfejs aktora <b>OrderManager</b> (obiekty rozszerzające <tt>State</tt>
+                przydadzą się do implementacji opartej na FSM):
+            <pre>
 
 object OrderManager {
   sealed trait State
@@ -121,53 +118,49 @@ object OrderManager {
   case class InPaymentData(paymentRef: ActorRef)                               extends Data
   case class InPaymentDataWithSender(paymentRef: ActorRef, sender: ActorRef)   extends Data
 }
-
-</pre>
-    
-     <li> Napisać testy dla aktora Cart. Testy powinny zawierać:
-         <ul>
-             <li> testowanie synchroniczne - test zmiany zawartości koszyka przy użyciu 
+            </pre>
+        </li>
+        <li> Napisać testy dla aktora CartActor. Testy powinny zawierać:
+            <ul>
+                <li> testowanie synchroniczne - test zmiany zawartości koszyka przy użyciu
                  <a href="https://doc.akka.io/docs/akka/current/scala/testing.html#synchronous-testing-testactorref"><i>TestActorRef</i></a>
-                 <li> testowanie asynchroniczne za pomocą  aktora testActor i asercji typu  <i>expectMsg</i>. 
-         </ul> 
-         alternatywnie:
-         <ul>
-             <li> Testy za pomocą <a href="https://doc.akka.io/docs/akka/current/scala/testing.html#testing-finite-state-machines"><i>TestFSMRef</i></a>
-         </ul>
-    <P>
-        </ul>
-    <LI>(10 pkt) Wykorzystując Akka TestKit proszę napisac testy dla aktora <B>Checkout</B>
-    zawierające reakcję na  komunikaty wg diagramu poniżej.
-    Zestaw powinien zawierać test relacji <a href="https://doc.akka.io/docs/akka/current/scala/testing.html#testing-parent-child-relationships"> 
-        rodzic-dziecko</a> w szczególności sprawdzenie, czy <B>Cart</B> dostaje komunikat </i>CheckoutClosed</i> od
-            testowanego aktora <B>CheckOut</B> (patrz diagram)
-        <p>
-        <img src="checkout_test.png" width="500">
-<LI>(10 pkt) Proszę przetestować działanie systemu używając <A HREF="https://gist.github.com/liosedhel/b2ed083d6f48af98dcd3da65fd1bf4ba">tego testu</A>.
+                </li>
+                <li> testowanie asynchroniczne za pomocą  aktora testActor i asercji typu  <i>expectMsg</i>.</li>
+            </ul>
+            alternatywnie:
+            <ul>
+                <li> Testy za pomocą <a href="https://doc.akka.io/docs/akka/current/scala/testing.html#testing-finite-state-machines"><i>TestFSMRef</i></a></li>
+            </ul>
+            <p></p>
+        </li>
     </ul>
-    <P>
-    
-</OL>
-<!--
-<H3>Bibliografia</H3>
-<OL>
-</OL>
-!-->
-<P>
-<P>
-<HR>
-<I>Bartosz Baliś, balis at agh edu pl</I>
-<BR>
-<I>Maciej Malawski, malawski at agh edu pl</I>
-<BR>
-<I>Katarzyna Rycerz, kzajac at agh edu pl</I>
-<BR>
-<I>Krzysztof Borowski, kborowski at agh edu pl</I>
-<BR>
-<P> <P>
-</DIV>
-</TR>
-</TD>
-</TABLE>
-</BODY>
-</HTML>
+    <li>
+        (10 pkt) Wykorzystując Akka TestKit proszę napisac testy dla aktora <b>Checkout</b></li> zawierające reakcję na  komunikaty wg diagramu poniżej.
+        Zestaw powinien zawierać test relacji <a href="https://doc.akka.io/docs/akka/current/scala/testing.html#testing-parent-child-relationships">rodzic-dziecko</a>
+        w szczególności sprawdzenie, czy <b>CartActor</b> dostaje komunikat <i>CheckoutClosed</i> od testowanego aktora <b>CheckOut</b> (patrz diagram)
+        <p></p>
+        <img src="checkout_test.png" width="500">
+    <li>
+        (10 pkt) Proszę przetestować działanie systemu używając testów załączonych w szablonie (`sbt test`).
+    </li>
+    <p></p>
+</ol>
+
+    <p></p>
+    <p></p>
+    <hr>
+    <i>Bartosz Baliś, balis at agh edu pl</i>
+    <br>
+    <i>Maciej Malawski, malawski at agh edu pl</i>
+    <br>
+    <i>Katarzyna Rycerz, kzajac at agh edu pl</i>
+    <br>
+    <i>Krzysztof Borowski, kborowski at agh edu pl</i>
+    <br>
+    <p> </p>
+</div>
+</td>
+</tr>
+</table>
+</body>
+</html>

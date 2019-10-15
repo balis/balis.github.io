@@ -7,10 +7,10 @@
 </head>
 
 <body>
-<table WIDTH="80%" HEIGHT="90%" BORDER="0" ALIGN=CENTER>
+<table width="80%" height="90%" border="0" align=CENTER>
 <tr>
-<td ALIGN=CENTER>
-<div ALIGN=left>
+<td align=CENTER>
+<div align=left>
 <hr>
 <h2>Programowanie reaktywne w jezyku Scala</h2>
 <hr>
@@ -45,7 +45,7 @@ sbt "runMain reactive2.ToggleApp"
     i wybieramy
     <pre>Run: BankApp</pre>
 
-    <p></p>
+    <p>
     Konfiguracja logowania znajduje się w pliku
     <a href="https://github.com/balis/reactive-lab2/blob/master/src/main/resources/application.conf">src/main/resources/application.conf</a>
 
@@ -76,7 +76,7 @@ sbt run
       <li>[guard] -- warunek logiczny, który dodatkowo musi być spełniony, żeby doszło do zmiany stanu</li>
    </ul>
   </li>
-  <li><A HREF=http://doc.akka.io/docs/akka/current/scala/fsm.html>Akka FSM</A></li>
+  <li><a HREF=http://doc.akka.io/docs/akka/current/scala/fsm.html>Akka FSM</A></li>
 </ul>
 
 
@@ -101,7 +101,7 @@ Zadania do wykonania:
     <ul>
       <li>Proszę zaprojektować wiadomości jako Case Class'y. Proszę pamiętać o rozróżnieniu na wiadomości-komendy
         (np. <TT>AddItem(...)</TT>) i wiadomości-zdarzenia (np. <TT>ItemAdded(...)</TT>) (ewentualnie również wiadomości-dokumenty).
-        Więcej <A HREF="http://www.informit.com/articles/article.aspx?p=2428369">tutaj</A>.
+        Więcej <a HREF="http://www.informit.com/articles/article.aspx?p=2428369">tutaj</A>.
         <pre>
           case object Cart {
             sealed trait Command
@@ -112,11 +112,11 @@ Zadania do wykonania:
           }
         </pre>
       </li>
-      <li>Do sterowania maszyną stanów proszę wykorzystać standardowy mechanizm <TT>become</TT>.</li>
+      <li>Do sterowania maszyną stanów proszę wykorzystać standardowy mechanizm <tt>become</tt>.</li>
       <li>Proszę stworzyć aplikację, która wykonuje prosty test stworzonych aktorów.</li>
       <li>Do implementacji limitów czasowych proszę wykorzystać mechanizm
-        <A HREF=https://doc.akka.io/docs/akka/current/scala/actors.html#actors-timers>timerów</A> (do przeczytania również rozdział o
-        <A HREF=http://doc.akka.io/docs/akka/current/scala/scheduler.html>Schedulerach</A>). Aktor powinien zaplanować wysłanie
+        <a HREF=https://doc.akka.io/docs/akka/current/scala/actors.html#actors-timers>timerów</A> (do przeczytania również rozdział o
+        <a HREF=http://doc.akka.io/docs/akka/current/scala/scheduler.html>Schedulerach</A>). Aktor powinien zaplanować wysłanie
         wiadomości do samego siebie oznaczającej upłyniecie określonego terminu:
         <ul>
           <li>CartTimer: czas po jakim koszyk jest automatycznie opróżniany.</li>
@@ -128,17 +128,21 @@ Zadania do wykonania:
   <p></p>
   </li>
 
-  <li>(10 pkt) Proszę wykorzystać <A HREF=http://doc.akka.io/docs/akka/current/scala/fsm.html>Akka FSM</A> do implementacji maszyny stanów w Aktorze <B>CartActor</B>.
+  <li>(10 pkt) Proszę wykorzystać <a HREF=http://doc.akka.io/docs/akka/current/scala/fsm.html>Akka FSM</A> do implementacji maszyny stanów w Aktorze <B>CartActor</B>.
 
-  <li>(10 pkt) Proszę wykorzystać <A HREF=http://doc.akka.io/docs/akka/current/scala/fsm.html>Akka FSM</A> do implementacji maszyny stanów w Aktorze <B>Checkout</B>.
+  <li>(10 pkt) Proszę wykorzystać <a HREF=http://doc.akka.io/docs/akka/current/scala/fsm.html>Akka FSM</A> do implementacji maszyny stanów w Aktorze <B>Checkout</B>.
 
 </ol>
 
   <p>
     <b>
-      Do implementacji powyższych zadań można wykorzystać przygotowany szablon z początkowymi testami znajdujący się tutaj:
+      Do implementacji powyższych zadań proszę wykorzystać przygotowany szablon z początkowymi testami znajdujący się tutaj:
       <a href="https://github.com/agh-reactive/reactive-scala-labs-templates">https://github.com/agh-reactive/reactive-scala-labs-templates</a>
     </b>
+      Testy uruchamiamy komendą: <pre>sbt test</pre>
+      Szablon został stworzony, aby ułatwić implementację zadań domowych i pozwolić na skupienie większej uwagi na implementacji istotnych części zadania.
+      Może się zdarzyć, iż szablon w niktórych miejsach będzie wymagał poprawek. Takie poprawki można zgłaszać jako PR do odpowiedniego repozytorium na githubie - będzie to premiowane punktami za aktywność.
+      Przy odbierze zadań większy nacisk zostanie położony na zrozumienie poszczególnych fragmentów programów i mechanizmów akki.
   </p>
 
 
