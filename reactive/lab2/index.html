@@ -93,7 +93,7 @@ Zadanie polega na zaimplementowaniu fragmentu systemu e-Sklepu złożonego z nas
     <p></p>
   <img SRC="checkout.png" width="800" />
 </ol>
-  <h3> Separacja logiko dziedzinowej</h3>
+  <h3> Separacja logiki dziedzinowej</h3>
 Dobrą praktyką w projektowaniu systemu aktorów jest oddzielenie logiki dziedzinowej od logiki komunikacji. Przykładowo aktor Cart nie powinien implementować jednocześnie stanu koszyka i protokołu komunikacji, bo utrudnia to testowanie samej logiki biznesowej (stanu koszyka) -- można to robić tylko przez asynchroniczny protokół komunikacji. W tym przypadku najlepiej wydzielić klasę Cart reprezentującą obiekt dziedzinowy i aktora CartActor 
   implementującego protokół komunikacji: 
   
