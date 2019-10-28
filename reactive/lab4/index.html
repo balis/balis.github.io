@@ -1,117 +1,79 @@
-<HTML>
-<HEAD>
-<META http-equiv="content-type" content="text/html; charset=utf-8">
-<TITLE>Scala</TITLE>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<title>Scala</title>
 <link rel="stylesheet" type="text/css" href="../style.css">
-</HEAD>
-<BODY>
-<TABLE WIDTH="80%" HEIGHT="90%" BORDER="0" ALIGN=CENTER>
-<TR>
-<TD ALIGN=CENTER>
-<DIV ALIGN=left>
+</head>
+<body>
+<table width="80%" height="90%" border="0" align="center">
+<tr>
+<td align="center">
+<div align="left">
 
 <hr>
-    <H2>Programowanie reaktywne w języku Scala</H2>
+    <h2>Programowanie reaktywne w języku Scala</h2>
 <hr>
 
 <h2>Zarządzanie stanem aktorów</h2>
-
-    <H3>Separacja logiki dziedzinowej</H3>
-    Dobrą praktyką w projektowaniu systemu aktorów jest oddzielenie logiki dziedzinowej od logiki komunikacji. 
-    Przykładowo aktor Cart nie powinien implementować jednocześnie stanu koszyka i protokołu komunikacji, bo 
-    utrudnia to testowanie samej logiki biznesowej (stanu koszyka) -- można to robić tylko przez asynchroniczny
-    protokół komunikacji. W tym przypadku najlepiej wydzielić klasę <TT>Cart</TT> reprezentującą obiekt dziedzinowy
-    i aktora <TT>CartManager</TT> implementującego protokół komunikacji:
     
-<pre>
-  
-  /**
-   * @param id: unique item identifier (java.net.URI)
-   */
-  case class Item(id: URI, name: String, price: BigDecimal, count: Int)
-  case class Cart(items: Map[URI, Item]) {
-    def addItem(it: Item): Cart = {
-        val currentCount = if (items contains it.id) items(it.id).count else 0
-        copy(items = items.updated(it.id, it.copy(count = currentCount + it.count)))
-    }
-    def removeItem(id: Item, cnt: Int) = ???
-  }
-    
-  object Cart { 
-    val empty = Cart(Map.empty)
-  }
-    
-  class CartManager(var shoppingCart: Cart) extends Actor {
-    def this() = this(Cart.empty)
-      
-    def receive = {
-      case AddItem(item, count) => ???
-      case RemoveItem(item, count) => ???
-      ...
-    }
-  }
-
-</pre>
-    
-    <H3>Utrwalanie i odtwarzanie stanu</H3>
+    <h3>Utrwalanie i odtwarzanie stanu</h3>
 <ul>
-<li>W celu utrwalania stanu aktora, używamy wzorca <TT>Event Sourcing</TT> zaimplementowanego w bibliotece <a href="http://doc.akka.io/docs/akka/current/scala/persistence.html">
-Akka persistence</a>.
-<li> Przykładowy projekt używający persystencji Akki
+    <li>
+        W celu utrwalania stanu aktora, używamy wzorca <tt>Event Sourcing</tt> zaimplementowanego w bibliotece <a href="http://doc.akka.io/docs/akka/current/scala/persistence.html"> Akka persistence</a>.
+    </li>
+    <li> Przykładowy projekt używający persystencji Akki
 <pre>
 git clone https://github.com/agh-reactive/reactive-lab4
 </pre>
-</li>
-<li>Proszę sprawdzić zachowanie aktora <tt>PersistentBankAccount</tt> przy kilkukrotnym uruchomieniu projektu. Co się zmienia, gdy wyślemy do niego komunikat <TT>Snap</TT>?
-<li>Projekt wykorzystuje wbudowaną bazę danych LevelDB do zapisu dziennika zdarzeń. Pliki bazy tworzone są w katalogu <TT>target/journal/.</TT> (dla eventów) oraz <tt> target/snapshot/. </tt> (dla snapshotów). 
-<li>Baza używa wbudowanej implementacji w Javie, co skonfigurowane jest w pliku <a href="https://github.com/agh-reactive/reactive-lab4/blob/master/src/main/resources/application.conf"><TT>src/main/resources/application.conf</TT></a>.
-<li>Przykład użycia persystencji dla aktora wykorzystującego <TT>context.become()</TT> zamieszczony jest w pliku: <a href="https://github.com/agh-reactive/reactive-lab4/blob/master/src/main/scala/reactive4/persistence/PersistentToggle.scala">PersistentToggle.scala</a>. 
-<li>Przykład użycia persystencji dla aktora wykorzystującego <TT>FSM</TT> zamieszczony jest w pliku: <a href="https://github.com/agh-reactive/reactive-lab4/blob/master/src/main/scala/reactive4/fsm/PersistentToggleFSM.scala">PersistentToggleFSM.scala</a>. Uwaga: pakiet <tt>akka.persistence.fsm</tt> jest na razie eksperymentalny.
-
+    </li>
+    <li>Proszę sprawdzić zachowanie aktora <tt>PersistentBankAccount</tt> przy kilkukrotnym uruchomieniu projektu. Co się zmienia, gdy wyślemy do niego komunikat <tt>Snap</tt>?</li>
+    <li>Projekt wykorzystuje wbudowaną bazę danych LevelDB do zapisu dziennika zdarzeń. Pliki bazy tworzone są w katalogu <tt>target/journal/.</tt> (dla eventów) oraz <tt> target/snapshot/. </tt> (dla snapshotów).</li>
+    <li>Baza używa wbudowanej implementacji w Javie, co skonfigurowane jest w pliku <a href="https://github.com/agh-reactive/reactive-lab4/blob/master/src/main/resources/application.conf"><tt>src/main/resources/application.conf</tt></a>.</li>
+    <li>Przykład użycia persystencji dla aktora wykorzystującego <tt>context.become()</tt> zamieszczony jest w pliku: <a href="https://github.com/agh-reactive/reactive-lab4/blob/master/src/main/scala/reactive4/persistence/persistenttoggle.scala">PersistentToggle.scala</a>.</li>
+    <li>Przykład użycia persystencji dla aktora wykorzystującego <tt>FSM</tt> zamieszczony jest w pliku: <a href="https://github.com/agh-reactive/reactive-lab4/blob/master/src/main/scala/reactive4/fsm/persistenttogglefsm.scala">PersistentToggleFSM.scala</a>. Uwaga: pakiet <tt>akka.persistence.fsm</tt> jest na razie eksperymentalny.</li>
 </ul>
 
-<H3>Zadanie</H3>
-<OL>
-    <LI>(20 pkt) Separacja logiki dziedzinowej i persystencja koszyka
-    <UL>
-        <LI>Proszę wydzielić osobną klasę <TT>Cart</TT> do implementacji stanu koszyka i aktora <TT>CartManager</TT>, który
-            obsługuje komunikację i przechowuje stan koszyka jako instancję <TT>Cart</TT>. 
-            
-        <li>Proszę zaimplementować persystencję stanu koszyka przy pomocy mechanizmu event sourcingu. Proszę zwrócić uwagę na poprawne 
-            odtwarzanie timerów. 
-    </UL>
-    <P>
-        <LI>(10 pkt) Proszę zaimplementować persystencję stanu aktora <TT>Checkout</TT> i przetestować scenariusz, w którym w trakcie
-            operacji checkout-u aplikacja zostaje przerwana (np. poprzez <TT>system.terminate</TT>). Po ponownym uruchomieniu  
-            stan aplikacji powinien być poprawnie odtworzony (łącznie z timerami). 
-    <P>
-        <LI>(10 pkt) Proszę napisać testy dla klasy <TT>Cart</TT> i aktora <TT>Cart Manager</TT> (modyfikując poprzednie testy). 
+<h3>Zadanie</h3>
+
+    Do implementacji zadań proszę użyć szablonu: <a href="https://github.com/agh-reactive/reactive-scala-labs-templates/tree/lab-4">https://github.com/agh-reactive/reactive-scala-labs-templates/tree/lab-4</a>
+    Jeśli ktoś budował Checkout i CartActor za pomocą FSM to może chcieć wykorzystać mechanizm persystencji <tt>PersistentFSM</tt> w miejsce dostarczonych w szablonie szkieletów.
+    <a href="https://doc.akka.io/docs/akka/current/persistence-fsm.html#persistent-fsm">PersistentFSM</a> będzie wycofywany i zastępowany Akka Typed Persistence, dlatego nie został zamieszczony domyślnie w szablonie.
+<ol>
+    <li>
+        (15 pkt) Persystencja koszyka. Proszę zaimplementować persystencję stanu koszyka przy pomocy mechanizmu event sourcingu.
+        Proszę zwrócić uwagę na poprawne odtwarzanie timerów.
+    </li>
+    <p></p>
+    <li>
+        (15 pkt) Proszę zaimplementować persystencję stanu aktora <tt>Checkout</tt> i przetestować scenariusz, w którym w trakcie
+        operacji checkout-u aplikacja zostaje przerwana (np. poprzez <tt>system.terminate</tt>). Po ponownym uruchomieniu
+        stan aplikacji powinien być poprawnie odtworzony (łącznie z timerami).
+    </li>
+    <p></p>
+    <li>(10 pkt) Proszę napisać testy dla klasy <tt>CartActor</tt> (modyfikując poprzednie testy).</li>
     <!--
-    <LI>(10 pkt) Proszę porównać wydajność różnych mechanizmów persystencji (np. LevelDB z opcją native = true/false, 
+    <li>(10 pkt) Proszę porównać wydajność różnych mechanizmów persystencji (np. LevelDB z opcją native = true/false, 
         InMemory, itp., <a href="http://akka.io/community/">lista wtyczek</a>) i oszacować średni czas zapisu/odczytu zdarzenia.
     -->
-    <UL>
-
-    </UL>
-</OL>
+</ol>
 <!--
-<H3>Bibliografia</H3>
-<OL>
-</OL>
+<h3>Bibliografia</h3>
+<ol>
+</ol>
 !-->
-<P>
-<P>
-<HR>
-<I>Bartosz Baliś, balis at agh edu pl</I>
-<BR>
-<I>Maciej Malawski, malawski at agh edu pl</I>
-<BR>
-<I>Katarzyna Rycerz, kzajac at agh edu pl</I>
-<BR>
-<P> <P>
-</DIV>
-</TR>
-</TD>
-</TABLE>
-</BODY>
-</HTML>
+    <p> </p>
+    <p> </p>
+<hr>
+<i>Bartosz Baliś, balis at agh edu pl</i>
+<br>
+<i>Maciej Malawski, malawski at agh edu pl</i>
+<br>
+<i>Katarzyna Rycerz, kzajac at agh edu pl</i>
+<br>
+<p> </p>
+</div>
+</td>
+</tr>
+</table>
+</body>
+</html>
