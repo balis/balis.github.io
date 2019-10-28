@@ -29,8 +29,8 @@ git clone https://github.com/agh-reactive/reactive-lab4
     <li>Proszę sprawdzić zachowanie aktora <tt>PersistentBankAccount</tt> przy kilkukrotnym uruchomieniu projektu. Co się zmienia, gdy wyślemy do niego komunikat <tt>Snap</tt>?</li>
     <li>Projekt wykorzystuje wbudowaną bazę danych LevelDB do zapisu dziennika zdarzeń. Pliki bazy tworzone są w katalogu <tt>target/journal/.</tt> (dla eventów) oraz <tt> target/snapshot/. </tt> (dla snapshotów).</li>
     <li>Baza używa wbudowanej implementacji w Javie, co skonfigurowane jest w pliku <a href="https://github.com/agh-reactive/reactive-lab4/blob/master/src/main/resources/application.conf"><tt>src/main/resources/application.conf</tt></a>.</li>
-    <li>Przykład użycia persystencji dla aktora wykorzystującego <tt>context.become()</tt> zamieszczony jest w pliku: <a href="https://github.com/agh-reactive/reactive-lab4/blob/master/src/main/scala/reactive4/persistence/persistenttoggle.scala">PersistentToggle.scala</a>.</li>
-    <li>Przykład użycia persystencji dla aktora wykorzystującego <tt>FSM</tt> zamieszczony jest w pliku: <a href="https://github.com/agh-reactive/reactive-lab4/blob/master/src/main/scala/reactive4/fsm/persistenttogglefsm.scala">PersistentToggleFSM.scala</a>. Uwaga: pakiet <tt>akka.persistence.fsm</tt> jest na razie eksperymentalny.</li>
+    <li>Przykład użycia persystencji dla aktora wykorzystującego <tt>context.become()</tt> zamieszczony jest w pliku: <a href="https://github.com/agh-reactive/reactive-lab4/blob/master/src/main/scala/reactive4/persistence/PersistentToggle.scala">PersistentToggle.scala</a>.</li>
+    <li>Przykład użycia persystencji dla aktora wykorzystującego <tt>FSM</tt> zamieszczony jest w pliku: <a href="https://github.com/agh-reactive/reactive-lab4/blob/master/src/main/scala/reactive4/fsm/PersistentToggleFSM.scala">PersistentToggleFSM.scala</a>. Uwaga: pakiet <tt>akka.persistence.fsm</tt> jest na razie eksperymentalny.</li>
 </ul>
 
 <h3>Zadanie</h3>
