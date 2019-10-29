@@ -45,12 +45,12 @@ git clone https://github.com/agh-reactive/reactive-lab4
     </li>
     <p></p>
     <li>
-        (15 pkt) Proszę zaimplementować persystencję stanu aktora <tt>Checkout</tt> i przetestować scenariusz, w którym w trakcie
+        (15 pkt) Proszę zaimplementować persystencję stanu aktora <tt>PersistentCheckout</tt> i przetestować scenariusz, w którym w trakcie
         operacji checkout-u aplikacja zostaje przerwana (np. poprzez <tt>system.terminate</tt>). Po ponownym uruchomieniu
         stan aplikacji powinien być poprawnie odtworzony (łącznie z timerami).
     </li>
     <p></p>
-    <li>(10 pkt) Proszę napisać testy dla klasy <tt>CartActor</tt> (modyfikując poprzednie testy).</li>
+    <li>(10 pkt) Proszę napisać testy dla klasy <tt>PersistentCartActor</tt> (tak, aby oprócz standardowych operacji uwzględniały również odtwarzanie stanu aktora).</li>
     <!--
     <li>(10 pkt) Proszę porównać wydajność różnych mechanizmów persystencji (np. LevelDB z opcją native = true/false, 
         InMemory, itp., <a href="http://akka.io/community/">lista wtyczek</a>) i oszacować średni czas zapisu/odczytu zdarzenia.
