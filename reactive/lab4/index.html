@@ -30,13 +30,13 @@ git clone https://github.com/agh-reactive/reactive-lab4
     <li>Projekt wykorzystuje wbudowaną bazę danych LevelDB do zapisu dziennika zdarzeń. Pliki bazy tworzone są w katalogu <tt>target/journal/.</tt> (dla eventów) oraz <tt> target/snapshot/. </tt> (dla snapshotów).</li>
     <li>Baza używa wbudowanej implementacji w Javie, co skonfigurowane jest w pliku <a href="https://github.com/agh-reactive/reactive-lab4/blob/master/src/main/resources/application.conf"><tt>src/main/resources/application.conf</tt></a>.</li>
     <li>Przykład użycia persystencji dla aktora wykorzystującego <tt>context.become()</tt> zamieszczony jest w pliku: <a href="https://github.com/agh-reactive/reactive-lab4/blob/master/src/main/scala/reactive4/persistence/PersistentToggle.scala">PersistentToggle.scala</a>.</li>
-    <li>Przykład użycia persystencji dla aktora wykorzystującego <tt>FSM</tt> zamieszczony jest w pliku: <a href="https://github.com/agh-reactive/reactive-lab4/blob/master/src/main/scala/reactive4/fsm/PersistentToggleFSM.scala">PersistentToggleFSM.scala</a>. <a href="https://doc.akka.io/docs/akka/current/persistence-fsm.html#persistent-fsm">PersistentFSM</a> będzie wycofywany i zastępowany Akka Typed Persistence, dlatego nie został zamieszczony domyślnie w szablonie.
+    <li>Przykład użycia persystencji dla aktora wykorzystującego <tt>FSM</tt> zamieszczony jest w pliku: <a href="https://github.com/agh-reactive/reactive-lab4/blob/master/src/main/scala/reactive4/fsm/PersistentToggleFSM.scala">PersistentToggleFSM.scala</a>. Uwaga: <a href="https://doc.akka.io/docs/akka/current/persistence-fsm.html#persistent-fsm">PersistentFSM</a> będzie wycofywany i zastępowany Akka Typed Persistence.
 </ul>
 
 <h3>Zadanie</h3>
 
     Do implementacji zadań proszę użyć szablonu: <a href="https://github.com/agh-reactive/reactive-scala-labs-templates/tree/lab-4">https://github.com/agh-reactive/reactive-scala-labs-templates/tree/lab-4</a>
-    Jeśli ktoś budował Checkout i CartActor za pomocą FSM to może chcieć wykorzystać mechanizm persystencji <tt>PersistentFSM</tt> w miejsce dostarczonych w szablonie szkieletów.
+    Jeśli ktoś budował Checkout i CartActor za pomocą FSM to może chcieć wykorzystać mechanizm persystencji <tt>PersistentFSM</tt>, ale ze względu na wycofywanie tej implementacji, szablon jej nie zawiera. 
     
 <ol>
     <li>
