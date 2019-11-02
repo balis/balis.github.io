@@ -1,122 +1,134 @@
-<HTML>
-<HEAD>
-<META http-equiv="content-type" content="text/html; charset=utf-8">
-<TITLE>Scala</TITLE>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<title>Scala</title>
 <link rel="stylesheet" type="text/css" href="../style.css">
-</HEAD>
-<BODY>
-<TABLE WIDTH="80%" HEIGHT="90%" BORDER="0" ALIGN=CENTER>
-<TR>
-<TD ALIGN=CENTER>
-<DIV ALIGN=left>
+</head>
+<body>
+<table width="80%" height="90%" border="0" align="center">
+<tr>
+<td align="center">
+<div align="left">
 
 <hr>
-    <H2>Programowanie reaktywne w języku Scala</H2>
+    <h2>Programowanie reaktywne w języku Scala</h2>
 <hr>
 
 <h3>Obsługa awarii</h3>
 
 <ul>
-<li>W celu zapewnienia obsługi awarii używamy wzorca nadzoru aktorów (<I><a href="http://doc.akka.io/docs/akka/current/general/supervision.html">supervision</a></I>)
-<li>Przykładowy projekt: <a href="http://typesafe.com/activator/template/akka-supervision">Akka Supervision Tutorial</a> używający aktorów do obliczania wyrażeń arytmetycznych</li>
-<li>Pobranie i uruchamianie projektu:
+    <li>W celu zapewnienia obsługi awarii używamy wzorca nadzoru aktorów (<i><a href="http://doc.akka.io/docs/akka/current/general/supervision.html">supervision</a></i>)</li>
+    <li>Przykładowy projekt: <a href="http://typesafe.com/activator/template/akka-supervision">Akka Supervision Tutorial</a> używający aktorów do obliczania wyrażeń arytmetycznych</li>
+    <li>Pobranie i uruchamianie projektu:
 <pre>
   git clone https://github.com/agh-reactive/activator-akka-supervision/
   cd activator-akka-supervision/
   sbt run
 </pre>
-<li>Proszę sprawdzić zachowanie systemu aktorów przy kilkukrotnym uruchomieniu projektu. Jak obsługiwane są losowe błędy?
-<li>Proszę sprawdzić co się stanie, gdy wprowadzimy wyrażenie zawierające dzielenie przez 0.
-<li><a href="http://doc.akka.io/docs/akka/current/scala/fault-tolerance.html">Fault tolerance in akka</a></li>
- <li> Wiecej <a href="http://doc.akka.io/docs/akka/current/scala/futures.html">informacji</a> o ask <i>"?"</i> i Futures </li>   
+    </li>
+    <li>Proszę sprawdzić zachowanie systemu aktorów przy kilkukrotnym uruchomieniu projektu. Jak obsługiwane są losowe błędy?</li>
+    <li>Proszę sprawdzić co się stanie, gdy wprowadzimy wyrażenie zawierające dzielenie przez 0.</li>
+    <li><a href="http://doc.akka.io/docs/akka/current/scala/fault-tolerance.html">Fault tolerance in akka</a></li>
+    <li> Wiecej <a href="http://doc.akka.io/docs/akka/current/scala/futures.html">informacji</a> o ask <i>"?"</i> i Futures </li>
 </ul>
 
 <h3>Komunikacja zdalna (remoting)</h3>
 
 <ul>
-<li>Aktorzy mogą komunikować się <a href="http://doc.akka.io/docs/akka/current/scala/remoting.html">zdalnie</a> 
-(<a href="http://doc.akka.io/docs/akka/current/general/remoting.html#remoting">przeźroczystość lokalizacji</a>).
-<li>Pobranie i uruchomienie przykładowego projektu:
+    <li>
+        Aktorzy mogą komunikować się <a href="http://doc.akka.io/docs/akka/current/scala/remoting.html">zdalnie</a>
+        (<a href="http://doc.akka.io/docs/akka/current/general/remoting.html#remoting">przeźroczystość lokalizacji</a>).
+    </li>
+    <li>Pobranie i uruchomienie przykładowego projektu:
 <pre>
   git clone https://github.com/agh-reactive/reactive-lab5
   cd reactive-lab5
   sbt run
 </pre>
-<li>Aby pobrać referencję do zdalnego aktora, możemy użyć <tt>ActorSelection</tt>:
+    </li>
+    <li>Aby pobrać referencję do zdalnego aktora, możemy użyć <tt>ActorSelection</tt>:
 <pre>
   val account = context.actorSelection("akka.tcp://Reactive5@127.0.0.1:2552/user/account")
 </pre>
-<li><a href="http://doc.akka.io/docs/akka/current/general/configuration.html">Konfiguracja</a> aktorów umożliwia stworzenie kilku systemów aktorów w jednej aplikacji.
-<li>Przyklad pliku <a href="https://github.com/agh-reactive/reactive-lab5/blob/master/src/main/resources/application.conf">application.conf</a>.
+    </li>
+    <li><a href="http://doc.akka.io/docs/akka/current/general/configuration.html">Konfiguracja</a> aktorów umożliwia stworzenie kilku systemów aktorów w jednej aplikacji.</li>
+    <li>Przyklad pliku <a href="https://github.com/agh-reactive/reactive-lab5/blob/master/src/main/resources/application.conf">application.conf</a>.</li>
 </ul>
 
 <h3>Komunikacja z uzyciem Akka HTTP</h3>
 
 <ul>
-<li>Biblioteka  <a href="https://doc.akka.io/docs/akka-http/current/scala/http/index.html">Akka HTTP</a> 
-.
-<li>Pobranie i uruchomienie przykładowego projektu:
+    <li>Biblioteka  <a href="https://doc.akka.io/docs/akka-http/current/scala/http/index.html">Akka HTTP</a>.</li>
+    <li>Pobranie i uruchomienie przykładowego projektu:
 <pre>
   git clone https://github.com/agh-reactive/reactive-http
   cd reactive-http
   sbt run
 </pre>
-<li>Serwer korzysta z DSL do określania ściezki wywołania:  
-  <a href="https://doc.akka.io/docs/akka-http/current/scala/http/routing-dsl/index.html#minimal-example">High-lever server API</a> 
+    </li>
+    <li>Serwer korzysta z DSL do określania ściezki wywołania:
+      <a href="https://doc.akka.io/docs/akka-http/current/scala/http/routing-dsl/index.html#minimal-example">High-lever server API</a>
+    </li>
 
-<li>Klient jest aktorem, który dostaje odpowiedź jako komunikat:   
-      <a href="https://doc.akka.io/docs/akka-http/current/scala/http/client-side/request-level.html#using-the-future-based-api-in-actors">przykład</a>.
+    <li>
+        Klient jest aktorem, który dostaje odpowiedź jako komunikat:
+          <a href="https://doc.akka.io/docs/akka-http/current/scala/http/client-side/request-level.html#using-the-future-based-api-in-actors">przykład</a>.
+    </li>
 </ul>
 
-<H3>Zadanie</H3>
-<OL>
-    <LI>(15 pkt) Proszę rozszerzyć sklep o katalog produktow <b>ProductCatalog</b> zaimplementowany jako zewnętrzny system korzystajac z remoting. Odpowiedzialności katalogu:
-    <UL>
-        <LI>przechowywanie elementów <b>Item</b>, zgodnie z konwencją z lab4 (id jako URI), liczba sztuk w magazynie;
-        <LI>wyszukiwanie wg słów kluczowych, którymi są: nazwa producenta i wyrazy z nazwy produktu. 
-            <UL>
-                <LI>Przykłady: <tt>"Frappuccino Coffee Drink","Starbucks"; "Teeny Bodies Moisturizing Cream","Gerber"; "32 New Disposable Razor Twin Blades Great Deal 3 ea","Gillette"; "Coke Classic Bottles","Coca-Cola"</tt>.</LI> 
-                <LI>Przykład zapytania: "gerber cream"
-                <LI>Jako rezultat zapytania zwracane powinno być domyślnie 10 najlepiej pasujących produktów (czyli tych, które mają w nazwie najwięcej słów kluczowych z zapytania).</LI>
-                <LI>Należy zaimportować dane z pliku <a href="query_result.bz2">query_result.bz2</a>.</LI>
-            </UL>               
-        <!--<LI>aktualizacja liczby towarów w magazynie.!-->
-    </UL>
-    Należy oddzielić logikę biznesową od logiki komunikacji.
-    <P>
-    <LI>(10 pkt) Proszę zaimplementować aktora <b>Payment</b> komunikującego się przy użyciu Akka-http z zewnętrznymi serwisami obsługującymi kilka metod płatności (np. VISA, PayU, PayPal itp). Do implementacji serwera mozna skorzystać z takich opcji jak:
-      <ul>
-        <li>lokalny z Akka HTTP</li>
-        <li>Korzystający z <a href="http://httpbin.org/">http://httpbin.org/</a></li>
-        <li>Korzystający z <a href="https://requestb.in/">https://requestb.in/</a></li>
-        <li>Korzystający z <a href="https://www.playframework.com/">https://www.playframework.com/</a></li>
-        
-      </ul>
-      Należy wykorzystać wzorzec w którym aktor jest tworzony per wywołanie.
-        
-    <P>
-    <LI>(15 pkt) Proszę dodać mechanizmy obsługi awarii do obsługi błędów w trakcie wykonywania operacji płatności.
-    Należy wykorzystać wzorzec nadzorcy. 
-    Punktowana będzie obsługa ciekawych błędów, np. błędy HTTP, błędy sieciowe, itp.
-</OL>
+<h3>Zadanie</h3>
+    Do implementacji zadań proszę użyć szablonu: <a href="https://github.com/agh-reactive/reactive-scala-labs-templates/tree/lab-5">https://github.com/agh-reactive/reactive-scala-labs-templates/tree/lab-5</a>
+    W szablonie został już zaimplementowany <b>ProductCatalog</b> oraz demonstracyjny przykład komunikowania się z katalogiem produktów pomiędzy różnymi systemami aktorowymi zawarty w teście <b>ProductCatalogRemoteTest</b>.
+    Katalog produktów ma następujące odpowiedzialności:
+    <ul>
+        <li>przechowywanie elementów <b>Item</b>, zgodnie z konwencją z lab4 (id jako URI), liczba sztuk w magazynie;</li>
+        <li>wyszukiwanie wg słów kluczowych, którymi są: nazwa producenta i wyrazy z nazwy produktu.
+            <ul>
+                <li>Przykłady: <tt>"Frappuccino Coffee Drink","Starbucks"; "Teeny Bodies Moisturizing Cream","Gerber"; "32 New Disposable Razor Twin Blades Great Deal 3 ea","Gillette"; "Coke Classic Bottles","Coca-Cola"</tt>.</li>
+                <li>Przykład zapytania: "gerber cream"</li>
+                <li>Jako rezultat zapytania zwracane jest domyślnie 10 najlepiej pasujących produktów (czyli tych, które mają w nazwie najwięcej słów kluczowych z zapytania).</li>
+                <li>Dane importowane są z pliku <a href="query_result.bz2">query_result.bz2</a>.</li>
+            </ul>
+        </li>
+    </ul>
+    <ol>
+        <li>
+            (15 pkt) Proszę stworzyć API (REST) dla <b>ProductCatalog</b> udostępniające przeszukiwanie katalogu, zwracające wyniki jako JSON.
+            Proszę <b>ProductCatalog</b> uruchomić na innym systemie aktorowym niż serwer HTTP (tak aby zademonstrować komunikację z <b>ProductCatalog</b> poprzez zdalną referencję do aktora).
+            Przy implementacji servera http proszę spojrzeć na przykład <b>HelloWorldAkkaHttpServer</b>.
+        </li>
+        <p></p>
+        <li>
+            (10 pkt) Proszę zaimplementować aktora <b>Payment</b> komunikującego się przy użyciu Akka-http z zewnętrznymi serwisami obsługującymi kilka metod płatności (np. VISA, PayU, PayPal itp).
+            Do implementacji komunikacji z serwerem proszę skorzystać z szablonu aktora <b>PaymentService</b>. Proszę wykorzystać implementację serwera z klasy <b>PaymentServiceServer</b>
+          Należy wykorzystać wzorzec w którym aktor <b>PaymentService</b> jest tworzony per wywołanie.
+
+            <p></p>
+        </li>
+        <li>
+        (15 pkt) Proszę dodać mechanizmy obsługi awarii do obsługi błędów w trakcie wykonywania operacji płatności.
+        Należy wykorzystać wzorzec nadzorcy.
+        Punktowana będzie obsługa ciekawych błędów, np. błędy HTTP, błędy sieciowe, itp.
+        </li>
+    </ol>
 <!--
-<H3>Bibliografia</H3>
-<OL>
-</OL>
+<h3>Bibliografia</h3>
+<ol>
+</ol>
 !-->
-<P>
-<P>
-<HR>
-<I>Bartosz Baliś, balis at agh edu pl</I>
-<BR>
-<I>Maciej Malawski, malawski at agh edu pl</I>
-<BR>
-<I>Katarzyna Rycerz, kzajac at agh edu pl</I>
-<BR>
-<P> <P>
-</DIV>
-</TR>
-</TD>
-</TABLE>
-</BODY>
-</HTML>
+<p></p>
+<p></p>
+<hr>
+<i>Bartosz Baliś, balis at agh edu pl</i>
+<br />
+<i>Maciej Malawski, malawski at agh edu pl</i>
+<br>
+<i>Katarzyna Rycerz, kzajac at agh edu pl</i>
+<br>
+<p> </p>
+</div>
+</td>
+</tr>
+</table>
+</body>
+</html>
