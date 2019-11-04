@@ -1,17 +1,17 @@
-<HTML>
-<HEAD>
-<META http-equiv="content-type" content="text/html; charset=utf-8">
-<TITLE>Scala</TITLE>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<title>Scala</title>
 <link rel="stylesheet" type="text/css" href="../style.css">
-</HEAD>
-<BODY>
-<TABLE WIDTH="80%" HEIGHT="90%" BORDER="0" ALIGN=CENTER>
-<TR>
-<TD ALIGN=CENTER>
-<DIV ALIGN=left>
+</head>
+<body>
+<table width="80%" height="90%" border="0" align="center">
+<tr>
+<td align="center">
+<div align="left">
 
 <hr>
-    <H2>Programowanie reaktywne w jezyku Scala</H2>
+    <h2>Programowanie reaktywne w jezyku Scala</h2>
 <hr>
 
 <h3>Skalowanie oraz klastrowanie w Akka</h3>
@@ -65,21 +65,21 @@ Wskazówka: Jeśli chcemy zobaczyć jak takie DSL zostało zbudowane i jakie mec
 </ul>
 
 
-<H3>Zadanie</H3>
-<OL>
-    <LI>(20 pkt) API RESTowe i skalowanie w systemie aktorowym
-    <UL>
+<h3>Zadanie</h3>
+<ol>
+    <li>(20 pkt) API RESTowe i skalowanie w systemie aktorowym
+    <ul>
         <li>Wyskalować katalog produktów za pomocą mechanizmu <a href="https://doc.akka.io/docs/akka/current/scala/routing.html">routingu</a></li>
-        <li>Proszę skorzystać z dostarczonej implementacji Katalogu z <A HREF=https://github.com/agh-reactive/reactive-lab5>poprzednich zajęć</A>.
-        <LI>Stworzyć API (REST) udostępniające przeszukiwanie katalogu zwracające wyniki jako JSON</LI>
         <li>Przeprowadzić testy obciążeniowe API wybranym narzędziem (w przykładzie z laboratoriów znajdziemy przykład testów w Gatlingu), krótko uzasadnić wybór narzędzia do testów</li>
-        <li>Oszacować liczbę użytkowników sklepu jaką możemy obsłużyć. Podać przyjęte założenia.
-        <li>(Dla zainteresowanych). Można skorzystać
-            z <A HREF="https://blogs.msdn.microsoft.com/chwitt/2017/10/04/littles-law-and-how-it-impacts-load-testers/">prawa Little'a</a>,
-            żeby obliczyć parametry wydajności (i testów) teoretycznie i porównać je z wynikami eksperymentalnymi.</li>
-    </UL>
+        <li>Oszacować liczbę użytkowników sklepu jaką możemy obsłużyć. Podać przyjęte założenia.</li>
+        <li>
+            (Dla zainteresowanych). Można skorzystać
+            z <a href="https://blogs.msdn.microsoft.com/chwitt/2017/10/04/littles-law-and-how-it-impacts-load-testers/">prawa Little'a</a>,
+            żeby obliczyć parametry wydajności (i testów) teoretycznie i porównać je z wynikami eksperymentalnymi.
+        </li>
+    </ul>
     </li>
-    <LI>(10 pkt) Akka Cluster
+    <li>(10 pkt) Akka Cluster
     <ul>
         <li>Skonfigurować Akka Cluster dla 3 węzłów.</li>
         <li>Każdy węzęł powinien udostępiać endpoint RESTowy.</li>
@@ -87,32 +87,32 @@ Wskazówka: Jeśli chcemy zobaczyć jak takie DSL zostało zbudowane i jakie mec
         <li>Powtórzyć testy</li>
     </ul>
     </li>
-    <LI>(10 pkt) <a href="https://doc.akka.io/docs/akka/2.5/distributed-pub-sub.html?language=scala">PubSub</a> w klastrze
+    <li>(10 pkt) <a href="https://doc.akka.io/docs/akka/2.5/distributed-pub-sub.html?language=scala">PubSub</a> w klastrze
     <ul>
         <li>Stworzyć aktora zliczającego liczbę zapytań obsługiwanych przez poszczególne instancje katalogu produktów. Statystyka powinna być dostępna przez REST.</li>
-        <li>Stworzyć aktora loguącego na konsolę (loggerem) wszystkie zapytania.</li>
+        <li>Stworzyć aktora logującego na konsolę (loggerem) wszystkie zapytania.</li>
         <li>Katalog produktów wysyła informację o każdym zapytaniu korzystając z mechanizmu publish-subscribe wraz z identyfikatorem instancji katalogu obsługującej żądanie.</li>
         <li>Oba aktory powinny być uruchomione na dedykowanym węźle (nie obsługującym żądań)</li>
     </ul>
     </li>
-</OL>
-<P>
-<P>
-<HR>
-<I>Bartosz Baliś, balis at agh edu pl</I>
-<BR>
-<I>Krzysztof Borowski
-<BR>
-<I>Maciej Malawski, malawski at agh edu pl</I>
-<BR>
-<I>Katarzyna Rycerz, kzajac at agh edu pl</I>
-<BR>
-<I>Kamil Figiela, kfigiela at agh edu pl</I>
-<BR>
-<P> <P>
-</DIV>
-</TR>
-</TD>
-</TABLE>
-</BODY>
-</HTML>
+</ol>
+<p>
+<p>
+<hr>
+<i>Bartosz Baliś, balis at agh edu pl</i>
+<br>
+<i>Krzysztof Borowski
+<br>
+<i>Maciej Malawski, malawski at agh edu pl</i>
+<br>
+<i>Katarzyna Rycerz, kzajac at agh edu pl</i>
+<br>
+<i>Kamil Figiela, kfigiela at agh edu pl</i>
+<br>
+<p> <p>
+</div>
+</td>
+</tr>
+</table>
+</body>
+</html>
