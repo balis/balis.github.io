@@ -18,9 +18,8 @@
 
 <ul>
     <li>W celu zapewnienia obsługi awarii używamy wzorca nadzoru aktorów (<i><a href="http://doc.akka.io/docs/akka/current/general/supervision.html">supervision</a></i>)</li>
-    <li>Przykładowy projekt: <a href="http://typesafe.com/activator/template/akka-supervision">Akka Supervision Tutorial</a> używający aktorów do obliczania wyrażeń arytmetycznych</li>
-    <li>Pobranie i uruchamianie projektu:
-<pre>
+    <li>Przykładowy projekt używający aktorów do obliczania wyrażeń arytmetycznych:</li>
+    <pre>
   git clone https://github.com/agh-reactive/activator-akka-supervision/
   cd activator-akka-supervision/
   sbt run
@@ -28,7 +27,7 @@
     </li>
     <li>Proszę sprawdzić zachowanie systemu aktorów przy kilkukrotnym uruchomieniu projektu. Jak obsługiwane są losowe błędy?</li>
     <li>Proszę sprawdzić co się stanie, gdy wprowadzimy wyrażenie zawierające dzielenie przez 0.</li>
-    <li><a href="http://doc.akka.io/docs/akka/current/scala/fault-tolerance.html">Fault tolerance in akka</a></li>
+    <li><a href="http://doc.akka.io/docs/akka/current/scala/fault-tolerance.html">Fault tolerance in Akka</a></li>
     <li> Wiecej <a href="http://doc.akka.io/docs/akka/current/scala/futures.html">informacji</a> o ask <i>"?"</i> i Futures </li>
 </ul>
 
@@ -37,7 +36,7 @@
 <ul>
     <li>
         Aktorzy mogą komunikować się <a href="http://doc.akka.io/docs/akka/current/scala/remoting.html">zdalnie</a>
-        (<a href="http://doc.akka.io/docs/akka/current/general/remoting.html#remoting">przeźroczystość lokalizacji</a>).
+        (<a href="http://doc.akka.io/docs/akka/current/general/remoting.html#remoting">przezroczystość lokalizacji</a>).
     </li>
     <li>Pobranie i uruchomienie przykładowego projektu:
 <pre>
@@ -51,8 +50,8 @@
   val account = context.actorSelection("akka.tcp://Reactive5@127.0.0.1:2552/user/account")
 </pre>
     </li>
-    <li><a href="http://doc.akka.io/docs/akka/current/general/configuration.html">Konfiguracja</a> aktorów umożliwia stworzenie kilku systemów aktorów w jednej aplikacji.</li>
-    <li>Przyklad pliku <a href="https://github.com/agh-reactive/reactive-lab5/blob/master/src/main/resources/application.conf">application.conf</a>.</li>
+    <li><a href="http://doc.akka.io/docs/akka/current/general/configuration.html">Konfiguracja</a> aktorów umożliwia stworzenie kilku systemów aktorów w jednej aplikacji</li>
+    <li>Przyklad pliku <a href="https://github.com/agh-reactive/reactive-lab5/blob/master/src/main/resources/application.conf">application.conf</a></li>
 </ul>
 
 <h3>Komunikacja z uzyciem Akka HTTP</h3>
@@ -84,7 +83,7 @@
         <li>przechowywanie elementów <b>Item</b>, zgodnie z konwencją z lab4 (id jako URI), liczba sztuk w magazynie;</li>
         <li>wyszukiwanie wg słów kluczowych, którymi są: nazwa producenta i wyrazy z nazwy produktu.
             <ul>
-                <li>Przykłady: <tt>"Frappuccino Coffee Drink","Starbucks"; "Teeny Bodies Moisturizing Cream","Gerber"; "32 New Disposable Razor Twin Blades Great Deal 3 ea","Gillette"; "Coke Classic Bottles","Coca-Cola"</tt>.</li>
+                <li>Przykłady: <tt>"Frappuccino Coffee Drink","Starbucks"; "Moisturizing Cream","Gerber"; "32 New Disposable Razor Twin Blades","Gillette"; "Coke Classic Bottles","Coca-Cola"</tt>.</li>
                 <li>Przykład zapytania: "gerber cream"</li>
                 <li>Jako rezultat zapytania zwracane jest domyślnie 10 najlepiej pasujących produktów (czyli tych, które mają w nazwie najwięcej słów kluczowych z zapytania).</li>
                 <li>Dane importowane są z pliku <a href="query_result.bz2">query_result.bz2</a>.</li>
