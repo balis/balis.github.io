@@ -19,7 +19,7 @@
     <h3>Utrwalanie i odtwarzanie stanu</h3>
 <ul>
     <li>
-        W celu utrwalania stanu aktora, używamy wzorca <tt>Event Sourcing</tt> zaimplementowanego w bibliotece <a href="http://doc.akka.io/docs/akka/current/scala/persistence.html"> Akka persistence</a>.
+        W celu utrwalania stanu aktora, używamy wzorca <tt>Event Sourcing</tt> zaimplementowanego w bibliotece <a href="http://doc.akka.io/docs/akka/current/scala/persistence.html"> Akka persistence</a> oraz <a href="https://doc.akka.io/docs/akka/current/typed/persistence.html"> Akka Typed Persistance</a>.
     </li>
     <li> Przykładowy projekt używający persystencji Akki
 <pre>
@@ -27,16 +27,16 @@ git clone https://github.com/agh-reactive/reactive-lab4
 </pre>
     </li>
     <li>Proszę sprawdzić zachowanie aktora <tt>PersistentBankAccount</tt> przy kilkukrotnym uruchomieniu projektu. Co się zmienia, gdy wyślemy do niego komunikat <tt>Snap</tt>?</li>
+    <li>Proszę sprawdzić zachowanie aktora <tt>TypedPersistentBankAccount</tt> przy kilkukrotnym uruchomieniu projektu.</li>
     <li>Projekt wykorzystuje wbudowaną bazę danych LevelDB do zapisu dziennika zdarzeń. Pliki bazy tworzone są w katalogu <tt>target/journal/.</tt> (dla eventów) oraz <tt> target/snapshot/. </tt> (dla snapshotów).</li>
     <li>Baza używa wbudowanej implementacji w Javie, co skonfigurowane jest w pliku <a href="https://github.com/agh-reactive/reactive-lab4/blob/master/src/main/resources/application.conf"><tt>src/main/resources/application.conf</tt></a>.</li>
     <li>Przykład użycia persystencji dla aktora wykorzystującego <tt>context.become()</tt> zamieszczony jest w pliku: <a href="https://github.com/agh-reactive/reactive-lab4/blob/master/src/main/scala/reactive4/persistence/PersistentToggle.scala">PersistentToggle.scala</a>.</li>
-    <li>Przykład użycia persystencji dla aktora wykorzystującego <tt>FSM</tt> zamieszczony jest w pliku: <a href="https://github.com/agh-reactive/reactive-lab4/blob/master/src/main/scala/reactive4/fsm/PersistentToggleFSM.scala">PersistentToggleFSM.scala</a>. Uwaga: <a href="https://doc.akka.io/docs/akka/current/persistence-fsm.html#persistent-fsm">PersistentFSM</a> będzie wycofywany i zastępowany Akka Typed Persistence.
+    <li>Przykład użycia persystencji dla aktora wykorzystującego <tt>Akka Typed</tt> zamieszczony jest w pliku: <a href="https://github.com/agh-reactive/reactive-lab4/blob/master/src/main/scala/reactive4/persistence/TypedPersistentToggle.scala">TypedPersistentToggle.scala</a>.
 </ul>
 
 <h3>Zadanie</h3>
 
     Do implementacji zadań proszę użyć szablonu: <a href="https://github.com/agh-reactive/reactive-scala-labs-templates/tree/lab-4">https://github.com/agh-reactive/reactive-scala-labs-templates/tree/lab-4</a>
-    Jeśli ktoś budował Checkout i CartActor za pomocą FSM to może chcieć wykorzystać mechanizm persystencji <tt>PersistentFSM</tt>, ale ze względu na wycofywanie tej implementacji, szablon jej nie zawiera. 
     
 <ol>
     <li>
@@ -45,7 +45,7 @@ git clone https://github.com/agh-reactive/reactive-lab4
     </li>
     <p></p>
     <li>
-        (15 pkt) Proszę zaimplementować persystencję stanu aktora <tt>PersistentCheckout</tt> i przetestować scenariusz, w którym w trakcie
+        (15 pkt) Proszę zaimplementować persystencję stanu aktora <tt>PersistentCheckout</tt>/<tt>TypedPersistentCheckout</tt> i przetestować scenariusz, w którym w trakcie
         operacji checkout-u aplikacja zostaje przerwana (np. poprzez <tt>system.terminate</tt>). Po ponownym uruchomieniu
         stan aplikacji powinien być poprawnie odtworzony (łącznie z timerami).
     </li>

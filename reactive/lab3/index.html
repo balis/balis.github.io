@@ -81,14 +81,14 @@ Do testowania aktorów wykorzystujemy moduł <a href=http://doc.akka.io/docs/akk
 
 <h3>Zadanie</h3>
     Szablon do zadań z Laboratorium 3:
-    <a href="https://github.com/agh-reactive/reactive-scala-labs-templates/tree/lab-3">https://github.com/agh-reactive/reactive-scala-labs-templates/tree/lab-3</a> (proszę pamiętać o scaleniu rozwiązań z laboratorium numer 2)
+    <a href="https://github.com/agh-reactive/reactive-scala-labs-templates/tree/lab-3">https://github.com/agh-reactive/reactive-scala-labs-templates/tree/lab-3</a> <b>(proszę pamiętać o scaleniu rozwiązań z laboratorium numer 2)</b>
 <ol>
     <li>(20 pkt) </li>
     <ul>
         <li>Prosze dodać do systemu aukcyjnego aktorow <b>OrderManager</b> i <b>Payment</b>, a następnie utworzyć system aktorów
             działający zgodnie z diagramem:
             <p></p>
-            <img src=eShop_system.png width="800" />
+            <img src=eShop_system_new.png width="800" />
         </li>
         <li> Napisać testy dla aktora CartActor. Testy powinny zawierać:
             <ul>
@@ -99,7 +99,7 @@ Do testowania aktorów wykorzystujemy moduł <a href=http://doc.akka.io/docs/akk
             </ul>
             alternatywnie:
             <ul>
-                <li> Testy za pomocą <a href="https://doc.akka.io/docs/akka/current/scala/testing.html#testing-finite-state-machines"><i>TestFSMRef</i></a></li>
+                <li> Testy za pomocą <a href="https://doc.akka.io/docs/akka/current/typed/testing.html"><i>Testing Akka Typed</i></a></li>
             </ul>
             <p></p>
         </li>
@@ -109,7 +109,7 @@ Do testowania aktorów wykorzystujemy moduł <a href=http://doc.akka.io/docs/akk
         Zestaw powinien zawierać test relacji <a href="https://doc.akka.io/docs/akka/current/scala/testing.html#testing-parent-child-relationships">rodzic-dziecko</a>
         w szczególności sprawdzenie, czy <b>CartActor</b> dostaje komunikat <i>CheckoutClosed</i> od testowanego aktora <b>CheckOut</b> (patrz diagram)
         <p></p>
-        <img src="checkout_test.png" width="500">
+        <img src="checkout_test_new.png" width="500">
     <li>
         (10 pkt) Proszę przetestować działanie systemu używając testów załączonych w szablonie (`sbt test`).
     </li>
