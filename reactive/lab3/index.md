@@ -62,20 +62,13 @@ Do testowania aktorów wykorzystujemy moduł <a href=http://doc.akka.io/docs/akk
 3. (10 pkt) Proszę w aktorze TypedOrderManager (typowany) zastosować wzorzec <A HREF="https://doc.akka.io/docs/akka/current/typed/interaction-patterns.html#adapted-response">Adapted Response</A>. 
         Uwaga: rozwiązanie tego zadania powinno być zrealizowane w osobnej gałęzi (szczegóły w instrukcji do przesyłania zadania).   
 
-    <p></p>
-    <hr>
-    <i>Bartosz Baliś, balis at agh edu pl</i>
-    <br>
-    <i>Maciej Malawski, malawski at agh edu pl</i>
-    <br>
-    <i>Katarzyna Rycerz, kzajac at agh edu pl</i>
-    <br>
-    <i>Krzysztof Borowski, kborowski at agh edu pl</i>
-    <br>
-    <p> </p>
-</div>
-</td>
-</tr>
-</table>
-</body>
-</html>
+
+---
+
+<i>Bartosz Baliś, balis at agh edu pl</i>
+
+<i>Maciej Malawski, malawski at agh edu pl</i>
+
+<i>Katarzyna Rycerz, kzajac at agh edu pl</i>
+
+<i>Krzysztof Borowski, kborowski at agh edu pl</i>
