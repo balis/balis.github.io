@@ -40,46 +40,28 @@ Do testowania aktorów wykorzystujemy moduł <a href=http://doc.akka.io/docs/akk
     </li>
 </ul>
 
-<h3>Zadanie</h3>
+### Zadania
     Szablon do zadań z Laboratorium 3:
     <a href="https://github.com/agh-reactive/reactive-scala-labs-templates/tree/lab-3">https://github.com/agh-reactive/reactive-scala-labs-templates/tree/lab-3</a> <b>(proszę pamiętać o scaleniu rozwiązań z laboratorium numer 2)</b>
-<ol>
-    <li>(20 pkt) </li>
-    <ul>
-        <li>Prosze dodać do systemu aukcyjnego aktorow <b>OrderManager</b> i <b>Payment</b>, a następnie utworzyć system aktorów
-            działający zgodnie z diagramem:
+1. (20 pkt)
+   * Proszę dodać do systemu aukcyjnego aktorów <b>OrderManager</b> i <b>Payment</b>, a następnie utworzyć system aktorów działający zgodnie z diagramem:
             <p></p>
             <img src=eShop_system_new.png width="800" />
-        </li>
-        <li> Napisać testy dla aktora CartActor. Testy powinny zawierać:
-            <ul>
-                <li> testowanie synchroniczne - test zmiany zawartości koszyka przy użyciu
-                 <a href="https://doc.akka.io/docs/akka/current/scala/testing.html#synchronous-testing-testactorref"><i>TestActorRef</i></a>
-                </li>
-                <li> testowanie asynchroniczne za pomocą  aktora testActor i asercji typu  <i>expectMsg</i>.</li>
-            </ul>
-            alternatywnie:
-            <ul>
-                <li> Testy za pomocą <a href="https://doc.akka.io/docs/akka/current/typed/testing.html"><i>Testing Akka Typed</i></a></li>
-            </ul>
-            <p></p>
-        </li>
-    </ul>
-    <li>
-        (10 pkt) Wykorzystując Akka TestKit proszę napisac testy dla aktora <b>Checkout</b></li> zawierające reakcję na  komunikaty wg diagramu poniżej.
+   * Napisać testy dla aktora CartActor. Testy powinny zawierać:
+     * testowanie synchroniczne - test zmiany zawartości koszyka przy użyciu
+<a href="https://doc.akka.io/docs/akka/current/scala/testing.html#synchronous-testing-testactorref"><i>TestActorRef</i></a>
+     * testowanie asynchroniczne za pomocą  aktora testActor i asercji typu  <i>expectMsg</i>.</li>
+    * alternatywnie:
+      * Testy za pomocą <a href="https://doc.akka.io/docs/akka/current/typed/testing.html"><i>Testing Akka Typed</i></a></li>
+2. (10 pkt) Wykorzystując Akka TestKit proszę napisac testy dla aktora <b>Checkout</b></li> zawierające reakcję na  komunikaty wg diagramu poniżej.
         Zestaw powinien zawierać test relacji <a href="https://doc.akka.io/docs/akka/current/scala/testing.html#testing-parent-child-relationships">rodzic-dziecko</a>
         w szczególności sprawdzenie, czy <b>CartActor</b> dostaje komunikat <i>CheckoutClosed</i> od testowanego aktora <b>CheckOut</b> (patrz diagram)
         <p></p>
         <img src="checkout_test_new.png" width="500">
     <p></p>
-    <li>
-        (10 pkt) Proszę w aktorze TypedOrderManager (typowany) zastosować wzorzec <A HREF="https://doc.akka.io/docs/akka/current/typed/interaction-patterns.html#adapted-response">Adapted Response</A>. 
+3. (10 pkt) Proszę w aktorze TypedOrderManager (typowany) zastosować wzorzec <A HREF="https://doc.akka.io/docs/akka/current/typed/interaction-patterns.html#adapted-response">Adapted Response</A>. 
         Uwaga: rozwiązanie tego zadania powinno być zrealizowane w osobnej gałęzi (szczegóły w instrukcji do przesyłania zadania).   
-    </li>
-    <p></p>
-</ol>
 
-    <p></p>
     <p></p>
     <hr>
     <i>Bartosz Baliś, balis at agh edu pl</i>
