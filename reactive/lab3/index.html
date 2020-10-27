@@ -113,9 +113,19 @@ Do testowania aktorów wykorzystujemy moduł <a href=http://doc.akka.io/docs/akk
     <p></p>
     </li>
     <li>
-        (10 pkt) Proszę w aktorze <b>TypedOrderManager</b> zastosować wzorzec <A HREF="https://doc.akka.io/docs/akka/current/typed/interaction-patterns.html#adapted-response">Adapted Response</A>. 
-        Uwaga: rozwiązanie tego zadania powinno być zrealizowane w osobnej gałęzi (szczegóły w instrukcji do przesyłania zadania).   
-    </li>
+        (10 pkt)
+        <p><b>Uwaga 1</b>: to zadanie ma dwie wersje -- dla typowanej i klasycznej wersji aktora <b>OrderManager</b>. Wybrać należy jedno z poniższych zadań, 
+            w zależności od wybranej implementacji.</p> 
+        <p><b>Uwaga 2</b>: rozwiązanie tego zadania powinno być zrealizowane w osobnej gałęzi (szczegóły w instrukcji do przesyłania zadania).</p>
+        <ul>
+            <li> (<b>Dla implementacji typowanej</b>) Proszę w aktorze <b>TypedOrderManager</b> zastosować wzorzec
+                <A HREF="https://doc.akka.io/docs/akka/current/typed/interaction-patterns.html#adapted-response">Adapted Response</A>. 
+            </li>
+            <li> (<b>Dla implementacji klasycznej</b>) Proszę przetestować mieszanie aktorów klasycznych (<b>OrderManager</b>) 
+                i typowanych (<b>TypedCartActor</b> i <b>TypedCheckout</b>. Więcej informacji: <a href="https://doc.akka.io/docs/akka/current/typed/coexisting.html">coexistence</a>
+            </li>
+        </ul>
+          
     <p></p>
 </ol>
 
