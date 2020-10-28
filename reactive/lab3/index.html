@@ -120,6 +120,8 @@ Do testowania aktorów wykorzystujemy moduł <a href=http://doc.akka.io/docs/akk
         <ul>
             <li> (<b>Dla implementacji typowanej</b>) Proszę w aktorze <b>TypedOrderManager</b> zastosować wzorzec
                 <A HREF="https://doc.akka.io/docs/akka/current/typed/interaction-patterns.html#adapted-response">Adapted Response</A>. 
+                Wskazówka: aktorzy (np. <b>Checkout</b>) powinni wysyłać odpowiedzi w formie zdarzeń (np. <b>CheckoutClosed</b>), a adapter może
+                je mapować na już wiadomości już zdefiniowane, np. <b>ConfirmCheckoutClosed</b>. 
             </li>
             <li> (<b>Dla implementacji klasycznej</b>) Proszę przetestować mieszanie aktorów klasycznych (<b>OrderManager</b>) 
                 i typowanych (<b>TypedCartActor</b> i <b>TypedCheckout</b>. Więcej informacji: <a href="https://doc.akka.io/docs/akka/current/typed/coexisting.html">coexistence</a>
