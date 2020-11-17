@@ -27,17 +27,22 @@
     </li>
     <li>Proszę sprawdzić zachowanie systemu aktorów przy kilkukrotnym uruchomieniu projektu. Jak obsługiwane są losowe błędy?</li>
     <li>Proszę sprawdzić co się stanie, gdy wprowadzimy wyrażenie zawierające dzielenie przez 0.</li>
-    <li><a href="http://doc.akka.io/docs/akka/current/scala/fault-tolerance.html">Fault tolerance in Akka</a></li>
-    <li> Wiecej <a href="http://doc.akka.io/docs/akka/current/scala/futures.html">informacji</a> o ask <i>"?"</i> i Futures </li>
+    <li>Fault tolerance in Akka: <a href="http://doc.akka.io/docs/akka/current/scala/fault-tolerance.html">Classic</a>
+        <a href="https://doc.akka.io/docs/akka/current/typed/fault-tolerance.html">Typed</a>
+    </li>
+        <li> Wiecej <a href="http://doc.akka.io/docs/akka/current/scala/futures.html">informacji</a> o ask <i>"?"</i> i Futures </li>
 </ul>
 
 <h3>Komunikacja zdalna (remoting)</h3>
 
 <ul>
     <li>
-        Aktorzy mogą komunikować się <a href="http://doc.akka.io/docs/akka/current/scala/remoting.html">zdalnie</a>
+        Aktorzy mogą komunikować się zdalnie: 
+        <a href="http://doc.akka.io/docs/akka/current/scala/remoting.html">Klasyczny remoting</a>
+        <a href="https://doc.akka.io/docs/akka/current/remoting-artery.html">Artery remoting</a>
         (<a href="http://doc.akka.io/docs/akka/current/general/remoting.html#remoting">przezroczystość lokalizacji</a>).
-    </li>
+    </li><a href="https://doc.akka.io/docs/akka/current/typed/actor-discovery.html">Wykrywanie aktorów</a>
+    <li>https://doc.akka.io/docs/akka/current/typed/actor-discovery.html
     <li>Pobranie i uruchomienie przykładowego projektu:
 <pre>
   git clone https://github.com/agh-reactive/reactive-lab5
