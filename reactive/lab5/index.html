@@ -50,7 +50,6 @@
     </li>
     <p></p>
     <li><a href="http://doc.akka.io/docs/akka/current/general/remoting.html#remoting">przezroczystość lokalizacji</a></li> 
-    <li><a href="https://doc.akka.io/docs/akka/current/typed/actor-discovery.html">Wykrywanie aktorów</a></li>
     <li>Pobranie i uruchomienie przykładowego projektu:
 <pre>
   git clone https://github.com/agh-reactive/reactive-lab5
@@ -58,11 +57,16 @@
   sbt run
 </pre>
     </li>
-    <li>Aby pobrać referencję do zdalnego aktora, możemy użyć <tt>ActorSelection</tt>:
+    <li>Wykrywanie aktorów (lookup/discovery)</li>
+    <ul>
+        <li>Kasycznie przez <tt>ActorSelection</tt>:
 <pre>
   val account = context.actorSelection("akka.tcp://Reactive5@127.0.0.1:2552/user/account")
 </pre>
+        <li>W Akka Typed przez mechanizm <a href="https://doc.akka.io/docs/akka/current/typed/actor-discovery.html">Actor discovery</a></li>
+    </ul>
     </li>
+    <p></p>
     <li><a href="http://doc.akka.io/docs/akka/current/general/configuration.html">Konfiguracja</a> aktorów umożliwia stworzenie kilku systemów aktorów w jednej aplikacji</li>
     <li>Przyklad pliku <a href="https://github.com/agh-reactive/reactive-lab5/blob/master/src/main/resources/application.conf">application.conf</a></li>
 </ul>
